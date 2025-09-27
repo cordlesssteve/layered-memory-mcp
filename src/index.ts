@@ -1084,13 +1084,18 @@ async function main(): Promise<void> {
                 modifiedConfidence?: number;
               };
 
-            const success = await memoryRouter.validateRelationship(
-              suggestionId,
-              action,
-              userFeedback,
-              modifiedType,
-              modifiedConfidence
-            );
+            const options: {
+              action: 'confirm' | 'reject' | 'modify';
+              userFeedback?: string;
+              modifiedType?: string;
+              modifiedConfidence?: number;
+            } = { action };
+
+            if (userFeedback !== undefined) options.userFeedback = userFeedback;
+            if (modifiedType !== undefined) options.modifiedType = modifiedType;
+            if (modifiedConfidence !== undefined) options.modifiedConfidence = modifiedConfidence;
+
+            const success = await memoryRouter.validateRelationship(suggestionId, options);
 
             return {
               content: [
@@ -1331,7 +1336,7 @@ process.on('uncaughtException', error => {
 });
 
 // Start the server
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (require.main === module) {
   main().catch(error => {
     console.error('Fatal error:', error);
     process.exit(1);
