@@ -294,16 +294,72 @@ async function main(): Promise<void> {
               required: ['query'],
             },
           },
-          // Temporarily disabled relationship tools
-          // {
-          //   name: 'build_knowledge_graph',
-          //   description: 'Build a knowledge graph from all memories showing relationships and clusters',
-          //   inputSchema: {
-          //     type: 'object',
-          //     properties: {},
-          //     additionalProperties: false,
-          //   },
-          // },
+          // Epic M2: Dynamic Memory Evolution tools
+          {
+            name: 'build_knowledge_graph',
+            description:
+              'Build a knowledge graph from all memories showing relationships and clusters',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_memory_relationships',
+            description: 'Get all relationships for a specific memory',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                memoryId: {
+                  type: 'string',
+                  description: 'ID of the memory to get relationships for',
+                },
+              },
+              required: ['memoryId'],
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'detect_conflicts',
+            description: 'Detect potential conflicts between memories',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_memory_versions',
+            description: 'Get version history for a memory',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                memoryId: {
+                  type: 'string',
+                  description: 'ID of the memory to get versions for',
+                },
+              },
+              required: ['memoryId'],
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'summarize_cluster',
+            description: 'Generate a summary for a cluster of related memories',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                memoryIds: {
+                  type: 'array',
+                  items: { type: 'string' },
+                  description: 'Array of memory IDs to summarize as a cluster',
+                },
+              },
+              required: ['memoryIds'],
+              additionalProperties: false,
+            },
+          },
         ],
       };
     });
@@ -698,8 +754,175 @@ async function main(): Promise<void> {
             };
           }
 
-          // Temporarily disabled relationship handlers
-          // case 'build_knowledge_graph': {
+          // Epic M2: Dynamic Memory Evolution handlers
+          case 'build_knowledge_graph': {
+            const graph = await memoryRouter.buildKnowledgeGraph();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      knowledgeGraph: {
+                        nodeCount: graph.stats.totalNodes,
+                        edgeCount: graph.stats.totalEdges,
+                        averageConnections: graph.stats.averageConnections,
+                        topCentralNodes: graph.stats.topCentralNodes,
+                        nodes: Array.from(graph.nodes.values()).map(node => ({
+                          memoryId: node.memoryId,
+                          centrality: node.centrality,
+                          importance: node.importance,
+                          connectionCount: node.connections.length,
+                          cluster: node.cluster,
+                          content: `${node.memory.content.substring(0, 100)}...`,
+                          metadata: {
+                            category: node.memory.metadata.category,
+                            priority: node.memory.metadata.priority,
+                            tags: node.memory.metadata.tags,
+                          },
+                        })),
+                        relationships: Array.from(graph.edges.values()).map(rel => ({
+                          id: rel.id,
+                          type: rel.type,
+                          confidence: rel.confidence,
+                          weight: rel.weight,
+                          source: rel.sourceMemoryId,
+                          target: rel.targetMemoryId,
+                          algorithm: rel.metadata.algorithm,
+                        })),
+                      },
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_memory_relationships': {
+            const { memoryId } = args as { memoryId: string };
+            const relationships = await memoryRouter.getMemoryRelationships(memoryId);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      memoryId,
+                      relationshipCount: relationships.length,
+                      relationships: relationships.map(rel => ({
+                        id: rel.id,
+                        type: rel.type,
+                        confidence: rel.confidence,
+                        weight: rel.weight,
+                        relatedMemoryId:
+                          rel.sourceMemoryId === memoryId ? rel.targetMemoryId : rel.sourceMemoryId,
+                        direction: rel.sourceMemoryId === memoryId ? 'outgoing' : 'incoming',
+                        metadata: {
+                          source: rel.metadata.source,
+                          algorithm: rel.metadata.algorithm,
+                          createdAt: rel.metadata.createdAt.toISOString(),
+                          validatedBy: rel.metadata.validatedBy,
+                        },
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'detect_conflicts': {
+            const conflicts = await memoryRouter.detectConflicts();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      conflictCount: conflicts.length,
+                      conflicts: conflicts.map(conflict => ({
+                        id: conflict.id,
+                        type: conflict.conflictType,
+                        confidence: conflict.confidence,
+                        suggestedResolution: conflict.suggestedResolution,
+                        conflictingMemories: conflict.conflictingMemoryIds,
+                        detectedAt: conflict.metadata.detectedAt.toISOString(),
+                        algorithm: conflict.metadata.algorithm,
+                        resolved: !!conflict.metadata.resolvedAt,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_memory_versions': {
+            const { memoryId } = args as { memoryId: string };
+            const versions = await memoryRouter.getMemoryVersions(memoryId);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      memoryId,
+                      versionCount: versions.length,
+                      versions: versions.map(version => ({
+                        id: version.id,
+                        version: version.version,
+                        changeType: version.changeType,
+                        parentVersionId: version.parentVersionId,
+                        createdAt: version.createdAt.toISOString(),
+                        createdBy: version.createdBy,
+                        hasContentChanges: !!version.changes.content,
+                        hasMetadataChanges: !!version.changes.metadata,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'summarize_cluster': {
+            const { memoryIds } = args as { memoryIds: string[] };
+            const summary = await memoryRouter.summarizeCluster(memoryIds);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      clusterSize: memoryIds.length,
+                      memoryIds,
+                      summary,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
 
           default:
             throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
