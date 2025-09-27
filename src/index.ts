@@ -146,7 +146,7 @@ async function main(): Promise<void> {
                   type: 'array',
                   items: {
                     type: 'string',
-                    enum: ['session', 'project', 'global', 'temporal']
+                    enum: ['session', 'project', 'global', 'temporal'],
                   },
                   description: 'Specific layers to search (optional)',
                 },
@@ -169,7 +169,8 @@ async function main(): Promise<void> {
           },
           {
             name: 'advanced_search',
-            description: 'Perform advanced hybrid search with semantic, temporal, and relationship capabilities',
+            description:
+              'Perform advanced hybrid search with semantic, temporal, and relationship capabilities',
             inputSchema: {
               type: 'object',
               properties: {
@@ -293,17 +294,34 @@ async function main(): Promise<void> {
               required: ['query'],
             },
           },
+          // Temporarily disabled relationship tools
+          // {
+          //   name: 'build_knowledge_graph',
+          //   description: 'Build a knowledge graph from all memories showing relationships and clusters',
+          //   inputSchema: {
+          //     type: 'object',
+          //     properties: {},
+          //     additionalProperties: false,
+          //   },
+          // },
         ],
       };
     });
 
-    server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    server.setRequestHandler(CallToolRequestSchema, async request => {
       const { name, arguments: args } = request.params;
 
       try {
         switch (name) {
           case 'store_memory': {
-            const { content, category = 'knowledge', priority = 5, tags = [], projectId, sessionId } = args as {
+            const {
+              content,
+              category = 'knowledge',
+              priority = 5,
+              tags = [],
+              projectId,
+              sessionId,
+            } = args as {
               content: string;
               category?: string;
               priority?: number;
@@ -327,24 +345,35 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    id: item.id,
-                    layer: 'determined by router',
-                    metadata: {
-                      category: item.metadata.category,
-                      priority: item.metadata.priority,
-                      tags: item.metadata.tags,
-                      createdAt: item.createdAt.toISOString(),
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      id: item.id,
+                      layer: 'determined by router',
+                      metadata: {
+                        category: item.metadata.category,
+                        priority: item.metadata.priority,
+                        tags: item.metadata.tags,
+                        createdAt: item.createdAt.toISOString(),
+                      },
                     },
-                  }, null, 2),
+                    null,
+                    2
+                  ),
                 },
               ],
             };
           }
 
           case 'search_memory': {
-            const { query, projectId, sessionId, category, tags, limit = 10 } = args as {
+            const {
+              query,
+              projectId,
+              sessionId,
+              category,
+              tags,
+              limit = 10,
+            } = args as {
               query: string;
               projectId?: string;
               sessionId?: string;
@@ -370,26 +399,30 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    query,
-                    resultCount: results.length,
-                    results: results.map(result => ({
-                      id: result.memory.id,
-                      content: result.memory.content,
-                      score: result.score,
-                      layer: result.source,
-                      explanation: result.explanation,
-                      metadata: {
-                        category: result.memory.metadata.category,
-                        priority: result.memory.metadata.priority,
-                        tags: result.memory.metadata.tags,
-                        createdAt: result.memory.createdAt.toISOString(),
-                        lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
-                        accessCount: result.memory.accessCount,
-                      },
-                    })),
-                  }, null, 2),
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      query,
+                      resultCount: results.length,
+                      results: results.map(result => ({
+                        id: result.memory.id,
+                        content: result.memory.content,
+                        score: result.score,
+                        layer: result.source,
+                        explanation: result.explanation,
+                        metadata: {
+                          category: result.memory.metadata.category,
+                          priority: result.memory.metadata.priority,
+                          tags: result.memory.metadata.tags,
+                          createdAt: result.memory.createdAt.toISOString(),
+                          lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
+                          accessCount: result.memory.accessCount,
+                        },
+                      })),
+                    },
+                    null,
+                    2
+                  ),
                 },
               ],
             };
@@ -398,8 +431,14 @@ async function main(): Promise<void> {
           case 'get_memory_stats': {
             const stats = await memoryRouter.getAllStats();
 
-            const totalMemories = Object.values(stats).reduce((sum, layerStats) => sum + layerStats.totalItems, 0);
-            const totalSize = Object.values(stats).reduce((sum, layerStats) => sum + layerStats.totalSize, 0);
+            const totalMemories = Object.values(stats).reduce(
+              (sum, layerStats) => sum + layerStats.totalItems,
+              0
+            );
+            const totalSize = Object.values(stats).reduce(
+              (sum, layerStats) => sum + layerStats.totalSize,
+              0
+            );
 
             const formatSize = (bytes: number): string => {
               if (bytes < 1024) return `${bytes} B`;
@@ -412,38 +451,42 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    totalMemories,
-                    totalSize: formatSize(totalSize),
-                    layers: {
-                      session: {
-                        count: stats.session?.totalItems || 0,
-                        size: formatSize(stats.session?.totalSize || 0),
-                        averageAccess: stats.session?.averageAccessCount || 0,
-                        categories: stats.session?.categoryCounts || {},
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      totalMemories,
+                      totalSize: formatSize(totalSize),
+                      layers: {
+                        session: {
+                          count: stats.session?.totalItems || 0,
+                          size: formatSize(stats.session?.totalSize || 0),
+                          averageAccess: stats.session?.averageAccessCount || 0,
+                          categories: stats.session?.categoryCounts || {},
+                        },
+                        project: {
+                          count: stats.project?.totalItems || 0,
+                          size: formatSize(stats.project?.totalSize || 0),
+                          averageAccess: stats.project?.averageAccessCount || 0,
+                          categories: stats.project?.categoryCounts || {},
+                        },
+                        global: {
+                          count: stats.global?.totalItems || 0,
+                          size: formatSize(stats.global?.totalSize || 0),
+                          averageAccess: stats.global?.averageAccessCount || 0,
+                          categories: stats.global?.categoryCounts || {},
+                        },
+                        temporal: {
+                          count: stats.temporal?.totalItems || 0,
+                          size: formatSize(stats.temporal?.totalSize || 0),
+                          averageAccess: stats.temporal?.averageAccessCount || 0,
+                          categories: stats.temporal?.categoryCounts || {},
+                        },
                       },
-                      project: {
-                        count: stats.project?.totalItems || 0,
-                        size: formatSize(stats.project?.totalSize || 0),
-                        averageAccess: stats.project?.averageAccessCount || 0,
-                        categories: stats.project?.categoryCounts || {},
-                      },
-                      global: {
-                        count: stats.global?.totalItems || 0,
-                        size: formatSize(stats.global?.totalSize || 0),
-                        averageAccess: stats.global?.averageAccessCount || 0,
-                        categories: stats.global?.categoryCounts || {},
-                      },
-                      temporal: {
-                        count: stats.temporal?.totalItems || 0,
-                        size: formatSize(stats.temporal?.totalSize || 0),
-                        averageAccess: stats.temporal?.averageAccessCount || 0,
-                        categories: stats.temporal?.categoryCounts || {},
-                      },
+                      lastUpdated: new Date().toISOString(),
                     },
-                    lastUpdated: new Date().toISOString(),
-                  }, null, 2),
+                    null,
+                    2
+                  ),
                 },
               ],
             };
@@ -456,7 +499,7 @@ async function main(): Promise<void> {
               temporalPatterns,
               relationships,
               limit = 20,
-              filters
+              filters,
             } = args as {
               query: string;
               semanticSearch?: {
@@ -490,10 +533,16 @@ async function main(): Promise<void> {
               },
               temporalPatterns: {
                 enabled: temporalPatterns?.enabled || false,
-                timeRange: temporalPatterns?.timeRange ? {
-                  start: temporalPatterns.timeRange.start ? new Date(temporalPatterns.timeRange.start) : undefined,
-                  end: temporalPatterns.timeRange.end ? new Date(temporalPatterns.timeRange.end) : undefined,
-                } : undefined,
+                timeRange: temporalPatterns?.timeRange
+                  ? {
+                      start: temporalPatterns.timeRange.start
+                        ? new Date(temporalPatterns.timeRange.start)
+                        : undefined,
+                      end: temporalPatterns.timeRange.end
+                        ? new Date(temporalPatterns.timeRange.end)
+                        : undefined,
+                    }
+                  : undefined,
                 includeSequences: temporalPatterns?.includeSequences !== false,
                 sequenceWindow: temporalPatterns?.sequenceWindow || '1h',
               },
@@ -510,41 +559,49 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    query,
-                    searchType: 'advanced',
-                    resultCount: results.length,
-                    features: {
-                      semantic: advancedQuery.semanticSearch.enabled,
-                      temporal: advancedQuery.temporalPatterns.enabled,
-                      relationships: advancedQuery.relationships.enabled,
-                    },
-                    results: results.map(result => ({
-                      id: result.memory.id,
-                      content: result.memory.content,
-                      score: result.score,
-                      confidence: result.confidence,
-                      layer: result.source,
-                      explanation: result.explanation,
-                      relevanceFactors: result.relevanceFactors,
-                      metadata: {
-                        category: result.memory.metadata.category,
-                        priority: result.memory.metadata.priority,
-                        tags: result.memory.metadata.tags,
-                        createdAt: result.memory.createdAt.toISOString(),
-                        lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
-                        accessCount: result.memory.accessCount,
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      query,
+                      searchType: 'advanced',
+                      resultCount: results.length,
+                      features: {
+                        semantic: advancedQuery.semanticSearch.enabled,
+                        temporal: advancedQuery.temporalPatterns.enabled,
+                        relationships: advancedQuery.relationships.enabled,
                       },
-                    })),
-                  }, null, 2),
+                      results: results.map(result => ({
+                        id: result.memory.id,
+                        content: result.memory.content,
+                        score: result.score,
+                        confidence: result.confidence,
+                        layer: result.source,
+                        explanation: result.explanation,
+                        relevanceFactors: result.relevanceFactors,
+                        metadata: {
+                          category: result.memory.metadata.category,
+                          priority: result.memory.metadata.priority,
+                          tags: result.memory.metadata.tags,
+                          createdAt: result.memory.createdAt.toISOString(),
+                          lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
+                          accessCount: result.memory.accessCount,
+                        },
+                      })),
+                    },
+                    null,
+                    2
+                  ),
                 },
               ],
             };
           }
 
           case 'semantic_search': {
-            const { query, threshold = 0.7, maxResults = 20 } = args as {
+            const {
+              query,
+              threshold = 0.7,
+              maxResults = 20,
+            } = args as {
               query: string;
               threshold?: number;
               maxResults?: number;
@@ -556,29 +613,33 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    query,
-                    searchType: 'semantic',
-                    threshold,
-                    resultCount: results.length,
-                    results: results.map(result => ({
-                      id: result.memory.id,
-                      content: result.memory.content,
-                      score: result.score,
-                      confidence: result.confidence,
-                      layer: result.source,
-                      explanation: result.explanation,
-                      metadata: {
-                        category: result.memory.metadata.category,
-                        priority: result.memory.metadata.priority,
-                        tags: result.memory.metadata.tags,
-                        createdAt: result.memory.createdAt.toISOString(),
-                        lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
-                        accessCount: result.memory.accessCount,
-                      },
-                    })),
-                  }, null, 2),
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      query,
+                      searchType: 'semantic',
+                      threshold,
+                      resultCount: results.length,
+                      results: results.map(result => ({
+                        id: result.memory.id,
+                        content: result.memory.content,
+                        score: result.score,
+                        confidence: result.confidence,
+                        layer: result.source,
+                        explanation: result.explanation,
+                        metadata: {
+                          category: result.memory.metadata.category,
+                          priority: result.memory.metadata.priority,
+                          tags: result.memory.metadata.tags,
+                          createdAt: result.memory.createdAt.toISOString(),
+                          lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
+                          accessCount: result.memory.accessCount,
+                        },
+                      })),
+                    },
+                    null,
+                    2
+                  ),
                 },
               ],
             };
@@ -590,12 +651,14 @@ async function main(): Promise<void> {
               timeRange?: { start?: string; end?: string };
             };
 
-            const parsedTimeRange = timeRange ? Object.fromEntries(
-              Object.entries({
-                start: timeRange.start ? new Date(timeRange.start) : undefined,
-                end: timeRange.end ? new Date(timeRange.end) : undefined,
-              }).filter(([_, value]) => value !== undefined)
-            ) as { start?: Date; end?: Date } : undefined;
+            const parsedTimeRange = timeRange
+              ? (Object.fromEntries(
+                  Object.entries({
+                    start: timeRange.start ? new Date(timeRange.start) : undefined,
+                    end: timeRange.end ? new Date(timeRange.end) : undefined,
+                  }).filter(([_, value]) => value !== undefined)
+                ) as { start?: Date; end?: Date })
+              : undefined;
 
             const results = await memoryRouter.temporalSearch(query, parsedTimeRange);
 
@@ -603,39 +666,43 @@ async function main(): Promise<void> {
               content: [
                 {
                   type: 'text',
-                  text: JSON.stringify({
-                    success: true,
-                    query,
-                    searchType: 'temporal',
-                    timeRange: parsedTimeRange,
-                    resultCount: results.length,
-                    results: results.map(result => ({
-                      id: result.memory.id,
-                      content: result.memory.content,
-                      score: result.score,
-                      confidence: result.confidence,
-                      layer: result.source,
-                      explanation: result.explanation,
-                      metadata: {
-                        category: result.memory.metadata.category,
-                        priority: result.memory.metadata.priority,
-                        tags: result.memory.metadata.tags,
-                        createdAt: result.memory.createdAt.toISOString(),
-                        lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
-                        accessCount: result.memory.accessCount,
-                      },
-                    })),
-                  }, null, 2),
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      query,
+                      searchType: 'temporal',
+                      timeRange: parsedTimeRange,
+                      resultCount: results.length,
+                      results: results.map(result => ({
+                        id: result.memory.id,
+                        content: result.memory.content,
+                        score: result.score,
+                        confidence: result.confidence,
+                        layer: result.source,
+                        explanation: result.explanation,
+                        metadata: {
+                          category: result.memory.metadata.category,
+                          priority: result.memory.metadata.priority,
+                          tags: result.memory.metadata.tags,
+                          createdAt: result.memory.createdAt.toISOString(),
+                          lastAccessedAt: result.memory.lastAccessedAt.toISOString(),
+                          accessCount: result.memory.accessCount,
+                        },
+                      })),
+                    },
+                    null,
+                    2
+                  ),
                 },
               ],
             };
           }
 
+          // Temporarily disabled relationship handlers
+          // case 'build_knowledge_graph': {
+
           default:
-            throw new McpError(
-              ErrorCode.MethodNotFound,
-              `Unknown tool: ${name}`
-            );
+            throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
         }
       } catch (error) {
         logger.error('Tool execution error', {
@@ -661,15 +728,19 @@ async function main(): Promise<void> {
     // Setup memory router cleanup on shutdown
     const originalProcessExit = process.exit;
     process.exit = ((code?: number) => {
-      memoryRouter.close().catch(error => {
-        logger.error('Failed to close memory router', { error: error instanceof Error ? error.message : error });
-      }).finally(() => {
-        originalProcessExit(code);
-      });
+      memoryRouter
+        .close()
+        .catch(error => {
+          logger.error('Failed to close memory router', {
+            error: error instanceof Error ? error.message : error,
+          });
+        })
+        .finally(() => {
+          originalProcessExit(code);
+        });
     }) as typeof process.exit;
 
     logger.info('Layered Memory MCP Server started successfully');
-
   } catch (error) {
     logger.error('Failed to start server', {
       error: error instanceof Error ? error.message : String(error),
@@ -686,7 +757,7 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Handle uncaught exceptions
-process.on('uncaughtException', (error) => {
+process.on('uncaughtException', error => {
   const logger = createLogger('uncaughtException');
   logger.error('Uncaught exception', { error: error.message, stack: error.stack });
   process.exit(1);
@@ -694,7 +765,7 @@ process.on('uncaughtException', (error) => {
 
 // Start the server
 if (import.meta.url === `file://${process.argv[1]}`) {
-  main().catch((error) => {
+  main().catch(error => {
     console.error('Fatal error:', error);
     process.exit(1);
   });
