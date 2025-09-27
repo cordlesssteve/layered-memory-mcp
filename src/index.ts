@@ -360,6 +360,120 @@ async function main(): Promise<void> {
               additionalProperties: false,
             },
           },
+          // Relationship Validation Tools
+          {
+            name: 'get_relationship_suggestions',
+            description: 'Get pending relationship suggestions for user validation',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                limit: {
+                  type: 'number',
+                  description: 'Maximum number of suggestions to return',
+                  default: 10,
+                  minimum: 1,
+                  maximum: 50,
+                },
+                minConfidence: {
+                  type: 'number',
+                  description: 'Minimum confidence threshold',
+                  default: 0.6,
+                  minimum: 0,
+                  maximum: 1,
+                },
+              },
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'validate_relationship',
+            description: 'Confirm, reject, or modify a relationship suggestion',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                suggestionId: {
+                  type: 'string',
+                  description: 'ID of the suggestion to validate',
+                },
+                action: {
+                  type: 'string',
+                  enum: ['confirm', 'reject', 'modify'],
+                  description: 'Validation action to take',
+                },
+                userFeedback: {
+                  type: 'string',
+                  description: 'Optional user feedback about the relationship',
+                },
+                modifiedType: {
+                  type: 'string',
+                  description: 'New relationship type (only for modify action)',
+                },
+                modifiedConfidence: {
+                  type: 'number',
+                  description: 'New confidence score (only for modify action)',
+                  minimum: 0,
+                  maximum: 1,
+                },
+              },
+              required: ['suggestionId', 'action'],
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_validation_stats',
+            description: 'Get validation statistics and algorithm performance insights',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          // Memory Decay Prediction Tools
+          {
+            name: 'predict_memory_decay',
+            description: 'Predict which memories will become important or obsolete over time',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_urgent_memories',
+            description: 'Get memories that need immediate attention (risk of obsolescence)',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_promotion_candidates',
+            description: 'Get memories that are becoming more important and should be promoted',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_archival_candidates',
+            description: 'Get memories that are becoming less important and should be archived',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
+          {
+            name: 'get_decay_insights',
+            description: 'Get insights and performance metrics from the memory decay model',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
         ],
       };
     });
@@ -915,6 +1029,236 @@ async function main(): Promise<void> {
                       clusterSize: memoryIds.length,
                       memoryIds,
                       summary,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          // Relationship Validation Tools
+          case 'get_relationship_suggestions': {
+            const { limit = 10, minConfidence = 0.6 } = args as {
+              limit?: number;
+              minConfidence?: number;
+            };
+
+            const suggestions = await memoryRouter.getRelationshipSuggestions(limit, minConfidence);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      suggestionCount: suggestions.length,
+                      suggestions: suggestions.map(suggestion => ({
+                        id: suggestion.id,
+                        relationshipType: suggestion.relationship.type,
+                        confidence: suggestion.confidence,
+                        algorithm: suggestion.algorithm,
+                        sourceContent: `${suggestion.sourceMemoryContent.substring(0, 100)}...`,
+                        targetContent: `${suggestion.targetMemoryContent.substring(0, 100)}...`,
+                        suggestedAt: suggestion.suggestedAt.toISOString(),
+                        status: suggestion.status,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'validate_relationship': {
+            const { suggestionId, action, userFeedback, modifiedType, modifiedConfidence } =
+              args as {
+                suggestionId: string;
+                action: 'confirm' | 'reject' | 'modify';
+                userFeedback?: string;
+                modifiedType?: string;
+                modifiedConfidence?: number;
+              };
+
+            const success = await memoryRouter.validateRelationship(
+              suggestionId,
+              action,
+              userFeedback,
+              modifiedType,
+              modifiedConfidence
+            );
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success,
+                      suggestionId,
+                      action,
+                      message: success
+                        ? `Relationship suggestion ${action}ed successfully`
+                        : `Failed to ${action} relationship suggestion`,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_validation_stats': {
+            const stats = await memoryRouter.getValidationStats();
+            const insights = await memoryRouter.getAlgorithmInsights();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      validationStats: stats,
+                      algorithmInsights: insights,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          // Memory Decay Prediction Tools
+          case 'predict_memory_decay': {
+            const predictions = await memoryRouter.predictMemoryDecay();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      predictionCount: predictions.length,
+                      predictions: predictions.map(pred => ({
+                        memoryId: pred.memoryId,
+                        currentImportance: pred.currentImportance,
+                        predictedImportance: pred.predictedImportance,
+                        decayRate: pred.decayRate,
+                        timeToObsolescence: pred.timeToObsolescence,
+                        confidenceScore: pred.confidenceScore,
+                        recommendation: pred.recommendation,
+                        factors: pred.factors,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_urgent_memories': {
+            const urgentMemories = await memoryRouter.getUrgentMemories();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      urgentCount: urgentMemories.length,
+                      urgentMemories: urgentMemories.map(pred => ({
+                        memoryId: pred.memoryId,
+                        timeToObsolescence: pred.timeToObsolescence,
+                        currentImportance: pred.currentImportance,
+                        confidenceScore: pred.confidenceScore,
+                        recommendation: pred.recommendation,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_promotion_candidates': {
+            const promotionCandidates = await memoryRouter.getPromotionCandidates();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      candidateCount: promotionCandidates.length,
+                      promotionCandidates: promotionCandidates.map(pred => ({
+                        memoryId: pred.memoryId,
+                        currentImportance: pred.currentImportance,
+                        predictedImportance: pred.predictedImportance,
+                        improvementFactor: pred.predictedImportance / pred.currentImportance,
+                        confidenceScore: pred.confidenceScore,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_archival_candidates': {
+            const archivalCandidates = await memoryRouter.getArchivalCandidates();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      candidateCount: archivalCandidates.length,
+                      archivalCandidates: archivalCandidates.map(pred => ({
+                        memoryId: pred.memoryId,
+                        currentImportance: pred.currentImportance,
+                        predictedImportance: pred.predictedImportance,
+                        timeToObsolescence: pred.timeToObsolescence,
+                        recommendation: pred.recommendation,
+                        confidenceScore: pred.confidenceScore,
+                      })),
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_decay_insights': {
+            const insights = await memoryRouter.getDecayModelInsights();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      modelInsights: insights,
                     },
                     null,
                     2
