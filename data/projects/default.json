@@ -1,0 +1,127 @@
+{
+  "projectId": "default",
+  "version": "1.0",
+  "savedAt": "2025-09-28T17:55:11.487Z",
+  "items": [
+    {
+      "content": "Default tenant searchable content",
+      "metadata": {
+        "tags": [
+          "search-test"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "search-test",
+        "tenantId": "default-tenant",
+        "createdBy": "admin-1",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:10.935Z"
+      },
+      "id": "d809e0ed-eaa3-4922-bc01-26bed2f48d3c",
+      "createdAt": "2025-09-28T17:55:10.935Z",
+      "updatedAt": "2025-09-28T17:55:10.935Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:10.935Z"
+    },
+    {
+      "content": "Another default tenant memory",
+      "metadata": {
+        "tags": [
+          "search-test"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "search-test",
+        "tenantId": "default-tenant",
+        "createdBy": "user-1",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:10.935Z"
+      },
+      "id": "6f1cbde0-9d04-44a3-8b92-f0cb29679740",
+      "createdAt": "2025-09-28T17:55:10.935Z",
+      "updatedAt": "2025-09-28T17:55:10.935Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:10.935Z"
+    },
+    {
+      "content": "Tenant 2 searchable content",
+      "metadata": {
+        "tags": [
+          "search-test"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "search-test",
+        "tenantId": "tenant-2",
+        "createdBy": "user-2",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:10.935Z"
+      },
+      "id": "d5499386-ba7a-4515-8007-4b90146bd1da",
+      "createdAt": "2025-09-28T17:55:10.935Z",
+      "updatedAt": "2025-09-28T17:55:10.935Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:10.935Z"
+    },
+    {
+      "content": "System memory without tenant",
+      "metadata": {
+        "tags": [
+          "search-test"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "search-test",
+        "tenantId": "default-tenant",
+        "createdBy": "system",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:10.935Z"
+      },
+      "id": "ef855620-55de-47ed-985e-385d6acc79cb",
+      "createdAt": "2025-09-28T17:55:10.935Z",
+      "updatedAt": "2025-09-28T17:55:10.935Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:10.935Z"
+    },
+    {
+      "content": "Searchable secure content",
+      "metadata": {
+        "tags": [
+          "searchable"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "mcp-test",
+        "tenantId": "default-tenant",
+        "createdBy": "user-1",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:11.243Z"
+      },
+      "id": "540983bd-1001-4399-b897-50d5dd29e038",
+      "createdAt": "2025-09-28T17:55:11.243Z",
+      "updatedAt": "2025-09-28T17:55:11.243Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:11.243Z"
+    },
+    {
+      "content": "User memory",
+      "metadata": {
+        "tags": [
+          "user-data"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "user-test",
+        "tenantId": "default-tenant",
+        "createdBy": "user-1",
+        "projectId": "default",
+        "expiresAt": "2025-10-28T17:55:11.484Z"
+      },
+      "id": "6c5b13e1-2cb8-45c7-80a3-b3995a6717bb",
+      "createdAt": "2025-09-28T17:55:11.484Z",
+      "updatedAt": "2025-09-28T17:55:11.484Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:11.484Z"
+    }
+  ]
+}

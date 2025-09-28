@@ -358,7 +358,7 @@ export function createProductionSystem(config?: Partial<ProductionSystemConfig>)
 export async function quickHealthCheck(): Promise<{ status: string; uptime: number; timestamp: string }> {
   try {
     // This is a lightweight check that doesn't require full system initialization
-    const env = setupEnvironment();
+    const _env = setupEnvironment();
 
     return {
       status: 'healthy',

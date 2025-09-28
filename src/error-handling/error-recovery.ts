@@ -119,7 +119,7 @@ export class CircuitBreaker {
     this.failureCount = 0;
     this.successCount = 0;
     this.requestCount = 0;
-    this.lastFailureTime = undefined as Date | undefined;
+    this.lastFailureTime = undefined;
 
     logger.info('Circuit breaker reset', { name: this.name });
     this.recordMetric('circuit_breaker_reset', 1);
@@ -294,7 +294,7 @@ export class RetryHandler {
         name,
         value,
         unit: 'count',
-        tags: tags || undefined,
+        tags,
       });
     }
   }
@@ -344,7 +344,7 @@ export class ErrorRecoverySystem {
           return await circuitBreaker.execute(async () => {
             return await this.retryHandler.execute(operation, {
               operationName,
-              metadata: options.metadata || undefined,
+              metadata: options.metadata,
             });
           });
         } else {
@@ -465,7 +465,7 @@ export class ErrorRecoverySystem {
         name,
         value,
         unit: 'count',
-        tags: tags || undefined,
+        tags,
       });
     }
   }

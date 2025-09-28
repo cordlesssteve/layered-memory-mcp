@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "savedAt": "2025-09-28T17:55:11.487Z",
+  "items": [
+    {
+      "content": "Secure test memory",
+      "metadata": {
+        "tags": [
+          "secure",
+          "test"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-test",
+        "tenantId": "default-tenant",
+        "createdBy": "admin-1",
+        "expiresAt": "2026-09-28T17:55:10.979Z"
+      },
+      "id": "27329cb4-3438-456a-9ee7-b685c0b4ee26",
+      "createdAt": "2025-09-28T17:55:10.979Z",
+      "updatedAt": "2025-09-28T17:55:10.979Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:10.979Z"
+    },
+    {
+      "content": "Admin memory",
+      "metadata": {
+        "tags": [
+          "admin-data"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "admin-test",
+        "tenantId": "default-tenant",
+        "createdBy": "admin-1",
+        "expiresAt": "2026-09-28T17:55:11.484Z"
+      },
+      "id": "590145fd-b882-405e-8bfe-b08eb3fc6b8c",
+      "createdAt": "2025-09-28T17:55:11.484Z",
+      "updatedAt": "2025-09-28T17:55:11.484Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T17:55:11.484Z"
+    }
+  ]
+}

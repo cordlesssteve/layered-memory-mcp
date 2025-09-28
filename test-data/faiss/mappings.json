@@ -1,0 +1,27 @@
+{
+  "vectorToId": {
+    "5": "doc1",
+    "6": "doc2",
+    "7": "doc3",
+    "8": "doc4",
+    "9": "doc5"
+  },
+  "idToVector": {
+    "doc1": 5,
+    "doc2": 6,
+    "doc3": 7,
+    "doc4": 8,
+    "doc5": 9
+  },
+  "vectorCount": 10,
+  "config": {
+    "dimensions": 768,
+    "metricType": 0,
+    "useIVFIndex": false,
+    "nlist": 100,
+    "nprobe": 10,
+    "persistencePath": "./test-data/faiss",
+    "autoOptimizeThreshold": 100
+  },
+  "savedAt": "2025-09-28T03:35:30.403Z"
+}

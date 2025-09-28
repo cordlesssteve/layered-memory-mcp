@@ -1,0 +1,29 @@
+{
+  "vectorToId": {
+    "0": "8664e580-f76d-4539-8194-89cabb029bf1",
+    "1": "8af7c0f4-6f21-47e8-96a6-cf3eb0ede3b9",
+    "2": "e0277b9e-fa34-4679-a718-d01fea6403e2",
+    "3": "1731af40-28c3-46b4-9afe-3c6ff1c55e21",
+    "4": "9252f3d2-dd03-4248-b7fc-3a9c42f7a79f",
+    "5": "f6d34831-4354-4d85-8be5-1ad5cbb13887"
+  },
+  "idToVector": {
+    "8664e580-f76d-4539-8194-89cabb029bf1": 0,
+    "8af7c0f4-6f21-47e8-96a6-cf3eb0ede3b9": 1,
+    "e0277b9e-fa34-4679-a718-d01fea6403e2": 2,
+    "1731af40-28c3-46b4-9afe-3c6ff1c55e21": 3,
+    "9252f3d2-dd03-4248-b7fc-3a9c42f7a79f": 4,
+    "f6d34831-4354-4d85-8be5-1ad5cbb13887": 5
+  },
+  "vectorCount": 6,
+  "config": {
+    "dimensions": 768,
+    "metricType": 0,
+    "useIVFIndex": false,
+    "nlist": 200,
+    "nprobe": 20,
+    "persistencePath": "test-data/enhanced-global/vectors",
+    "autoOptimizeThreshold": 5000
+  },
+  "savedAt": "2025-09-28T03:35:30.395Z"
+}

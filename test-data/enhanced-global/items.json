@@ -1,0 +1,116 @@
+{
+  "version": "2.0",
+  "savedAt": "2025-09-28T03:35:30.375Z",
+  "items": [
+    {
+      "content": "JavaScript async/await patterns for better code organization",
+      "metadata": {
+        "tags": [
+          "javascript",
+          "async",
+          "programming"
+        ],
+        "category": "development",
+        "priority": 7,
+        "source": "bge-test"
+      },
+      "id": "1731af40-28c3-46b4-9afe-3c6ff1c55e21",
+      "createdAt": "2025-09-28T03:35:29.276Z",
+      "updatedAt": "2025-09-28T03:35:29.276Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:35:29.276Z"
+    },
+    {
+      "content": "JavaScript async/await patterns for better code organization",
+      "metadata": {
+        "tags": [
+          "javascript",
+          "async",
+          "programming"
+        ],
+        "category": "development",
+        "priority": 7,
+        "source": "bge-test"
+      },
+      "id": "8664e580-f76d-4539-8194-89cabb029bf1",
+      "createdAt": "2025-09-28T03:11:34.181Z",
+      "updatedAt": "2025-09-28T03:11:34.181Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:11:34.181Z"
+    },
+    {
+      "content": "Python data science libraries like pandas and numpy",
+      "metadata": {
+        "tags": [
+          "python",
+          "data-science",
+          "libraries"
+        ],
+        "category": "development",
+        "priority": 8,
+        "source": "bge-test"
+      },
+      "id": "8af7c0f4-6f21-47e8-96a6-cf3eb0ede3b9",
+      "createdAt": "2025-09-28T03:11:34.236Z",
+      "updatedAt": "2025-09-28T03:11:34.236Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:11:34.236Z"
+    },
+    {
+      "content": "React component lifecycle and state management patterns",
+      "metadata": {
+        "tags": [
+          "react",
+          "frontend",
+          "state-management"
+        ],
+        "category": "development",
+        "priority": 6,
+        "source": "bge-test"
+      },
+      "id": "e0277b9e-fa34-4679-a718-d01fea6403e2",
+      "createdAt": "2025-09-28T03:11:34.268Z",
+      "updatedAt": "2025-09-28T03:11:34.268Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:11:34.268Z"
+    },
+    {
+      "content": "Python data science libraries like pandas and numpy",
+      "metadata": {
+        "tags": [
+          "python",
+          "data-science",
+          "libraries"
+        ],
+        "category": "development",
+        "priority": 8,
+        "source": "bge-test"
+      },
+      "id": "9252f3d2-dd03-4248-b7fc-3a9c42f7a79f",
+      "createdAt": "2025-09-28T03:35:29.527Z",
+      "updatedAt": "2025-09-28T03:35:29.527Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:35:29.527Z"
+    },
+    {
+      "content": "React component lifecycle and state management patterns",
+      "metadata": {
+        "tags": [
+          "react",
+          "frontend",
+          "state-management"
+        ],
+        "category": "development",
+        "priority": 6,
+        "source": "bge-test"
+      },
+      "id": "f6d34831-4354-4d85-8be5-1ad5cbb13887",
+      "createdAt": "2025-09-28T03:35:29.751Z",
+      "updatedAt": "2025-09-28T03:35:29.751Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-09-28T03:35:29.751Z"
+    }
+  ],
+  "embeddingModel": "BGE-base-en-v1.5",
+  "vectorDimensions": 768
+}

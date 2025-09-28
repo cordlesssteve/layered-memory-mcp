@@ -63,7 +63,7 @@ export class AppError extends Error {
   public readonly suggestions?: string[] | undefined;
   public readonly cause?: Error | undefined;
 
-  constructor(details: ErrorDetails) {
+  override constructor(details: ErrorDetails) {
     super(details.message);
     this.name = this.constructor.name;
 

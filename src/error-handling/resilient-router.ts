@@ -48,7 +48,7 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
     routerConfig: any,
     errorRecovery: ErrorRecoverySystem,
     telemetry: TelemetrySystem,
-    performanceMonitor: PerformanceMonitor,
+    _performanceMonitor: PerformanceMonitor,
     resilientConfig?: Partial<ResilientRouterConfig>
   ) {
     super(routerConfig);
@@ -86,8 +86,8 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
   override async store(content: string, metadata: MemoryMetadata, context?: SimpleAuthContext): Promise<MemoryItem> {
     const errorContext = ErrorTransformer.extractContext({
-      userId: context?.userId || undefined,
-      tenantId: context?.tenantId || undefined,
+      ...(context?.userId && { userId: context.userId }),
+      ...(context?.tenantId && { tenantId: context.tenantId }),
       operationId: 'memory_store',
       metadata: { contentLength: content.length },
     });
@@ -117,8 +117,8 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
   override async search(query: MemoryQuery, context?: SimpleAuthContext): Promise<MemorySearchResult[]> {
     const errorContext = ErrorTransformer.extractContext({
-      userId: context?.userId || undefined,
-      tenantId: context?.tenantId || undefined,
+      ...(context?.userId && { userId: context.userId }),
+      ...(context?.tenantId && { tenantId: context.tenantId }),
       operationId: 'memory_search',
       metadata: { query: query.query, hasFilters: !!query.filters },
     });
