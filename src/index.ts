@@ -49,6 +49,11 @@ async function main(): Promise<void> {
           priority: 0.1,
         },
       },
+      relationships: {
+        enabled: true, // Enable automatic relationship detection
+        minConfidence: 0.7, // Higher confidence threshold for production
+        batchSize: 50, // Smaller batch size for better performance
+      },
     });
 
     // Create MCP server instance

@@ -30,6 +30,11 @@ describe('SimpleSecureRouter', () => {
           priority: 0.1,
         },
       },
+      relationships: {
+        enabled: false, // Disable for security tests to avoid side effects
+        minConfidence: 0.7,
+        batchSize: 50,
+      },
     });
 
     authService = secureRouter.getAuthService();
@@ -155,6 +160,11 @@ describe('SimpleSecureRouter', () => {
             relevance: 0.4,
             priority: 0.1,
           },
+        },
+        relationships: {
+          enabled: false, // Disable for security tests to avoid side effects
+          minConfidence: 0.7,
+          batchSize: 50,
         },
       });
 
