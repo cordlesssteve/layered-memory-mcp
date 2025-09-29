@@ -197,8 +197,8 @@ export class AuthorizationService {
       userId: context.userId,
       eventType: 'authorization_failure',
       severity: 'medium',
-      resource: resource,
-      action: action,
+      resource,
+      action,
       metadata: {
         roles: context.roles,
         sessionId: context.sessionId,

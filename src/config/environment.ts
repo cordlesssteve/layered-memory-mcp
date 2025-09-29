@@ -132,11 +132,11 @@ export function getAuthSecret(env: Environment): string {
 
   // Generate development secret without warnings for test environment
   if (env.nodeEnv === 'test') {
-    return 'test-secret-' + randomBytes(16).toString('hex');
+    return `test-secret-${randomBytes(16).toString('hex')}`;
   }
 
   // Development environment - generate and warn once
-  const devSecret = 'dev-secret-' + randomBytes(16).toString('hex');
+  const devSecret = `dev-secret-${randomBytes(16).toString('hex')}`;
 
   if (env.logLevel !== 'silent') {
     // eslint-disable-next-line no-console

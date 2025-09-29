@@ -13,7 +13,7 @@ export interface RetryConfig {
   baseDelayMs: number;
   maxDelayMs: number;
   backoffMultiplier: number;
-  retryableErrors: Array<string | Error | ((error: any) => boolean)>;
+  retryableErrors: Array<string | Error | ((_error: any) => boolean)>;
 }
 
 export interface CircuitBreakerConfig {
@@ -119,7 +119,7 @@ export class CircuitBreaker {
     this.failureCount = 0;
     this.successCount = 0;
     this.requestCount = 0;
-    this.lastFailureTime = undefined;
+    delete this.lastFailureTime;
 
     logger.info('Circuit breaker reset', { name: this.name });
     this.recordMetric('circuit_breaker_reset', 1);
@@ -288,13 +288,17 @@ export class RetryHandler {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  private recordMetric(name: string, value: number, tags?: Record<string, string> | undefined): void {
+  private recordMetric(
+    name: string,
+    value: number,
+    tags?: Record<string, string> | undefined
+  ): void {
     if (this.telemetry) {
       this.telemetry.recordMetric({
         name,
         value,
         unit: 'count',
-        tags,
+        tags: tags || {},
       });
     }
   }
@@ -334,7 +338,12 @@ export class ErrorRecoverySystem {
       metadata?: Record<string, any>;
     }
   ): Promise<T> {
-    const { operationName, useCircuitBreaker = true, useRetry = true, useFallback = true } = options;
+    const {
+      operationName,
+      useCircuitBreaker = true,
+      useRetry = true,
+      useFallback = true,
+    } = options;
 
     try {
       if (useCircuitBreaker) {
@@ -344,7 +353,7 @@ export class ErrorRecoverySystem {
           return await circuitBreaker.execute(async () => {
             return await this.retryHandler.execute(operation, {
               operationName,
-              metadata: options.metadata,
+              metadata: options.metadata || {},
             });
           });
         } else {
@@ -353,7 +362,7 @@ export class ErrorRecoverySystem {
       } else if (useRetry) {
         return await this.retryHandler.execute(operation, {
           operationName,
-          metadata: options.metadata || undefined,
+          metadata: options.metadata || {},
         });
       } else {
         return await operation();
@@ -459,13 +468,17 @@ export class ErrorRecoverySystem {
     return this.circuitBreakers.get(operationName)!;
   }
 
-  private recordMetric(name: string, value: number, tags?: Record<string, string> | undefined): void {
+  private recordMetric(
+    name: string,
+    value: number,
+    tags?: Record<string, string> | undefined
+  ): void {
     if (this.telemetry) {
       this.telemetry.recordMetric({
         name,
         value,
         unit: 'count',
-        tags,
+        tags: tags || {},
       });
     }
   }

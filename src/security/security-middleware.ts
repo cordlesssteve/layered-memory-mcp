@@ -46,11 +46,13 @@ export interface SecurityResult {
   allowed: boolean;
   statusCode?: number | undefined;
   headers?: Record<string, string> | undefined;
-  error?: {
-    message: string;
-    code: string;
-    details?: any;
-  } | undefined;
+  error?:
+    | {
+        message: string;
+        code: string;
+        details?: any;
+      }
+    | undefined;
   retryAfter?: number | undefined;
 }
 
@@ -58,10 +60,7 @@ export class SecurityMiddleware {
   private rateLimiter?: MemoryRateLimiter | undefined;
   private config: SecurityConfig;
 
-  constructor(
-    env: Environment,
-    config?: Partial<SecurityConfig>
-  ) {
+  constructor(env: Environment, config?: Partial<SecurityConfig>) {
     this.config = {
       rateLimiting: {
         enabled: true,
@@ -133,7 +132,9 @@ export class SecurityMiddleware {
               'Retry-After': rateLimitResult.retryAfter?.toString() || '60',
               'X-RateLimit-Limit': this.rateLimiter.getStats().maxRequests.toString(),
               'X-RateLimit-Remaining': rateLimitResult.info.remainingPoints.toString(),
-              'X-RateLimit-Reset': new Date(Date.now() + rateLimitResult.info.msBeforeNext).toISOString(),
+              'X-RateLimit-Reset': new Date(
+                Date.now() + rateLimitResult.info.msBeforeNext
+              ).toISOString(),
             }),
           };
         }
@@ -206,7 +207,6 @@ export class SecurityMiddleware {
         allowed: true,
         headers: this.getSecurityHeaders(),
       };
-
     } catch (error) {
       await this.logSecurityEvent('security_check_error', {
         requestId,
@@ -274,7 +274,10 @@ export class SecurityMiddleware {
   /**
    * Validate request based on type
    */
-  private async validateRequest(requestType: string, payload: any): Promise<{ success: boolean; errors?: any }> {
+  private async validateRequest(
+    requestType: string,
+    payload: any
+  ): Promise<{ success: boolean; errors?: any }> {
     try {
       switch (requestType) {
         case 'memory_store':
@@ -300,7 +303,7 @@ export class SecurityMiddleware {
       if (error instanceof RequestValidationError) {
         return {
           success: false,
-          errors: [{ field: error.field, message: error.message, code: error.code }],
+          errors: [{ field: error._field, message: error.message, code: error._code }],
         };
       }
       throw error;
@@ -341,7 +344,7 @@ export class SecurityMiddleware {
     }
 
     const shouldLog =
-      (eventType.includes('failed') || eventType.includes('exceeded') || eventType.includes('error'))
+      eventType.includes('failed') || eventType.includes('exceeded') || eventType.includes('error')
         ? this.config.monitoring.logFailedAttempts
         : this.config.monitoring.logSuccessfulRequests;
 
@@ -359,8 +362,8 @@ export class SecurityMiddleware {
    */
   private sanitizeContext(context: SecurityContext): Record<string, any> {
     return {
-      ip: context.ip ? context.ip.substring(0, 8) + '...' : undefined,
-      userAgent: context.userAgent ? context.userAgent.substring(0, 50) + '...' : undefined,
+      ip: context.ip ? `${context.ip.substring(0, 8)}...` : undefined,
+      userAgent: context.userAgent ? `${context.userAgent.substring(0, 50)}...` : undefined,
       tenantId: context.tenantId,
       userId: context.userId,
       roles: context.roles,
@@ -403,6 +406,9 @@ export class SecurityMiddleware {
 /**
  * Create security middleware from environment
  */
-export function createSecurityMiddleware(env: Environment, config?: Partial<SecurityConfig>): SecurityMiddleware {
+export function createSecurityMiddleware(
+  env: Environment,
+  config?: Partial<SecurityConfig>
+): SecurityMiddleware {
   return new SecurityMiddleware(env, config);
 }

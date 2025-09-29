@@ -58,14 +58,7 @@ export type ResourceType =
   | 'relationship'
   | 'knowledge-graph';
 
-export type ActionType =
-  | 'create'
-  | 'read'
-  | 'update'
-  | 'delete'
-  | 'search'
-  | 'export'
-  | 'admin';
+export type ActionType = 'create' | 'read' | 'update' | 'delete' | 'search' | 'export' | 'admin';
 
 export interface PermissionCondition {
   field: string;
@@ -122,7 +115,7 @@ export interface RateLimitConfig {
   maxRequests: number;
   skipSuccessfulRequests?: boolean;
   skipFailedRequests?: boolean;
-  keyGenerator?: (request: any) => string;
+  keyGenerator?: (_request: any) => string;
 }
 
 export interface SecurityEvent {
@@ -189,7 +182,6 @@ export interface SecureMemoryMetadata extends MemoryMetadata {
   };
   classification?: 'public' | 'internal' | 'confidential' | 'restricted';
 }
-
 
 // Role-based permissions mapping
 export interface RolePermissions {

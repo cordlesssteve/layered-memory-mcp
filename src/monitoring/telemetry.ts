@@ -27,12 +27,15 @@ export interface PerformanceMetrics {
 
 export interface HealthCheckResult {
   status: 'healthy' | 'degraded' | 'unhealthy';
-  checks: Record<string, {
-    status: 'pass' | 'warn' | 'fail';
-    message?: string;
-    duration?: number;
-    timestamp: Date;
-  }>;
+  checks: Record<
+    string,
+    {
+      status: 'pass' | 'warn' | 'fail';
+      message?: string;
+      duration?: number;
+      timestamp: Date;
+    }
+  >;
   version: string;
   uptime: number;
 }
@@ -57,7 +60,10 @@ export class TelemetrySystem {
     errors: Array<{ timestamp: Date; error: string; context?: any }>;
     startTime: Date;
   };
-  private healthChecks = new Map<string, () => Promise<{ status: 'pass' | 'warn' | 'fail'; message?: string }>>();
+  private healthChecks = new Map<
+    string,
+    () => Promise<{ status: 'pass' | 'warn' | 'fail'; message?: string }>
+  >();
   private config: TelemetryConfig;
 
   constructor(env: Environment, config?: Partial<TelemetryConfig>) {
@@ -194,13 +200,13 @@ export class TelemetrySystem {
     const recentErrors = this.performanceData.errors.filter(e => e.timestamp > last5Minutes);
 
     const successfulRequests = recentRequests.filter(r => r.success);
-    const averageResponseTime = successfulRequests.length > 0
-      ? successfulRequests.reduce((sum, r) => sum + r.duration, 0) / successfulRequests.length
-      : 0;
+    const averageResponseTime =
+      successfulRequests.length > 0
+        ? successfulRequests.reduce((sum, r) => sum + r.duration, 0) / successfulRequests.length
+        : 0;
 
-    const errorRate = recentRequests.length > 0
-      ? (recentErrors.length / recentRequests.length) * 100
-      : 0;
+    const errorRate =
+      recentRequests.length > 0 ? (recentErrors.length / recentRequests.length) * 100 : 0;
 
     const requestsPerSecond = hourlyRequests.length / 3600; // requests per second over last hour
 
@@ -312,7 +318,9 @@ export class TelemetrySystem {
 
       // Add metric with labels
       const labels = latest.tags
-        ? Object.entries(latest.tags).map(([k, v]) => `${k}="${v}"`).join(',')
+        ? Object.entries(latest.tags)
+            .map(([k, v]) => `${k}="${v}"`)
+            .join(',')
         : '';
 
       lines.push(`${prometheusName}${labels ? `{${labels}}` : ''} ${latest.value}`);
@@ -365,7 +373,10 @@ export class TelemetrySystem {
       if (usagePercentage > 90) {
         return { status: 'fail', message: `High memory usage: ${Math.round(usagePercentage)}%` };
       } else if (usagePercentage > 75) {
-        return { status: 'warn', message: `Elevated memory usage: ${Math.round(usagePercentage)}%` };
+        return {
+          status: 'warn',
+          message: `Elevated memory usage: ${Math.round(usagePercentage)}%`,
+        };
       }
 
       return { status: 'pass', message: `Memory usage: ${Math.round(usagePercentage)}%` };
@@ -391,7 +402,10 @@ export class TelemetrySystem {
       if (metrics.averageResponseTime > 5000) {
         return { status: 'fail', message: `Slow response time: ${metrics.averageResponseTime}ms` };
       } else if (metrics.averageResponseTime > 2000) {
-        return { status: 'warn', message: `Elevated response time: ${metrics.averageResponseTime}ms` };
+        return {
+          status: 'warn',
+          message: `Elevated response time: ${metrics.averageResponseTime}ms`,
+        };
       }
 
       return { status: 'pass', message: `Response time: ${metrics.averageResponseTime}ms` };
@@ -419,6 +433,9 @@ export class TelemetrySystem {
 /**
  * Create telemetry system from environment
  */
-export function createTelemetrySystem(env: Environment, config?: Partial<TelemetryConfig>): TelemetrySystem {
+export function createTelemetrySystem(
+  env: Environment,
+  config?: Partial<TelemetryConfig>
+): TelemetrySystem {
   return new TelemetrySystem(env, config);
 }

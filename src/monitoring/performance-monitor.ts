@@ -38,12 +38,9 @@ export class PerformanceMonitor {
   private telemetry: TelemetrySystem;
   private thresholds: PerformanceThresholds;
   private lastAlerts = new Map<string, Date>();
-  private alertHandlers: Array<(alert: PerformanceAlert) => void> = [];
+  private alertHandlers: Array<(_alert: PerformanceAlert) => void> = [];
 
-  constructor(
-    telemetry: TelemetrySystem,
-    thresholds?: Partial<PerformanceThresholds>
-  ) {
+  constructor(telemetry: TelemetrySystem, thresholds?: Partial<PerformanceThresholds>) {
     this.telemetry = telemetry;
     this.thresholds = {
       slowOperationMs: 5000,
@@ -64,10 +61,7 @@ export class PerformanceMonitor {
   /**
    * Start tracking an operation
    */
-  startOperation(
-    operationType: string,
-    metadata?: Record<string, any>
-  ): PerformanceContext {
+  startOperation(operationType: string, metadata?: Record<string, any>): PerformanceContext {
     const operationId = `${operationType}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 
     const context: PerformanceContext = {
@@ -91,26 +85,17 @@ export class PerformanceMonitor {
   /**
    * End tracking an operation
    */
-  endOperation(
-    context: PerformanceContext,
-    success: boolean = true,
-    result?: any
-  ): void {
+  endOperation(context: PerformanceContext, success: boolean = true, result?: any): void {
     const duration = Date.now() - context.startTime;
 
     // Remove from active operations
     this.activeOperations.delete(context.operationId);
 
     // Record telemetry
-    this.telemetry.recordRequest(
-      context.operationType,
-      duration,
-      success,
-      {
-        ...context.metadata,
-        result: result ? 'present' : 'empty',
-      }
-    );
+    this.telemetry.recordRequest(context.operationType, duration, success, {
+      ...context.metadata,
+      result: result ? 'present' : 'empty',
+    });
 
     // Check for slow operations
     if (duration > this.thresholds.slowOperationMs) {
@@ -210,7 +195,7 @@ export class PerformanceMonitor {
   /**
    * Register an alert handler
    */
-  onAlert(handler: (alert: PerformanceAlert) => void): void {
+  onAlert(handler: (_alert: PerformanceAlert) => void): void {
     this.alertHandlers.push(handler);
   }
 
@@ -344,14 +329,10 @@ export class PerformanceMonitor {
    */
   createWrapper<TArgs extends any[], TReturn>(
     operationType: string,
-    fn: (...args: TArgs) => Promise<TReturn>
-  ): (...args: TArgs) => Promise<TReturn> {
-    return async (...args: TArgs): Promise<TReturn> => {
-      return this.trackOperation(
-        operationType,
-        () => fn(...args),
-        { argCount: args.length }
-      );
+    fn: (..._args: TArgs) => Promise<TReturn>
+  ): (..._args: TArgs) => Promise<TReturn> {
+    return async (..._args: TArgs): Promise<TReturn> => {
+      return this.trackOperation(operationType, () => fn(..._args), { argCount: _args.length });
     };
   }
 
@@ -360,14 +341,10 @@ export class PerformanceMonitor {
    */
   createSyncWrapper<TArgs extends any[], TReturn>(
     operationType: string,
-    fn: (...args: TArgs) => TReturn
-  ): (...args: TArgs) => TReturn {
-    return (...args: TArgs): TReturn => {
-      return this.trackSyncOperation(
-        operationType,
-        () => fn(...args),
-        { argCount: args.length }
-      );
+    fn: (..._args: TArgs) => TReturn
+  ): (..._args: TArgs) => TReturn {
+    return (..._args: TArgs): TReturn => {
+      return this.trackSyncOperation(operationType, () => fn(..._args), { argCount: _args.length });
     };
   }
 
@@ -393,11 +370,11 @@ export class PerformanceMonitor {
  * Decorator for automatic performance tracking
  */
 export function PerformanceTracked(operationType?: string) {
-  return function(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+  return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
     const opType = operationType || `${target.constructor.name}.${propertyKey}`;
 
-    descriptor.value = async function(...args: any[]) {
+    descriptor.value = async function (...args: any[]) {
       // Note: This assumes a global performance monitor instance
       // In real usage, you'd inject this dependency properly
       const monitor = (this as any).performanceMonitor as PerformanceMonitor;

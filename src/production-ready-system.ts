@@ -151,7 +151,6 @@ export class ProductionReadySystem {
           router: !!this.router,
         },
       });
-
     } catch (error) {
       logger.error('Failed to initialize production system', {
         error: error instanceof Error ? error.message : error,
@@ -187,9 +186,15 @@ export class ProductionReadySystem {
    */
   async getSystemStatus(): Promise<ProductionSystemStatus> {
     try {
-      const routerHealth = this.router ? await this.router.getHealthStatus() : { status: 'unhealthy' };
-      const monitoringHealth = this.monitoringService ? await this.monitoringService.getHealthStatus() : { status: 'unhealthy' };
-      const performanceMetrics = this.monitoringService ? this.monitoringService.getPerformanceMetrics() : {};
+      const routerHealth = this.router
+        ? await this.router.getHealthStatus()
+        : { status: 'unhealthy' };
+      const monitoringHealth = this.monitoringService
+        ? await this.monitoringService.getHealthStatus()
+        : { status: 'unhealthy' };
+      const performanceMetrics = this.monitoringService
+        ? this.monitoringService.getPerformanceMetrics()
+        : {};
 
       // Determine overall system status
       let status: 'healthy' | 'degraded' | 'unhealthy' = 'healthy';
@@ -310,7 +315,8 @@ export class ProductionReadySystem {
 
     telemetry.registerHealthCheck('system_uptime', async () => {
       const uptime = this.getUptime();
-      if (uptime < 60) { // Less than 1 minute
+      if (uptime < 60) {
+        // Less than 1 minute
         return { status: 'warn', message: `System recently started: ${uptime}s uptime` };
       }
       return { status: 'pass', message: `System uptime: ${uptime}s` };
@@ -348,17 +354,23 @@ export class ProductionReadySystem {
 /**
  * Factory function to create and initialize a production-ready system
  */
-export function createProductionSystem(config?: Partial<ProductionSystemConfig>): ProductionReadySystem {
+export function createProductionSystem(
+  config?: Partial<ProductionSystemConfig>
+): ProductionReadySystem {
   return new ProductionReadySystem(config);
 }
 
 /**
  * Quick health check function for external monitoring
  */
-export async function quickHealthCheck(): Promise<{ status: string; uptime: number; timestamp: string }> {
+export async function quickHealthCheck(): Promise<{
+  status: string;
+  uptime: number;
+  timestamp: string;
+}> {
   try {
     // This is a lightweight check that doesn't require full system initialization
-    const _env = setupEnvironment();
+    setupEnvironment();
 
     return {
       status: 'healthy',

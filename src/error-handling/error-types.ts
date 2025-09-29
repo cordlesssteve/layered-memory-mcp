@@ -61,9 +61,9 @@ export class AppError extends Error {
   public readonly retryable: boolean;
   public readonly userMessage?: string | undefined;
   public readonly suggestions?: string[] | undefined;
-  public readonly cause?: Error | undefined;
+  public override readonly cause?: Error | undefined;
 
-  override constructor(details: ErrorDetails) {
+  constructor(details: ErrorDetails) {
     super(details.message);
     this.name = this.constructor.name;
 
@@ -97,7 +97,11 @@ export class AppError extends Error {
       userMessage: this.userMessage,
       suggestions: this.suggestions,
       stack: this.stack,
-      cause: this.cause ? (this.cause instanceof AppError ? this.cause.toJSON() : this.cause.message) : undefined,
+      cause: this.cause
+        ? this.cause instanceof AppError
+          ? this.cause.toJSON()
+          : this.cause.message
+        : undefined,
     };
   }
 
@@ -448,7 +452,7 @@ export class ErrorTransformer {
    * Classify native errors into appropriate AppError types
    */
   private static classifyError(error: Error, context: Partial<ErrorContext> = {}): AppError {
-    const message = error.message;
+    const { message } = error;
     const errorName = error.name;
 
     // Network errors
@@ -536,11 +540,12 @@ export class ErrorTransformer {
    * Determine if an error should be retried
    */
   static isRetryable(error: AppError): boolean {
-    return error.retryable && (
-      error.category === ErrorCategory.NETWORK ||
-      error.category === ErrorCategory.DATABASE ||
-      error.category === ErrorCategory.EXTERNAL_SERVICE ||
-      error.category === ErrorCategory.RATE_LIMIT
+    return (
+      error.retryable &&
+      (error.category === ErrorCategory.NETWORK ||
+        error.category === ErrorCategory.DATABASE ||
+        error.category === ErrorCategory.EXTERNAL_SERVICE ||
+        error.category === ErrorCategory.RATE_LIMIT)
     );
   }
 
@@ -584,8 +589,15 @@ export class ErrorAggregate extends AppError {
     context: Partial<ErrorContext> = {}
   ) {
     const highestSeverity = errors.reduce((highest, error) => {
-      const severityOrder = [ErrorSeverity.LOW, ErrorSeverity.MEDIUM, ErrorSeverity.HIGH, ErrorSeverity.CRITICAL];
-      return severityOrder.indexOf(error.severity) > severityOrder.indexOf(highest) ? error.severity : highest;
+      const severityOrder = [
+        ErrorSeverity.LOW,
+        ErrorSeverity.MEDIUM,
+        ErrorSeverity.HIGH,
+        ErrorSeverity.CRITICAL,
+      ];
+      return severityOrder.indexOf(error.severity) > severityOrder.indexOf(highest)
+        ? error.severity
+        : highest;
     }, ErrorSeverity.LOW);
 
     super({

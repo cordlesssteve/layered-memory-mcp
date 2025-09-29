@@ -125,7 +125,7 @@ export class SecurityMiddleware {
    */
   secureToolHandler<T extends any[], R>(
     _toolName: string,
-    handler: (context: AuthContext, ...args: T) => Promise<R>,
+    handler: (_context: AuthContext, ..._args: T) => Promise<R>,
     requiredResource: ResourceType,
     requiredAction: ActionType
   ) {
@@ -171,10 +171,7 @@ export class SecurityMiddleware {
     action: ActionType;
   } | null {
     // Map tool names to security requirements
-    const securityMap: Record<
-      string,
-      { resource: ResourceType; action: ActionType }
-    > = {
+    const securityMap: Record<string, { resource: ResourceType; action: ActionType }> = {
       store_memory: { resource: 'memory', action: 'create' },
       search_memory: { resource: 'memory', action: 'search' },
       get_memory_stats: { resource: 'memory', action: 'read' },
@@ -227,7 +224,7 @@ export class SecurityMiddleware {
       };
     }
 
-    const token = tokenMatch![1];
+    const [, token] = tokenMatch!;
 
     // Verify token
     const authContext = await this.authService.verifyToken(token as string);
@@ -311,9 +308,9 @@ export class SecurityMiddleware {
     }
 
     const rateLimitConfig = this.securityConfig.rateLimit.memoryOperations;
-    const userId = context.userId;
+    const { userId } = context;
     const now = Date.now();
-    const windowMs = rateLimitConfig.windowMs;
+    const { windowMs } = rateLimitConfig;
 
     // Get or create rate limit entry
     let userEntry = this.requestCounts.get(userId);

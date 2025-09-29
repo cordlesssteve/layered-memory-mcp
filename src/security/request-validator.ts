@@ -18,8 +18,8 @@ export interface ValidationResult<T = any> {
 export class RequestValidationError extends Error {
   constructor(
     message: string,
-    public readonly field: string,
-    public readonly code: string
+    public readonly _field: string,
+    public readonly _code: string
   ) {
     super(message);
     this.name = 'RequestValidationError';
@@ -31,58 +31,64 @@ export class RequestValidationError extends Error {
  */
 export const CommonSchemas = {
   // Basic string validation with length limits
-  safeString: z.string()
+  safeString: z
+    .string()
     .min(1, 'String cannot be empty')
     .max(10000, 'String too long')
     .refine(
-      (str) => !/<script|javascript:|data:|vbscript:|onload|onerror/i.test(str),
+      str => !/<script|javascript:|data:|vbscript:|onload|onerror/i.test(str),
       'Potentially dangerous content detected'
     ),
 
   // Memory content with reasonable limits
-  memoryContent: z.string()
+  memoryContent: z
+    .string()
     .min(1, 'Memory content cannot be empty')
     .max(100000, 'Memory content too long (max 100KB)')
     .refine(
-      (str) => !/<script|javascript:|data:|vbscript:/i.test(str),
+      str => !/<script|javascript:|data:|vbscript:/i.test(str),
       'Script content not allowed in memory'
     ),
 
   // Tags array validation
-  tags: z.array(z.string().min(1).max(100))
+  tags: z
+    .array(z.string().min(1).max(100))
     .max(20, 'Too many tags (max 20)')
     .refine(
-      (tags) => tags.every(tag => /^[a-zA-Z0-9_-]+$/.test(tag)),
+      tags => tags.every(tag => /^[a-zA-Z0-9_-]+$/.test(tag)),
       'Tags must contain only alphanumeric characters, hyphens, and underscores'
     ),
 
   // Priority validation
-  priority: z.number()
+  priority: z
+    .number()
     .int('Priority must be an integer')
     .min(1, 'Priority must be at least 1')
     .max(10, 'Priority must be at most 10'),
 
   // Category validation
-  category: z.string()
+  category: z
+    .string()
     .min(1, 'Category cannot be empty')
     .max(50, 'Category too long')
     .refine(
-      (cat) => /^[a-zA-Z0-9_-]+$/.test(cat),
+      cat => /^[a-zA-Z0-9_-]+$/.test(cat),
       'Category must contain only alphanumeric characters, hyphens, and underscores'
     ),
 
   // ID validation (UUIDs)
-  id: z.string()
-    .uuid('Invalid ID format'),
+  id: z.string().uuid('Invalid ID format'),
 
   // Limit validation for queries
-  limit: z.number()
+  limit: z
+    .number()
     .int('Limit must be an integer')
     .min(1, 'Limit must be at least 1')
     .max(1000, 'Limit too high (max 1000)'),
 
   // Offset validation
-  offset: z.number()
+  offset: z
+    .number()
     .int('Offset must be an integer')
     .min(0, 'Offset cannot be negative')
     .max(10000, 'Offset too high'),
@@ -91,50 +97,61 @@ export const CommonSchemas = {
 /**
  * Memory-specific validation schemas
  */
-const metadataSchema = z.object({
-  tags: CommonSchemas.tags,
-  category: CommonSchemas.category,
-  priority: CommonSchemas.priority,
-  source: CommonSchemas.safeString,
-  projectId: CommonSchemas.safeString.optional(),
-  sessionId: CommonSchemas.safeString.optional(),
-  userId: CommonSchemas.safeString.optional(),
-  expiresAt: z.date().optional(),
-}).passthrough(); // Allow additional custom metadata
+const metadataSchema = z
+  .object({
+    tags: CommonSchemas.tags,
+    category: CommonSchemas.category,
+    priority: CommonSchemas.priority,
+    source: CommonSchemas.safeString,
+    projectId: CommonSchemas.safeString.optional(),
+    sessionId: CommonSchemas.safeString.optional(),
+    userId: CommonSchemas.safeString.optional(),
+    expiresAt: z.date().optional(),
+  })
+  .passthrough(); // Allow additional custom metadata
 
-const filtersSchema = z.object({
-  tags: CommonSchemas.tags.optional(),
-  category: CommonSchemas.category.optional(),
-  priority: z.object({
-    min: CommonSchemas.priority.optional(),
-    max: CommonSchemas.priority.optional(),
-  }).optional(),
-  source: CommonSchemas.safeString.optional(),
-  projectId: CommonSchemas.safeString.optional(),
-  sessionId: CommonSchemas.safeString.optional(),
-  userId: CommonSchemas.safeString.optional(),
-  dateRange: z.object({
-    start: z.date().optional(),
-    end: z.date().optional(),
-  }).optional(),
-}).passthrough(); // Allow additional custom filters
+const filtersSchema = z
+  .object({
+    tags: CommonSchemas.tags.optional(),
+    category: CommonSchemas.category.optional(),
+    priority: z
+      .object({
+        min: CommonSchemas.priority.optional(),
+        max: CommonSchemas.priority.optional(),
+      })
+      .optional(),
+    source: CommonSchemas.safeString.optional(),
+    projectId: CommonSchemas.safeString.optional(),
+    sessionId: CommonSchemas.safeString.optional(),
+    userId: CommonSchemas.safeString.optional(),
+    dateRange: z
+      .object({
+        start: z.date().optional(),
+        end: z.date().optional(),
+      })
+      .optional(),
+  })
+  .passthrough(); // Allow additional custom filters
 
 const querySchema = z.object({
-  query: z.string()
+  query: z
+    .string()
     .min(1, 'Query cannot be empty')
     .max(1000, 'Query too long')
     .refine(
-      (str) => !/<script|javascript:|data:|vbscript:|onload|onerror/i.test(str),
+      str => !/<script|javascript:|data:|vbscript:|onload|onerror/i.test(str),
       'Potentially dangerous content detected'
     ),
   limit: CommonSchemas.limit.optional(),
   offset: CommonSchemas.offset.optional(),
   filters: filtersSchema.optional(),
-  similarity: z.object({
-    threshold: z.number().min(0).max(1).optional(),
-    algorithm: z.enum(['cosine', 'euclidean', 'semantic']).optional(),
-    includeMetadata: z.boolean().optional(),
-  }).optional(),
+  similarity: z
+    .object({
+      threshold: z.number().min(0).max(1).optional(),
+      algorithm: z.enum(['cosine', 'euclidean', 'semantic']).optional(),
+      includeMetadata: z.boolean().optional(),
+    })
+    .optional(),
 });
 
 export const MemorySchemas = {
@@ -144,14 +161,16 @@ export const MemorySchemas = {
     content: CommonSchemas.memoryContent,
     metadata: metadataSchema,
   }),
-  updateRequest: z.object({
-    id: CommonSchemas.id,
-    content: z.union([CommonSchemas.memoryContent, z.undefined()]).optional(),
-    metadata: z.union([metadataSchema, z.undefined()]).optional(),
-  }).refine(
-    (req) => req.content !== undefined || req.metadata !== undefined,
-    'Either content or metadata must be provided for update'
-  ),
+  updateRequest: z
+    .object({
+      id: CommonSchemas.id,
+      content: z.union([CommonSchemas.memoryContent, z.undefined()]).optional(),
+      metadata: z.union([metadataSchema, z.undefined()]).optional(),
+    })
+    .refine(
+      req => req.content !== undefined || req.metadata !== undefined,
+      'Either content or metadata must be provided for update'
+    ),
 };
 
 /**
@@ -159,22 +178,19 @@ export const MemorySchemas = {
  */
 export const AuthSchemas = {
   loginRequest: z.object({
-    username: z.string()
+    username: z
+      .string()
       .min(3, 'Username too short')
       .max(50, 'Username too long')
       .refine(
-        (username) => /^[a-zA-Z0-9_-]+$/.test(username),
+        username => /^[a-zA-Z0-9_-]+$/.test(username),
         'Username contains invalid characters'
       ),
-    password: z.string()
-      .min(6, 'Password too short')
-      .max(128, 'Password too long'),
+    password: z.string().min(6, 'Password too short').max(128, 'Password too long'),
   }),
 
   tokenRequest: z.object({
-    token: z.string()
-      .min(10, 'Token too short')
-      .max(2000, 'Token too long'),
+    token: z.string().min(10, 'Token too short').max(2000, 'Token too long'),
   }),
 };
 
@@ -228,7 +244,9 @@ export class RequestValidator {
   /**
    * Validate memory store request
    */
-  static validateMemoryStore(data: unknown): ValidationResult<{ content: string; metadata: MemoryMetadata }> {
+  static validateMemoryStore(
+    data: unknown
+  ): ValidationResult<{ content: string; metadata: MemoryMetadata }> {
     const result = this.validate(MemorySchemas.storeRequest, data);
     if (!result.success) {
       return result;
@@ -252,13 +270,21 @@ export class RequestValidator {
   /**
    * Validate memory update request
    */
-  static validateMemoryUpdate(data: unknown): ValidationResult<{ id: string; content?: string | undefined; metadata?: MemoryMetadata | undefined }> {
+  static validateMemoryUpdate(data: unknown): ValidationResult<{
+    id: string;
+    content?: string | undefined;
+    metadata?: MemoryMetadata | undefined;
+  }> {
     const result = this.validate(MemorySchemas.updateRequest, data);
     if (!result.success) {
       return result;
     }
     // Type assertion since our schema matches the expected structure
-    return result as ValidationResult<{ id: string; content?: string | undefined; metadata?: MemoryMetadata | undefined }>;
+    return result as ValidationResult<{
+      id: string;
+      content?: string | undefined;
+      metadata?: MemoryMetadata | undefined;
+    }>;
   }
 
   /**
@@ -279,16 +305,18 @@ export class RequestValidator {
    * Sanitize string content to remove potentially dangerous elements
    */
   static sanitizeString(input: string): string {
-    return input
-      // Remove script tags and dangerous protocols
-      .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-      .replace(/javascript:/gi, '')
-      .replace(/data:/gi, '')
-      .replace(/vbscript:/gi, '')
-      // Remove event handlers
-      .replace(/\s*on\w+\s*=/gi, '')
-      // Trim whitespace
-      .trim();
+    return (
+      input
+        // Remove script tags and dangerous protocols
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        .replace(/javascript:/gi, '')
+        .replace(/data:/gi, '')
+        .replace(/vbscript:/gi, '')
+        // Remove event handlers
+        .replace(/\s*on\w+\s*=/gi, '')
+        // Trim whitespace
+        .trim()
+    );
   }
 
   /**
@@ -321,7 +349,9 @@ export class RequestValidator {
     } catch (error) {
       return {
         success: false,
-        errors: [{ field: 'content', message: 'Content sanitization failed', code: 'sanitization_error' }],
+        errors: [
+          { field: 'content', message: 'Content sanitization failed', code: 'sanitization_error' },
+        ],
       };
     }
   }
@@ -330,9 +360,10 @@ export class RequestValidator {
    * Rate limit key generation for different request types
    */
   static generateRateLimitKey(requestType: string, context: any): string {
-    const base = context.tenantId && context.userId
-      ? `${context.tenantId}:${context.userId}`
-      : context.ip || 'anonymous';
+    const base =
+      context.tenantId && context.userId
+        ? `${context.tenantId}:${context.userId}`
+        : context.ip || 'anonymous';
 
     return `${requestType}:${base}`;
   }
@@ -343,7 +374,7 @@ export class RequestValidator {
  */
 export function createValidationMiddleware<T>(
   schema: z.ZodSchema<T>,
-  onError?: (errors: ValidationResult['errors']) => void
+  onError?: (_errors: ValidationResult['errors']) => void
 ) {
   return (data: unknown): T => {
     const result = RequestValidator.validate(schema, data);

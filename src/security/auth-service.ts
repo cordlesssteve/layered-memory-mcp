@@ -449,9 +449,7 @@ export class AuthenticationService {
       events = events.filter(e => e.tenantId === tenantId);
     }
 
-    return events
-      .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime())
-      .slice(0, limit);
+    return events.sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime()).slice(0, limit);
   }
 
   // Private helper methods
@@ -540,7 +538,7 @@ export class AuthenticationService {
       throw new Error('Password must contain at least one number');
     }
 
-    if (config.requireSpecialChars && !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+    if (config.requireSpecialChars && !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
       throw new Error('Password must contain at least one special character');
     }
   }

@@ -9,12 +9,12 @@ import type { Environment } from '../config/environment.js';
 const logger = createLogger('rate-limiter');
 
 export interface RateLimitConfig {
-  windowMs: number;        // Time window in milliseconds
-  maxRequests: number;     // Maximum requests per window
+  windowMs: number; // Time window in milliseconds
+  maxRequests: number; // Maximum requests per window
   skipSuccessfulRequests?: boolean;
   skipFailedRequests?: boolean;
-  keyGenerator?: (context: any) => string;
-  onLimitReached?: (key: string, context: any) => void;
+  keyGenerator?: (_context: any) => string;
+  onLimitReached?: (_key: string, _context: any) => void;
 }
 
 export interface RateLimitInfo {
@@ -44,7 +44,11 @@ export class MemoryRateLimiter {
       skipFailedRequests: false,
       keyGenerator: (context: any) => context.clientId || context.ip || 'anonymous',
       onLimitReached: (key: string) => {
-        logger.warn('Rate limit exceeded', { key, limit: config.maxRequests, windowMs: config.windowMs });
+        logger.warn('Rate limit exceeded', {
+          key,
+          limit: config.maxRequests,
+          windowMs: config.windowMs,
+        });
       },
       ...config,
     };
@@ -177,7 +181,7 @@ export class MemoryRateLimiter {
     if (cleanedEntries > 0) {
       logger.debug('Rate limiter cleanup completed', {
         cleanedEntries,
-        remainingKeys: this.store.size
+        remainingKeys: this.store.size,
       });
     }
   }
@@ -220,7 +224,7 @@ export function createRateLimiter(env: Environment): MemoryRateLimiter {
         key,
         action: 'blocked_request',
         windowMs: env.rateLimitWindowMs,
-        maxRequests: env.rateLimitMaxRequests
+        maxRequests: env.rateLimitMaxRequests,
       });
     },
   };

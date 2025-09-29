@@ -54,10 +54,7 @@ export class FAISSVectorService {
     autoOptimizeThreshold: 10000, // Higher threshold since no IVF available
   };
 
-  constructor(
-    embeddingService: BGEEmbeddingService,
-    customConfig?: Partial<FAISSConfig>
-  ) {
+  constructor(embeddingService: BGEEmbeddingService, customConfig?: Partial<FAISSConfig>) {
     this.embeddingService = embeddingService;
 
     if (customConfig) {
@@ -117,7 +114,7 @@ export class FAISSVectorService {
     try {
       // Generate embedding
       const embeddingResponse = await this.embeddingService.generateEmbedding(text);
-      const embedding = embeddingResponse.embedding;
+      const { embedding } = embeddingResponse;
 
       // Validate dimensions
       if (embedding.length !== this.config.dimensions) {
@@ -173,7 +170,7 @@ export class FAISSVectorService {
       // Generate embeddings in batch
       const texts = items.map(item => item.text);
       const batchResponse = await this.embeddingService.generateBatchEmbeddings(texts);
-      const embeddings = batchResponse.embeddings;
+      const { embeddings } = batchResponse;
 
       if (embeddings.length !== items.length) {
         throw new Error('Batch embedding count mismatch');
@@ -233,11 +230,7 @@ export class FAISSVectorService {
   /**
    * Search for similar vectors
    */
-  async searchSimilar(
-    text: string,
-    topK = 10,
-    threshold = 0.0
-  ): Promise<VectorSearchResult[]> {
+  async searchSimilar(text: string, topK = 10, threshold = 0.0): Promise<VectorSearchResult[]> {
     await this.initialize();
 
     if (!this.index) {
@@ -428,8 +421,12 @@ export class FAISSVectorService {
       this.index = IndexFlatIP.read(indexPath);
 
       // Restore mappings
-      this.vectorToIdMap = new Map(Object.entries(mappingsData.vectorToId).map(([k, v]) => [parseInt(k), v as string]));
-      this.idToVectorMap = new Map(Object.entries(mappingsData.idToVector).map(([k, v]) => [k, v as number]));
+      this.vectorToIdMap = new Map(
+        Object.entries(mappingsData.vectorToId).map(([k, v]) => [parseInt(k), v as string])
+      );
+      this.idToVectorMap = new Map(
+        Object.entries(mappingsData.idToVector).map(([k, v]) => [k, v as number])
+      );
       this.vectorCount = mappingsData.vectorCount || 0;
 
       logger.info('FAISS index loaded from disk', {
@@ -452,14 +449,15 @@ export class FAISSVectorService {
     }
   }
 
-
   private estimateMemoryUsage(): number {
     if (!this.index) return 0;
 
     // Rough estimation: vectors + mappings + index overhead
     const vectorsMemory = this.vectorCount * this.config.dimensions * 4; // 4 bytes per float
     const mappingsMemory = (this.vectorToIdMap.size + this.idToVectorMap.size) * 100; // Rough estimate
-    const indexOverhead = this.config.useIVFIndex ? this.config.nlist * this.config.dimensions * 4 : 0;
+    const indexOverhead = this.config.useIVFIndex
+      ? this.config.nlist * this.config.dimensions * 4
+      : 0;
 
     return vectorsMemory + mappingsMemory + indexOverhead;
   }

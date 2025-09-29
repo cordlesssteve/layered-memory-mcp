@@ -5,11 +5,7 @@
 
 import { SimpleSecureRouter } from '../memory/simple-secure-router.js';
 import { ErrorRecoverySystem } from './error-recovery.js';
-import {
-  AppError,
-  ErrorTransformer,
-  ErrorCategory,
-} from './error-types.js';
+import { AppError, ErrorTransformer, ErrorCategory } from './error-types.js';
 import { TelemetrySystem } from '../monitoring/telemetry.js';
 import { PerformanceMonitor } from '../monitoring/performance-monitor.js';
 import { createLogger } from '../utils/logger.js';
@@ -19,7 +15,7 @@ import type {
   MemoryQuery,
   MemorySearchResult,
   MemoryStats,
-  MemoryLayer
+  MemoryLayer,
 } from '../memory/types.js';
 import type { SimpleAuthContext } from '../security/simple-auth.js';
 
@@ -84,7 +80,11 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
     });
   }
 
-  override async store(content: string, metadata: MemoryMetadata, context?: SimpleAuthContext): Promise<MemoryItem> {
+  override async store(
+    content: string,
+    metadata: MemoryMetadata,
+    context?: SimpleAuthContext
+  ): Promise<MemoryItem> {
     const errorContext = ErrorTransformer.extractContext({
       ...(context?.userId && { userId: context.userId }),
       ...(context?.tenantId && { tenantId: context.tenantId }),
@@ -115,7 +115,10 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
     }
   }
 
-  override async search(query: MemoryQuery, context?: SimpleAuthContext): Promise<MemorySearchResult[]> {
+  override async search(
+    query: MemoryQuery,
+    context?: SimpleAuthContext
+  ): Promise<MemorySearchResult[]> {
     const errorContext = ErrorTransformer.extractContext({
       ...(context?.userId && { userId: context.userId }),
       ...(context?.tenantId && { tenantId: context.tenantId }),
@@ -125,16 +128,13 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
     try {
       if (this.config.enableErrorRecovery) {
-        return await this.errorRecovery.executeWithRecovery(
-          () => super.search(query, context),
-          {
-            operationName: 'memory_search',
-            useCircuitBreaker: true,
-            useRetry: true,
-            useFallback: this.config.enableGracefulDegradation,
-            metadata: { query: query.query, tenantId: context?.tenantId },
-          }
-        );
+        return await this.errorRecovery.executeWithRecovery(() => super.search(query, context), {
+          operationName: 'memory_search',
+          useCircuitBreaker: true,
+          useRetry: true,
+          useFallback: this.config.enableGracefulDegradation,
+          metadata: { query: query.query, tenantId: context?.tenantId },
+        });
       } else {
         return await super.search(query, context);
       }
@@ -174,16 +174,13 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
     try {
       if (this.config.enableErrorRecovery) {
-        return await this.errorRecovery.executeWithRecovery(
-          () => super.retrieve(id),
-          {
-            operationName: 'memory_retrieve',
-            useCircuitBreaker: true,
-            useRetry: true,
-            useFallback: this.config.enableGracefulDegradation,
-            metadata: { memoryId: id },
-          }
-        );
+        return await this.errorRecovery.executeWithRecovery(() => super.retrieve(id), {
+          operationName: 'memory_retrieve',
+          useCircuitBreaker: true,
+          useRetry: true,
+          useFallback: this.config.enableGracefulDegradation,
+          metadata: { memoryId: id },
+        });
       } else {
         return await super.retrieve(id);
       }
@@ -213,7 +210,10 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
     }
   }
 
-  override async update(id: string, updates: Partial<Pick<MemoryItem, 'content' | 'metadata'>>): Promise<MemoryItem | null> {
+  override async update(
+    id: string,
+    updates: Partial<Pick<MemoryItem, 'content' | 'metadata'>>
+  ): Promise<MemoryItem | null> {
     const errorContext = ErrorTransformer.extractContext({
       operationId: 'memory_update',
       metadata: { memoryId: id, hasContent: !!updates.content, hasMetadata: !!updates.metadata },
@@ -221,16 +221,13 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
     try {
       if (this.config.enableErrorRecovery) {
-        return await this.errorRecovery.executeWithRecovery(
-          () => super.update(id, updates),
-          {
-            operationName: 'memory_update',
-            useCircuitBreaker: true,
-            useRetry: true,
-            useFallback: false, // Update operations shouldn't have fallbacks
-            metadata: { memoryId: id },
-          }
-        );
+        return await this.errorRecovery.executeWithRecovery(() => super.update(id, updates), {
+          operationName: 'memory_update',
+          useCircuitBreaker: true,
+          useRetry: true,
+          useFallback: false, // Update operations shouldn't have fallbacks
+          metadata: { memoryId: id },
+        });
       } else {
         return await super.update(id, updates);
       }
@@ -250,16 +247,13 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
     try {
       if (this.config.enableErrorRecovery) {
-        return await this.errorRecovery.executeWithRecovery(
-          () => super.delete(id),
-          {
-            operationName: 'memory_delete',
-            useCircuitBreaker: true,
-            useRetry: true,
-            useFallback: false, // Delete operations shouldn't have fallbacks
-            metadata: { memoryId: id },
-          }
-        );
+        return await this.errorRecovery.executeWithRecovery(() => super.delete(id), {
+          operationName: 'memory_delete',
+          useCircuitBreaker: true,
+          useRetry: true,
+          useFallback: false, // Delete operations shouldn't have fallbacks
+          metadata: { memoryId: id },
+        });
       } else {
         return await super.delete(id);
       }
@@ -278,15 +272,12 @@ export class ResilientMemoryRouter extends SimpleSecureRouter {
 
     try {
       if (this.config.enableErrorRecovery) {
-        return await this.errorRecovery.executeWithRecovery(
-          () => super.getAllStats(),
-          {
-            operationName: 'memory_stats',
-            useCircuitBreaker: true,
-            useRetry: true,
-            useFallback: this.config.enableGracefulDegradation,
-          }
-        );
+        return await this.errorRecovery.executeWithRecovery(() => super.getAllStats(), {
+          operationName: 'memory_stats',
+          useCircuitBreaker: true,
+          useRetry: true,
+          useFallback: this.config.enableGracefulDegradation,
+        });
       } else {
         return await super.getAllStats();
       }

@@ -75,7 +75,9 @@ export class OpenAIEmbeddingService {
       logger.error('Failed to initialize OpenAI client', {
         error: error instanceof Error ? error.message : error,
       });
-      throw new Error(`OpenAI initialization failed: ${error instanceof Error ? error.message : error}`);
+      throw new Error(
+        `OpenAI initialization failed: ${error instanceof Error ? error.message : error}`
+      );
     }
   }
 
@@ -106,7 +108,7 @@ export class OpenAIEmbeddingService {
         throw new Error('No embedding data returned from OpenAI');
       }
 
-      const embedding = response.data[0]!.embedding;
+      const { embedding } = response.data[0]!;
       const processingTime = Date.now() - startTime;
 
       // Validate dimensions
@@ -167,7 +169,9 @@ export class OpenAIEmbeddingService {
         });
 
         if (!response.data || response.data.length !== processedTexts.length) {
-          throw new Error(`Batch embedding mismatch: expected ${processedTexts.length}, got ${response.data?.length || 0}`);
+          throw new Error(
+            `Batch embedding mismatch: expected ${processedTexts.length}, got ${response.data?.length || 0}`
+          );
         }
 
         const batchEmbeddings = response.data.map(item => item.embedding);

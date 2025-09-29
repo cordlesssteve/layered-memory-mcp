@@ -124,11 +124,7 @@ export class MonitoredSecureRouter extends SimpleSecureRouter {
   private telemetry: TelemetrySystem;
   private performanceMonitor: PerformanceMonitor;
 
-  constructor(
-    config: any,
-    telemetry: TelemetrySystem,
-    performanceMonitor: PerformanceMonitor
-  ) {
+  constructor(config: any, telemetry: TelemetrySystem, performanceMonitor: PerformanceMonitor) {
     super(config);
     this.telemetry = telemetry;
     this.performanceMonitor = performanceMonitor;
@@ -159,7 +155,7 @@ export class MonitoredSecureRouter extends SimpleSecureRouter {
           tags: {
             operation: 'store',
             contentSize: content.length.toString(),
-            hasTenant: (!!(context?.tenantId)).toString(),
+            hasTenant: (!!context?.tenantId).toString(),
           },
         });
 
@@ -195,7 +191,7 @@ export class MonitoredSecureRouter extends SimpleSecureRouter {
             operation: 'search',
             resultCount: results.length.toString(),
             queryLength: query.query?.length?.toString() || '0',
-            hasFilters: (!!(query.filters)).toString(),
+            hasFilters: (!!query.filters).toString(),
           },
         });
 
@@ -204,8 +200,8 @@ export class MonitoredSecureRouter extends SimpleSecureRouter {
           value: results.length,
           unit: 'count',
           tags: {
-            hasFilters: (!!(query.filters)).toString(),
-            hasTenant: (!!(context?.tenantId)).toString(),
+            hasFilters: (!!query.filters).toString(),
+            hasTenant: (!!context?.tenantId).toString(),
           },
         });
 
@@ -255,8 +251,8 @@ export class MonitoredSecureRouter extends SimpleSecureRouter {
           tags: {
             operation: 'update',
             found: (!!result).toString(),
-            hasContent: (!!(updates.content)).toString(),
-            hasMetadata: (!!(updates.metadata)).toString(),
+            hasContent: (!!updates.content).toString(),
+            hasMetadata: (!!updates.metadata).toString(),
           },
         });
 
@@ -299,7 +295,7 @@ export class MonitoringService {
   private telemetry: TelemetrySystem;
   private performanceMonitor: PerformanceMonitor;
   private config: MonitoringConfig;
-  private healthCheckInterval?: NodeJS.Timeout;
+  private healthCheckInterval?: ReturnType<typeof setTimeout>;
 
   constructor(env: Environment, config?: Partial<MonitoringConfig>) {
     this.config = {
@@ -401,7 +397,7 @@ export class MonitoringService {
    * Setup alert handling
    */
   private setupAlertHandling(): void {
-    this.performanceMonitor.onAlert((alert) => {
+    this.performanceMonitor.onAlert(alert => {
       logger.warn('Performance alert received', {
         type: alert.type,
         severity: alert.severity,

@@ -4,6 +4,9 @@
  */
 
 import type { SecurityConfig } from './types.js';
+import { createLogger } from '../utils/logger.js';
+
+const logger = createLogger('security-config');
 
 /**
  * Get JWT secret with appropriate warnings for production use
@@ -13,11 +16,13 @@ function getJwtSecretWithWarning(): string {
 
   // Only warn in production-like environments
   if (process.env['NODE_ENV'] === 'production' || process.env['NODE_ENV'] === 'prod') {
-    console.error('🚨 CRITICAL SECURITY WARNING: Using default JWT secret in production!');
-    console.error('   Set JWT_SECRET environment variable immediately.');
-    console.error('   This is a critical security vulnerability that compromises all authentication.');
+    logger.error('🚨 CRITICAL SECURITY WARNING: Using default JWT secret in production!');
+    logger.error('   Set JWT_SECRET environment variable immediately.');
+    logger.error(
+      '   This is a critical security vulnerability that compromises all authentication.'
+    );
   } else {
-    console.warn('⚠️  Using development JWT secret. Set JWT_SECRET for production.');
+    logger.warn('⚠️  Using development JWT secret. Set JWT_SECRET for production.');
   }
 
   return devSecret;
@@ -247,9 +252,7 @@ export function createSecurityConfigValidator() {
   const validation = validateSecurityConfig(config);
 
   if (!validation.valid) {
-    throw new Error(
-      `Invalid security configuration:\n${validation.errors.join('\n')}`
-    );
+    throw new Error(`Invalid security configuration:\n${validation.errors.join('\n')}`);
   }
 
   return config;

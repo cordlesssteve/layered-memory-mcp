@@ -75,14 +75,10 @@ export class BGEEmbeddingService {
     try {
       logger.info('Loading BGE Large model...', { model: this.config.modelName });
 
-      this.pipeline = await pipeline(
-        'feature-extraction',
-        this.config.modelName,
-        {
-          quantized: false, // Use non-quantized model since quantized not available
-          local_files_only: false, // Allow downloading if not cached
-        }
-      );
+      this.pipeline = await pipeline('feature-extraction', this.config.modelName, {
+        quantized: false, // Use non-quantized model since quantized not available
+        local_files_only: false, // Allow downloading if not cached
+      });
 
       this.isInitialized = true;
       logger.info('BGE Large model loaded successfully', {
@@ -94,7 +90,9 @@ export class BGEEmbeddingService {
         model: this.config.modelName,
         error: error instanceof Error ? error.message : error,
       });
-      throw new Error(`BGE Large model initialization failed: ${error instanceof Error ? error.message : error}`);
+      throw new Error(
+        `BGE Large model initialization failed: ${error instanceof Error ? error.message : error}`
+      );
     }
   }
 
@@ -281,7 +279,8 @@ export class BGEEmbeddingService {
     let processedText = text.trim();
 
     // Truncate to max length if necessary
-    if (processedText.length > this.config.maxLength * 4) { // Rough character to token ratio
+    if (processedText.length > this.config.maxLength * 4) {
+      // Rough character to token ratio
       processedText = processedText.substring(0, this.config.maxLength * 4);
       logger.debug('Text truncated to max length', {
         originalLength: text.length,
@@ -291,7 +290,6 @@ export class BGEEmbeddingService {
 
     return processedText;
   }
-
 }
 
 // Export singleton instance
