@@ -16,8 +16,9 @@ import {
 import { setupEnvironment } from './config/environment.js';
 import { createLogger } from './utils/logger.js';
 import { setupGracefulShutdown } from './utils/shutdown.js';
-import { MemoryRouter } from './memory/index.js';
+import { MonitoredMemoryRouter } from './memory/monitored-router.js';
 import type { MemoryMetadata } from './memory/index.js';
+import type { KnowledgeGraph } from './memory/relationships/types.js';
 
 /**
  * Main entry point for the Layered Memory MCP Server
@@ -34,8 +35,8 @@ async function main(): Promise<void> {
       environment: config.nodeEnv,
     });
 
-    // Initialize memory router
-    const memoryRouter = new MemoryRouter({
+    // Initialize monitored memory router with telemetry and security
+    const memoryRouter = new MonitoredMemoryRouter({
       routing: {
         sessionThreshold: 0.8,
         projectThreshold: 0.6,
@@ -54,6 +55,27 @@ async function main(): Promise<void> {
         minConfidence: 0.7, // Higher confidence threshold for production
         batchSize: 50, // Smaller batch size for better performance
       },
+      monitoring: {
+        enabled: config.telemetryEnabled !== false, // Enable monitoring unless explicitly disabled
+        metricsRetentionMs: config.metricsRetentionMs || 3600000, // 1 hour
+        slowOperationMs: config.slowOperationThresholdMs || 1000, // 1 second
+      },
+      security: {
+        rateLimiting: {
+          enabled: true, // Enabled by default
+          windowMs: config.rateLimitWindowMs, // From environment
+          maxRequests: config.rateLimitMaxRequests, // From environment
+        },
+        requestValidation: {
+          enabled: true, // Enabled by default
+        },
+      },
+    });
+
+    logger.info('Memory router initialized with monitoring and security', {
+      telemetryEnabled: config.telemetryEnabled !== false,
+      rateLimitingEnabled: true,
+      requestValidationEnabled: true,
     });
 
     // Create MCP server instance
@@ -479,6 +501,15 @@ async function main(): Promise<void> {
               additionalProperties: false,
             },
           },
+          {
+            name: 'get_monitoring_stats',
+            description: 'Get telemetry and performance monitoring statistics',
+            inputSchema: {
+              type: 'object',
+              properties: {},
+              additionalProperties: false,
+            },
+          },
         ],
       };
     });
@@ -875,7 +906,7 @@ async function main(): Promise<void> {
 
           // Epic M2: Dynamic Memory Evolution handlers
           case 'build_knowledge_graph': {
-            const graph = await memoryRouter.buildKnowledgeGraph();
+            const graph = (await memoryRouter.buildKnowledgeGraph()) as KnowledgeGraph;
 
             return {
               content: [
@@ -1269,6 +1300,30 @@ async function main(): Promise<void> {
                     {
                       success: true,
                       modelInsights: insights,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_monitoring_stats': {
+            const monitoringStats = memoryRouter.getMonitoringStats();
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      monitoring: {
+                        enabled: monitoringStats.enabled,
+                        telemetry: monitoringStats.telemetry,
+                        performance: monitoringStats.performance,
+                      },
                     },
                     null,
                     2
