@@ -20,11 +20,12 @@ describe('AutonomousIntelligenceService Integration', () => {
   beforeEach(() => {
     service = new AutonomousIntelligenceService(mockMemoryRouter, {
       enabled: true,
-      checkInterval: 100, // Fast interval for testing
-      maintenanceInterval: 200,
-      optimizationInterval: 300,
-      insightGenerationInterval: 400,
-      maxConcurrentTasks: 3,
+      watchIntervals: {
+        memoryAnalysis: 100,
+        relationshipDiscovery: 200,
+        qualityAssessment: 300,
+        learningOptimization: 400,
+      },
     });
   });
 
@@ -37,7 +38,7 @@ describe('AutonomousIntelligenceService Integration', () => {
       await service.startWatching();
 
       const status = service.getStatus();
-      expect(status.isWatching).toBe(true);
+      expect(status.watching).toBe(true);
       expect(status.config.enabled).toBe(true);
     });
 
@@ -46,7 +47,7 @@ describe('AutonomousIntelligenceService Integration', () => {
       await service.stopWatching();
 
       const status = service.getStatus();
-      expect(status.isWatching).toBe(false);
+      expect(status.watching).toBe(false);
     });
 
     it('should not start if already watching', async () => {
@@ -54,14 +55,14 @@ describe('AutonomousIntelligenceService Integration', () => {
       await service.startWatching(); // Second call should be no-op
 
       const status = service.getStatus();
-      expect(status.isWatching).toBe(true);
+      expect(status.watching).toBe(true);
     });
 
     it('should not stop if not watching', async () => {
       await service.stopWatching(); // Should not throw
 
       const status = service.getStatus();
-      expect(status.isWatching).toBe(false);
+      expect(status.watching).toBe(false);
     });
 
     it('should not start if disabled in config', async () => {
@@ -72,20 +73,20 @@ describe('AutonomousIntelligenceService Integration', () => {
       await disabledService.startWatching();
 
       const status = disabledService.getStatus();
-      expect(status.isWatching).toBe(false);
+      expect(status.watching).toBe(false);
     });
   });
 
   describe('scheduleTask', () => {
     it('should schedule a low priority task', () => {
-      const taskId = service.scheduleTask('optimization', 'low');
+      const taskId = service.scheduleTask('performance_optimization', 'low');
 
       expect(taskId).toBeDefined();
       expect(typeof taskId).toBe('string');
     });
 
     it('should schedule a medium priority task', () => {
-      const taskId = service.scheduleTask('maintenance', 'medium');
+      const taskId = service.scheduleTask('memory_analysis', 'medium');
 
       expect(taskId).toBeDefined();
       expect(typeof taskId).toBe('string');
@@ -105,7 +106,7 @@ describe('AutonomousIntelligenceService Integration', () => {
     });
 
     it('should execute critical priority task immediately', async () => {
-      const taskId = service.scheduleTask('maintenance', 'critical');
+      const taskId = service.scheduleTask('memory_analysis', 'critical');
 
       // Wait for execution
       await new Promise(resolve => setTimeout(resolve, 50));
@@ -118,8 +119,8 @@ describe('AutonomousIntelligenceService Integration', () => {
     });
 
     it('should track multiple scheduled tasks', () => {
-      const task1 = service.scheduleTask('maintenance', 'low');
-      const task2 = service.scheduleTask('optimization', 'low');
+      const task1 = service.scheduleTask('memory_analysis', 'low');
+      const task2 = service.scheduleTask('performance_optimization', 'low');
       const task3 = service.scheduleTask('insight_generation', 'medium');
 
       expect(task1).not.toBe(task2);
@@ -133,10 +134,9 @@ describe('AutonomousIntelligenceService Integration', () => {
       const status = service.getStatus();
 
       expect(status).toMatchObject({
-        isWatching: expect.any(Boolean),
-        queuedTasks: expect.any(Number),
+        watching: expect.any(Boolean),
+        scheduledTasks: expect.any(Number),
         completedTasks: expect.any(Number),
-        failedTasks: expect.any(Number),
         config: expect.objectContaining({
           enabled: expect.any(Boolean),
         }),
@@ -147,7 +147,7 @@ describe('AutonomousIntelligenceService Integration', () => {
       const initialStatus = service.getStatus();
       expect(initialStatus.completedTasks).toBe(0);
 
-      service.scheduleTask('maintenance', 'critical');
+      service.scheduleTask('memory_analysis', 'critical');
       await new Promise(resolve => setTimeout(resolve, 100));
 
       const updatedStatus = service.getStatus();
@@ -157,8 +157,8 @@ describe('AutonomousIntelligenceService Integration', () => {
 
   describe('getRecentResults', () => {
     it('should return recent task results', async () => {
-      service.scheduleTask('maintenance', 'critical');
-      service.scheduleTask('optimization', 'critical');
+      service.scheduleTask('memory_analysis', 'critical');
+      service.scheduleTask('performance_optimization', 'critical');
 
       await new Promise(resolve => setTimeout(resolve, 100));
 
@@ -171,7 +171,7 @@ describe('AutonomousIntelligenceService Integration', () => {
 
     it('should limit results to specified count', async () => {
       for (let i = 0; i < 5; i++) {
-        service.scheduleTask('maintenance', 'critical');
+        service.scheduleTask('memory_analysis', 'critical');
       }
 
       await new Promise(resolve => setTimeout(resolve, 150));
@@ -181,17 +181,17 @@ describe('AutonomousIntelligenceService Integration', () => {
     });
 
     it('should return most recent results first', async () => {
-      service.scheduleTask('maintenance', 'critical');
+      service.scheduleTask('memory_analysis', 'critical');
       await new Promise(resolve => setTimeout(resolve, 50));
 
-      service.scheduleTask('optimization', 'critical');
+      service.scheduleTask('performance_optimization', 'critical');
       await new Promise(resolve => setTimeout(resolve, 50));
 
       const results = service.getRecentResults(2);
 
       if (results.length >= 2) {
-        const firstTimestamp = new Date(results[0].completedAt || 0).getTime();
-        const secondTimestamp = new Date(results[1].completedAt || 0).getTime();
+        const firstTimestamp = new Date(results[0]?.completedAt || 0).getTime();
+        const secondTimestamp = new Date(results[1]?.completedAt || 0).getTime();
         expect(firstTimestamp).toBeGreaterThanOrEqual(secondTimestamp);
       }
     });
@@ -200,23 +200,26 @@ describe('AutonomousIntelligenceService Integration', () => {
   describe('updateConfig', () => {
     it('should update service configuration', () => {
       service.updateConfig({
-        maxConcurrentTasks: 5,
+        enabled: false,
       });
 
       const status = service.getStatus();
-      expect(status.config.maxConcurrentTasks).toBe(5);
+      expect(status.config.enabled).toBe(false);
     });
 
     it('should restart watching if config changes while active', async () => {
       await service.startWatching();
 
       service.updateConfig({
-        checkInterval: 500,
+        autonomyLevel: 'active',
       });
 
+      // Wait for async restart to complete
+      await new Promise(resolve => setTimeout(resolve, 50));
+
       const status = service.getStatus();
-      expect(status.isWatching).toBe(true);
-      expect(status.config.checkInterval).toBe(500);
+      expect(status.watching).toBe(true);
+      expect(status.config.autonomyLevel).toBe('active');
     });
 
     it('should maintain stopped state after config update', () => {
@@ -225,14 +228,14 @@ describe('AutonomousIntelligenceService Integration', () => {
       });
 
       const status = service.getStatus();
-      expect(status.isWatching).toBe(false);
+      expect(status.watching).toBe(false);
       expect(status.config.enabled).toBe(false);
     });
   });
 
   describe('autonomous task execution', () => {
     it('should execute maintenance tasks', async () => {
-      const taskId = service.scheduleTask('maintenance', 'critical');
+      const taskId = service.scheduleTask('memory_analysis', 'critical');
 
       await new Promise(resolve => setTimeout(resolve, 100));
 
@@ -240,11 +243,11 @@ describe('AutonomousIntelligenceService Integration', () => {
       const task = results.find(t => t.id === taskId);
 
       expect(task).toBeDefined();
-      expect(task?.type).toBe('maintenance');
+      expect(task?.type).toBe('memory_analysis');
     });
 
     it('should execute optimization tasks', async () => {
-      const taskId = service.scheduleTask('optimization', 'critical');
+      const taskId = service.scheduleTask('performance_optimization', 'critical');
 
       await new Promise(resolve => setTimeout(resolve, 100));
 
@@ -252,7 +255,7 @@ describe('AutonomousIntelligenceService Integration', () => {
       const task = results.find(t => t.id === taskId);
 
       expect(task).toBeDefined();
-      expect(task?.type).toBe('optimization');
+      expect(task?.type).toBe('performance_optimization');
     });
 
     it('should execute insight generation tasks', async () => {
@@ -268,7 +271,7 @@ describe('AutonomousIntelligenceService Integration', () => {
     });
 
     it('should handle task failures gracefully', async () => {
-      const taskId = service.scheduleTask('maintenance', 'critical');
+      const taskId = service.scheduleTask('memory_analysis', 'critical');
 
       await new Promise(resolve => setTimeout(resolve, 100));
 
@@ -284,12 +287,11 @@ describe('AutonomousIntelligenceService Integration', () => {
     it('should respect max concurrent tasks limit', async () => {
       const service = new AutonomousIntelligenceService(mockMemoryRouter, {
         enabled: true,
-        maxConcurrentTasks: 2,
       });
 
       // Schedule more tasks than limit
-      service.scheduleTask('maintenance', 'critical');
-      service.scheduleTask('optimization', 'critical');
+      service.scheduleTask('memory_analysis', 'critical');
+      service.scheduleTask('performance_optimization', 'critical');
       service.scheduleTask('insight_generation', 'critical');
 
       await new Promise(resolve => setTimeout(resolve, 150));
