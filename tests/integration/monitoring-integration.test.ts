@@ -12,7 +12,7 @@ import { TelemetrySystem } from '../../src/monitoring/telemetry.js';
 import { PerformanceMonitor } from '../../src/monitoring/performance-monitor.js';
 import type { Environment } from '../../src/config/environment.js';
 
-const testEnv: Partial<Environment> = {
+const testEnv: Environment = {
   nodeEnv: 'test',
   logLevel: 'info',
   telemetryEnabled: true,
@@ -153,12 +153,11 @@ describe('MonitoringIntegration', () => {
       const service = createMonitoringService(testEnv);
 
       // Track an operation
-      const result = await service.getPerformanceMonitor().trackOperation(
-        'test_operation',
-        async () => {
+      const result = await service
+        .getPerformanceMonitor()
+        .trackOperation('test_operation', async () => {
           return { success: true };
-        }
-      );
+        });
 
       expect(result.success).toBe(true);
 
@@ -231,8 +230,8 @@ describe('MonitoringIntegration', () => {
         unit: 'duration_ms',
       });
 
-      const metric1 = telemetry.getMetrics('custom_metric_1')[0];
-      const metric2 = telemetry.getMetrics('custom_metric_2')[0];
+      const [metric1] = telemetry.getMetrics('custom_metric_1');
+      const [metric2] = telemetry.getMetrics('custom_metric_2');
 
       expect(metric1).toBeDefined();
       expect(metric1?.value).toBe(100);
