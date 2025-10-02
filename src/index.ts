@@ -12,6 +12,7 @@ import {
   ListToolsRequestSchema,
   McpError,
 } from '@modelcontextprotocol/sdk/types.js';
+import { fileURLToPath } from 'url';
 
 import { setupEnvironment } from './config/environment.js';
 import { createLogger } from './utils/logger.js';
@@ -1395,8 +1396,9 @@ process.on('uncaughtException', error => {
   process.exit(1);
 });
 
-// Start the server
-if (require.main === module) {
+// Start the server (ES module check)
+const __filename = fileURLToPath(import.meta.url);
+if (process.argv[1] === __filename) {
   main().catch(error => {
     console.error('Fatal error:', error);
     process.exit(1);
