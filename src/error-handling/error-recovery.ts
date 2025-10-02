@@ -56,7 +56,7 @@ export class CircuitBreaker {
   private telemetry?: TelemetrySystem | undefined;
 
   constructor(
-    private name: string,
+    private _name: string,
     config: CircuitBreakerConfig,
     telemetry?: TelemetrySystem
   ) {
@@ -64,7 +64,7 @@ export class CircuitBreaker {
     this.telemetry = telemetry;
 
     logger.debug('Circuit breaker initialized', {
-      name: this.name,
+      name: this._name,
       config: this.config,
     });
   }
@@ -76,9 +76,9 @@ export class CircuitBreaker {
     if (this.state === 'OPEN') {
       if (this.shouldAttemptReset()) {
         this.state = 'HALF_OPEN';
-        logger.info('Circuit breaker transitioning to HALF_OPEN', { name: this.name });
+        logger.info('Circuit breaker transitioning to HALF_OPEN', { name: this._name });
       } else {
-        const error = new Error(`Circuit breaker is OPEN for ${this.name}`);
+        const error = new Error(`Circuit breaker is OPEN for ${this._name}`);
         (error as any).circuitBreakerOpen = true;
         this.recordMetric('circuit_breaker_open', 1);
         throw error;
@@ -102,7 +102,7 @@ export class CircuitBreaker {
    */
   getStatus() {
     return {
-      name: this.name,
+      name: this._name,
       state: this.state,
       failureCount: this.failureCount,
       successCount: this.successCount,
@@ -121,7 +121,7 @@ export class CircuitBreaker {
     this.requestCount = 0;
     delete this.lastFailureTime;
 
-    logger.info('Circuit breaker reset', { name: this.name });
+    logger.info('Circuit breaker reset', { name: this._name });
     this.recordMetric('circuit_breaker_reset', 1);
   }
 
@@ -132,7 +132,7 @@ export class CircuitBreaker {
     if (this.state === 'HALF_OPEN') {
       this.state = 'CLOSED';
       this.failureCount = 0;
-      logger.info('Circuit breaker closed after successful recovery', { name: this.name });
+      logger.info('Circuit breaker closed after successful recovery', { name: this._name });
     }
   }
 
@@ -143,11 +143,11 @@ export class CircuitBreaker {
 
     if (this.state === 'HALF_OPEN') {
       this.state = 'OPEN';
-      logger.warn('Circuit breaker opened during half-open test', { name: this.name });
+      logger.warn('Circuit breaker opened during half-open test', { name: this._name });
     } else if (this.shouldOpen()) {
       this.state = 'OPEN';
       logger.warn('Circuit breaker opened due to failure threshold', {
-        name: this.name,
+        name: this._name,
         failureCount: this.failureCount,
         threshold: this.config.failureThreshold,
       });
@@ -175,7 +175,7 @@ export class CircuitBreaker {
         value,
         unit: 'count',
         tags: {
-          circuit_breaker: this.name,
+          circuit_breaker: this._name,
           state: this.state,
         },
       });
