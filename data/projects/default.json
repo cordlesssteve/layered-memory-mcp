@@ -1,197 +1,43 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-09-29T02:12:57.210Z",
+  "savedAt": "2025-10-02T23:20:35.630Z",
   "items": [
     {
-      "content": "Memory 0: This is a test memory about JavaScript programming concepts and best practices.",
+      "content": "Content 3",
       "metadata": {
+        "tags": [
+          "test"
+        ],
         "category": "knowledge",
         "priority": 6,
-        "tags": [
-          "programming",
-          "javascript"
-        ],
-        "source": "user-input",
+        "source": "test",
         "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.147Z"
+        "expiresAt": "2025-11-01T23:20:35.621Z"
       },
-      "id": "b3ebff09-22f3-4461-8ebd-978ff93c8d56",
-      "createdAt": "2025-09-29T02:12:57.147Z",
-      "updatedAt": "2025-09-29T02:12:57.147Z",
+      "id": "5629cb1a-e8d1-465f-b5ed-68fa675613d4",
+      "createdAt": "2025-10-02T23:20:35.621Z",
+      "updatedAt": "2025-10-02T23:20:35.621Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.147Z"
+      "lastAccessedAt": "2025-10-02T23:20:35.621Z"
     },
     {
-      "content": "Memory 5: This is a test memory about JavaScript programming concepts and best practices.",
+      "content": "Content 4",
       "metadata": {
+        "tags": [
+          "test"
+        ],
         "category": "knowledge",
         "priority": 7,
-        "tags": [
-          "programming",
-          "javascript"
-        ],
-        "source": "user-input",
+        "source": "test",
         "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.149Z"
+        "expiresAt": "2025-11-01T23:20:35.622Z"
       },
-      "id": "597f192b-5672-484f-b749-ac92a09616da",
-      "createdAt": "2025-09-29T02:12:57.149Z",
-      "updatedAt": "2025-09-29T02:12:57.149Z",
+      "id": "1383831b-0173-4075-b3c8-ffb7d2feaac2",
+      "createdAt": "2025-10-02T23:20:35.622Z",
+      "updatedAt": "2025-10-02T23:20:35.622Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.149Z"
-    },
-    {
-      "content": "Memory 7: This is a test memory about React programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 6,
-        "tags": [
-          "programming",
-          "react"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.149Z"
-      },
-      "id": "d75624e8-ba32-4ac0-abb8-3bd7dc923c9a",
-      "createdAt": "2025-09-29T02:12:57.149Z",
-      "updatedAt": "2025-09-29T02:12:57.149Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.149Z"
-    },
-    {
-      "content": "Memory 15: This is a test memory about JavaScript programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 7,
-        "tags": [
-          "programming",
-          "javascript"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.150Z"
-      },
-      "id": "da3f797a-c914-4b81-9916-fd2e081353c7",
-      "createdAt": "2025-09-29T02:12:57.150Z",
-      "updatedAt": "2025-09-29T02:12:57.150Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.150Z"
-    },
-    {
-      "content": "Memory 20: This is a test memory about JavaScript programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 6,
-        "tags": [
-          "programming",
-          "javascript"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.150Z"
-      },
-      "id": "4eaf2772-3380-4e7d-bd7f-f536fd2f07c6",
-      "createdAt": "2025-09-29T02:12:57.150Z",
-      "updatedAt": "2025-09-29T02:12:57.150Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.150Z"
-    },
-    {
-      "content": "Memory 23: This is a test memory about Node.js programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 7,
-        "tags": [
-          "programming",
-          "nodejs"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.150Z"
-      },
-      "id": "b28e4659-4740-47b2-afbf-b6f78b55d759",
-      "createdAt": "2025-09-29T02:12:57.150Z",
-      "updatedAt": "2025-09-29T02:12:57.150Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.150Z"
-    },
-    {
-      "content": "Memory 26: This is a test memory about Python programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 6,
-        "tags": [
-          "programming",
-          "python"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.151Z"
-      },
-      "id": "ccc3f327-4d31-44d9-8623-f2de81a85700",
-      "createdAt": "2025-09-29T02:12:57.151Z",
-      "updatedAt": "2025-09-29T02:12:57.151Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.151Z"
-    },
-    {
-      "content": "Memory 27: This is a test memory about React programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 7,
-        "tags": [
-          "programming",
-          "react"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.151Z"
-      },
-      "id": "ef10894c-3c72-47b5-9b51-c6d57caaafc9",
-      "createdAt": "2025-09-29T02:12:57.151Z",
-      "updatedAt": "2025-09-29T02:12:57.151Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.151Z"
-    },
-    {
-      "content": "Memory 41: This is a test memory about Python programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 6,
-        "tags": [
-          "programming",
-          "python"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.153Z"
-      },
-      "id": "a0eb1f7b-c1f6-4f3e-8fc7-9e842ed1b32f",
-      "createdAt": "2025-09-29T02:12:57.153Z",
-      "updatedAt": "2025-09-29T02:12:57.153Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.153Z"
-    },
-    {
-      "content": "Memory 44: This is a test memory about TypeScript programming concepts and best practices.",
-      "metadata": {
-        "category": "knowledge",
-        "priority": 7,
-        "tags": [
-          "programming",
-          "typescript"
-        ],
-        "source": "user-input",
-        "projectId": "default",
-        "expiresAt": "2025-10-29T02:12:57.155Z"
-      },
-      "id": "0cd3b23c-c709-4843-9167-37c984d13c67",
-      "createdAt": "2025-09-29T02:12:57.155Z",
-      "updatedAt": "2025-09-29T02:12:57.155Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-09-29T02:12:57.155Z"
+      "lastAccessedAt": "2025-10-02T23:20:35.622Z"
     }
   ]
 }
