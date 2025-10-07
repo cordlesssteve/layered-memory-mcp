@@ -1,43 +1,25 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-10-02T23:20:35.630Z",
+  "savedAt": "2025-10-03T01:10:49.336Z",
   "items": [
     {
-      "content": "Content 3",
+      "content": "Content for metrics tracking",
       "metadata": {
         "tags": [
-          "test"
+          "metrics-test"
         ],
-        "category": "knowledge",
-        "priority": 6,
-        "source": "test",
-        "projectId": "default",
-        "expiresAt": "2025-11-01T23:20:35.621Z"
-      },
-      "id": "5629cb1a-e8d1-465f-b5ed-68fa675613d4",
-      "createdAt": "2025-10-02T23:20:35.621Z",
-      "updatedAt": "2025-10-02T23:20:35.621Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-10-02T23:20:35.621Z"
-    },
-    {
-      "content": "Content 4",
-      "metadata": {
-        "tags": [
-          "test"
-        ],
-        "category": "knowledge",
+        "category": "task",
         "priority": 7,
         "source": "test",
         "projectId": "default",
-        "expiresAt": "2025-11-01T23:20:35.622Z"
+        "expiresAt": "2025-11-02T01:10:49.334Z"
       },
-      "id": "1383831b-0173-4075-b3c8-ffb7d2feaac2",
-      "createdAt": "2025-10-02T23:20:35.622Z",
-      "updatedAt": "2025-10-02T23:20:35.622Z",
+      "id": "92c1d84b-80e7-4c91-9b0f-135c4d077345",
+      "createdAt": "2025-10-03T01:10:49.334Z",
+      "updatedAt": "2025-10-03T01:10:49.334Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-10-02T23:20:35.622Z"
+      "lastAccessedAt": "2025-10-03T01:10:49.334Z"
     }
   ]
 }
