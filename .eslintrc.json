@@ -63,6 +63,16 @@
       "rules": {
         "no-console": "off"
       }
+    },
+    {
+      "files": ["src/memory/**/*.ts", "src/error-handling/**/*.ts", "src/embeddings/**/*.ts", "src/knowledge/**/*.ts", "src/security/**/*.ts", "src/monitoring/**/*.ts", "src/analysis/**/*.ts", "src/autonomous/**/*.ts", "src/learning/**/*.ts", "src/config/**/*.ts"],
+      "rules": {
+        "max-lines": ["warn", 1200],
+        "max-lines-per-function": ["warn", 300],
+        "complexity": ["warn", 30],
+        "max-params": ["warn", 6],
+        "no-console": "off"
+      }
     }
   ]
 }

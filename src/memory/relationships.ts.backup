@@ -1,0 +1,852 @@
+/**
+ * Memory Relationship Engine: Dynamic Memory Evolution System
+ *
+ * This module implements Epic M2 features:
+ * - 10 relationship types with confidence scoring
+ * - Knowledge graph construction and analysis
+ * - Memory versioning and evolution tracking
+ * - Conflict detection and resolution
+ * - Memory clustering and summarization
+ */
+
+import { createLogger } from '../utils/logger.js';
+import type { MemoryItem } from './types.js';
+
+const logger = createLogger('memory-relationships');
+
+// Core relationship types for memory evolution
+export type RelationshipType =
+  | 'reference' // Direct citation or reference
+  | 'contextual' // Related context or setting
+  | 'causal' // Cause and effect relationship
+  | 'temporal' // Time-based sequence
+  | 'hierarchical' // Parent-child or part-whole
+  | 'contradiction' // Conflicting information
+  | 'confirmation' // Supporting evidence
+  | 'evolution' // Version or update relationship
+  | 'synthesis' // Combination of multiple memories
+  | 'derivation'; // Derived or inferred from
+
+export interface MemoryRelationship {
+  id: string;
+  sourceMemoryId: string;
+  targetMemoryId: string;
+  type: RelationshipType;
+  confidence: number; // 0-1, how confident we are in this relationship
+  weight: number; // 0-1, strength of the relationship
+  metadata: {
+    source: 'auto-detected' | 'user-defined' | 'system-inferred';
+    algorithm: string; // Which algorithm detected this relationship
+    createdAt: Date;
+    validatedBy?: string; // User ID if validated
+    notes?: string;
+  };
+}
+
+export interface KnowledgeGraph {
+  nodes: Map<string, GraphNode>;
+  edges: Map<string, MemoryRelationship>;
+  stats: {
+    totalNodes: number;
+    totalEdges: number;
+    averageConnections: number;
+    topCentralNodes: string[]; // Most connected memory IDs
+  };
+}
+
+export interface GraphNode {
+  memoryId: string;
+  memory: MemoryItem;
+  connections: string[]; // Relationship IDs
+  centrality: number; // 0-1, importance based on connections
+  importance: number; // 0-1, overall importance score
+  cluster?: string; // Cluster ID if assigned
+}
+
+export interface MemoryCluster {
+  id: string;
+  memoryIds: string[];
+  centroid: string; // Central memory ID
+  cohesion: number; // 0-1, how tightly related memories are
+  keywords: string[];
+  commonTags: string[];
+  summary: string;
+  createdAt: Date;
+}
+
+export interface ConflictResolution {
+  id: string;
+  conflictingMemoryIds: string[];
+  conflictType: 'contradiction' | 'duplication' | 'inconsistency';
+  confidence: number;
+  suggestedResolution: 'merge' | 'prioritize' | 'contextualize' | 'coexist';
+  metadata: {
+    detectedAt: Date;
+    algorithm: string;
+    resolvedAt?: Date;
+    resolvedBy?: string;
+    notes?: string;
+  };
+}
+
+export interface MemoryVersion {
+  id: string;
+  memoryId: string;
+  version: number;
+  parentVersionId?: string;
+  changeType: 'created' | 'updated' | 'merged' | 'split' | 'archived';
+  changes: {
+    content?: { old: string; new: string };
+    metadata?: { old: any; new: any };
+  };
+  createdAt: Date;
+  createdBy: string;
+}
+
+export class MemoryRelationshipEngine {
+  private relationships = new Map<string, MemoryRelationship>();
+  private knowledgeGraph: KnowledgeGraph = {
+    nodes: new Map(),
+    edges: new Map(),
+    stats: { totalNodes: 0, totalEdges: 0, averageConnections: 0, topCentralNodes: [] },
+  };
+  private clusters = new Map<string, MemoryCluster>();
+  private conflicts = new Map<string, ConflictResolution>();
+  private versions = new Map<string, MemoryVersion[]>();
+
+  /**
+   * Detect relationships between a new memory and existing memories
+   */
+  async detectRelationships(
+    newMemory: MemoryItem,
+    existingMemories: MemoryItem[]
+  ): Promise<MemoryRelationship[]> {
+    const relationships: MemoryRelationship[] = [];
+
+    for (const existing of existingMemories) {
+      // Skip self-relationships
+      if (existing.id === newMemory.id) continue;
+
+      // Detect various relationship types
+      const detectedRelationships = await Promise.all([
+        this.detectReferenceRelationship(newMemory, existing),
+        this.detectContextualRelationship(newMemory, existing),
+        this.detectCausalRelationship(newMemory, existing),
+        this.detectTemporalRelationship(newMemory, existing),
+        this.detectHierarchicalRelationship(newMemory, existing),
+        this.detectContradictionRelationship(newMemory, existing),
+        this.detectConfirmationRelationship(newMemory, existing),
+        this.detectEvolutionRelationship(newMemory, existing),
+      ]);
+
+      // Filter out null relationships and add valid ones
+      relationships.push(
+        ...(detectedRelationships.filter(rel => rel !== null) as MemoryRelationship[])
+      );
+    }
+
+    // Store detected relationships
+    for (const relationship of relationships) {
+      this.relationships.set(relationship.id, relationship);
+    }
+
+    logger.info(`Detected ${relationships.length} relationships for memory ${newMemory.id}`);
+    return relationships;
+  }
+
+  /**
+   * Build knowledge graph from current memories and relationships
+   */
+  async buildKnowledgeGraph(memories: MemoryItem[]): Promise<KnowledgeGraph> {
+    logger.info('Building knowledge graph from memories and relationships');
+
+    // Clear existing graph
+    this.knowledgeGraph.nodes.clear();
+    this.knowledgeGraph.edges.clear();
+
+    // Create nodes for each memory
+    for (const memory of memories) {
+      const node: GraphNode = {
+        memoryId: memory.id,
+        memory,
+        connections: [],
+        centrality: 0,
+        importance: 0,
+      };
+      this.knowledgeGraph.nodes.set(memory.id, node);
+    }
+
+    // Add edges from relationships
+    for (const relationship of this.relationships.values()) {
+      const sourceNode = this.knowledgeGraph.nodes.get(relationship.sourceMemoryId);
+      const targetNode = this.knowledgeGraph.nodes.get(relationship.targetMemoryId);
+
+      if (sourceNode && targetNode) {
+        sourceNode.connections.push(relationship.id);
+        targetNode.connections.push(relationship.id);
+        this.knowledgeGraph.edges.set(relationship.id, relationship);
+      }
+    }
+
+    // Calculate centrality and importance scores
+    await this.calculateNodeMetrics();
+
+    // Update graph statistics
+    this.updateGraphStats();
+
+    logger.info('Knowledge graph built', {
+      nodes: this.knowledgeGraph.stats.totalNodes,
+      edges: this.knowledgeGraph.stats.totalEdges,
+      avgConnections: this.knowledgeGraph.stats.averageConnections,
+    });
+
+    return this.knowledgeGraph;
+  }
+
+  /**
+   * Get all relationships for a specific memory
+   */
+  getMemoryRelationships(memoryId: string): MemoryRelationship[] {
+    return Array.from(this.relationships.values()).filter(
+      rel => rel.sourceMemoryId === memoryId || rel.targetMemoryId === memoryId
+    );
+  }
+
+  /**
+   * Detect potential conflicts between memories
+   */
+  async detectConflicts(memories: MemoryItem[]): Promise<ConflictResolution[]> {
+    logger.info('Detecting conflicts between memories');
+    const conflicts: ConflictResolution[] = [];
+
+    // Check for contradictions
+    for (let i = 0; i < memories.length; i++) {
+      for (let j = i + 1; j < memories.length; j++) {
+        const memory1 = memories[i];
+        const memory2 = memories[j];
+
+        if (memory1 && memory2) {
+          const conflict = await this.detectContentConflict(memory1, memory2);
+          if (conflict) {
+            conflicts.push(conflict);
+            this.conflicts.set(conflict.id, conflict);
+          }
+        }
+      }
+    }
+
+    logger.info(`Detected ${conflicts.length} potential conflicts`);
+    return conflicts;
+  }
+
+  /**
+   * Create memory clusters based on relationships
+   */
+  async createClusters(memories: MemoryItem[]): Promise<MemoryCluster[]> {
+    logger.info('Creating memory clusters based on relationships');
+
+    // Simple clustering based on relationship density
+    const clusters: MemoryCluster[] = [];
+    const processed = new Set<string>();
+
+    for (const memory of memories) {
+      if (processed.has(memory.id)) continue;
+
+      const cluster = await this.buildClusterFromSeed(memory, memories);
+      if (cluster.memoryIds.length > 1) {
+        clusters.push(cluster);
+        cluster.memoryIds.forEach(id => processed.add(id));
+        this.clusters.set(cluster.id, cluster);
+      } else {
+        processed.add(memory.id);
+      }
+    }
+
+    logger.info(`Created ${clusters.length} memory clusters`);
+    return clusters;
+  }
+
+  /**
+   * Generate summary for a cluster of memories
+   */
+  async summarizeCluster(memoryIds: string[]): Promise<string> {
+    const memories = Array.from(this.knowledgeGraph.nodes.values())
+      .filter(node => memoryIds.includes(node.memoryId))
+      .map(node => node.memory);
+
+    if (memories.length === 0) {
+      return 'No memories found for summarization.';
+    }
+
+    // Extract key themes and concepts
+    const allContent = memories.map(m => m.content).join(' ');
+    const keywords = this.extractKeywords(allContent);
+    const commonTags = this.findCommonTags(memories);
+
+    // Generate summary
+    const summary =
+      `Cluster of ${memories.length} related memories focusing on: ${keywords.slice(0, 5).join(', ')}. ` +
+      `Common themes include: ${commonTags.slice(0, 3).join(', ')}. ` +
+      `Contains memories from ${new Set(memories.map(m => m.metadata.category)).size} categories.`;
+
+    return summary;
+  }
+
+  /**
+   * Track memory version evolution
+   */
+  trackMemoryVersion(
+    memoryId: string,
+    changeType: MemoryVersion['changeType'],
+    changes: MemoryVersion['changes'],
+    createdBy: string,
+    parentVersionId?: string
+  ): MemoryVersion {
+    const existingVersions = this.versions.get(memoryId) || [];
+    const version: MemoryVersion = {
+      id: `${memoryId}-v${existingVersions.length + 1}`,
+      memoryId,
+      version: existingVersions.length + 1,
+      ...(parentVersionId && { parentVersionId }),
+      changeType,
+      changes,
+      createdAt: new Date(),
+      createdBy,
+    };
+
+    existingVersions.push(version);
+    this.versions.set(memoryId, existingVersions);
+
+    logger.info(`Tracked version ${version.version} for memory ${memoryId}`, { changeType });
+    return version;
+  }
+
+  /**
+   * Get version history for a memory
+   */
+  getMemoryVersions(memoryId: string): MemoryVersion[] {
+    return this.versions.get(memoryId) || [];
+  }
+
+  // Private helper methods for relationship detection
+
+  private async detectReferenceRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Look for explicit references or citations
+    const hasReference =
+      memory1.content.toLowerCase().includes(memory2.id) ||
+      memory2.content.toLowerCase().includes(memory1.id) ||
+      this.hasUrlReference(memory1.content, memory2.content);
+
+    if (hasReference) {
+      return this.createRelationship(
+        memory1.id,
+        memory2.id,
+        'reference',
+        0.9,
+        0.8,
+        'reference-detector'
+      );
+    }
+    return null;
+  }
+
+  private async detectContextualRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Check for shared context (tags, categories, projects)
+    const sharedTags = memory1.metadata.tags.filter(tag => memory2.metadata.tags.includes(tag));
+    const sameCategory = memory1.metadata.category === memory2.metadata.category;
+    const sameProject = memory1.metadata.projectId === memory2.metadata.projectId;
+
+    if (sharedTags.length > 0 || sameCategory || sameProject) {
+      const confidence =
+        sharedTags.length * 0.3 + (sameCategory ? 0.4 : 0) + (sameProject ? 0.3 : 0);
+      return this.createRelationship(
+        memory1.id,
+        memory2.id,
+        'contextual',
+        confidence,
+        0.6,
+        'context-detector'
+      );
+    }
+    return null;
+  }
+
+  private async detectCausalRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Look for causal language patterns
+    const causalPatterns = [
+      /because.*/,
+      /due to.*/,
+      /caused by.*/,
+      /results in.*/,
+      /leads to.*/,
+      /therefore.*/,
+      /consequently.*/,
+    ];
+
+    const content1 = memory1.content.toLowerCase();
+    const content2 = memory2.content.toLowerCase();
+
+    for (const pattern of causalPatterns) {
+      if (pattern.test(content1) || pattern.test(content2)) {
+        return this.createRelationship(
+          memory1.id,
+          memory2.id,
+          'causal',
+          0.7,
+          0.7,
+          'causal-detector'
+        );
+      }
+    }
+    return null;
+  }
+
+  private async detectTemporalRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Check temporal proximity
+    const timeDiff = Math.abs(memory1.createdAt.getTime() - memory2.createdAt.getTime());
+    const hoursDiff = timeDiff / (1000 * 60 * 60);
+
+    // Memories created within 24 hours might be temporally related
+    if (hoursDiff < 24) {
+      const confidence = Math.max(0.3, 1 - hoursDiff / 24);
+      return this.createRelationship(
+        memory1.id,
+        memory2.id,
+        'temporal',
+        confidence,
+        0.5,
+        'temporal-detector'
+      );
+    }
+    return null;
+  }
+
+  private async detectHierarchicalRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Look for hierarchical patterns
+    const hierarchicalPatterns = [
+      /parent/,
+      /child/,
+      /contains/,
+      /part of/,
+      /belongs to/,
+      /section/,
+      /chapter/,
+      /subsection/,
+    ];
+
+    const content1 = memory1.content.toLowerCase();
+    const content2 = memory2.content.toLowerCase();
+
+    for (const pattern of hierarchicalPatterns) {
+      if (pattern.test(content1) || pattern.test(content2)) {
+        return this.createRelationship(
+          memory1.id,
+          memory2.id,
+          'hierarchical',
+          0.8,
+          0.7,
+          'hierarchy-detector'
+        );
+      }
+    }
+    return null;
+  }
+
+  private async detectContradictionRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Look for contradictory language
+    const contradictionPatterns = [
+      /however/,
+      /but/,
+      /although/,
+      /despite/,
+      /contrary/,
+      /opposite/,
+      /not/,
+      /never/,
+      /disagree/,
+    ];
+
+    const content1 = memory1.content.toLowerCase();
+    const content2 = memory2.content.toLowerCase();
+
+    // Also check for similar topics with different conclusions
+    const hasSimilarTopics = this.hasSimilarKeywords(content1, content2);
+    const hasContradictoryLanguage = contradictionPatterns.some(
+      pattern => pattern.test(content1) || pattern.test(content2)
+    );
+
+    if (hasSimilarTopics && hasContradictoryLanguage) {
+      return this.createRelationship(
+        memory1.id,
+        memory2.id,
+        'contradiction',
+        0.8,
+        0.9,
+        'contradiction-detector'
+      );
+    }
+    return null;
+  }
+
+  private async detectConfirmationRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Look for supporting language
+    const confirmationPatterns = [
+      /confirms/,
+      /supports/,
+      /validates/,
+      /proves/,
+      /shows/,
+      /demonstrates/,
+      /agrees/,
+      /consistent/,
+    ];
+
+    const content1 = memory1.content.toLowerCase();
+    const content2 = memory2.content.toLowerCase();
+
+    for (const pattern of confirmationPatterns) {
+      if (pattern.test(content1) || pattern.test(content2)) {
+        return this.createRelationship(
+          memory1.id,
+          memory2.id,
+          'confirmation',
+          0.7,
+          0.8,
+          'confirmation-detector'
+        );
+      }
+    }
+    return null;
+  }
+
+  private async detectEvolutionRelationship(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<MemoryRelationship | null> {
+    // Check if memories are versions of each other
+    const similarity = this.calculateContentSimilarity(memory1.content, memory2.content);
+
+    // High similarity + different update times suggests evolution
+    if (similarity > 0.7 && memory1.updatedAt.getTime() !== memory2.updatedAt.getTime()) {
+      return this.createRelationship(
+        memory1.id,
+        memory2.id,
+        'evolution',
+        0.9,
+        0.8,
+        'evolution-detector'
+      );
+    }
+    return null;
+  }
+
+  private createRelationship(
+    sourceId: string,
+    targetId: string,
+    type: RelationshipType,
+    confidence: number,
+    weight: number,
+    algorithm: string
+  ): MemoryRelationship {
+    return {
+      id: `rel-${sourceId}-${targetId}-${type}`,
+      sourceMemoryId: sourceId,
+      targetMemoryId: targetId,
+      type,
+      confidence,
+      weight,
+      metadata: {
+        source: 'auto-detected',
+        algorithm,
+        createdAt: new Date(),
+      },
+    };
+  }
+
+  private async calculateNodeMetrics(): Promise<void> {
+    for (const node of this.knowledgeGraph.nodes.values()) {
+      // Calculate centrality based on connection count and weights
+      const relationships = node.connections
+        .map(id => this.knowledgeGraph.edges.get(id))
+        .filter(Boolean) as MemoryRelationship[];
+      const totalWeight = relationships.reduce((sum, rel) => sum + rel.weight, 0);
+      node.centrality = Math.min(1, totalWeight / 10); // Normalize to 0-1
+
+      // Calculate importance based on multiple factors
+      const priority = node.memory.metadata.priority / 10; // Normalize to 0-1
+      const accessFrequency = Math.min(1, node.memory.accessCount / 100); // Normalize
+      const relationshipScore = node.centrality;
+      const recencyScore = this.calculateRecencyScore(node.memory.lastAccessedAt);
+
+      node.importance =
+        priority * 0.3 + accessFrequency * 0.2 + relationshipScore * 0.3 + recencyScore * 0.2;
+    }
+  }
+
+  private updateGraphStats(): void {
+    this.knowledgeGraph.stats.totalNodes = this.knowledgeGraph.nodes.size;
+    this.knowledgeGraph.stats.totalEdges = this.knowledgeGraph.edges.size;
+
+    if (this.knowledgeGraph.stats.totalNodes > 0) {
+      this.knowledgeGraph.stats.averageConnections =
+        Array.from(this.knowledgeGraph.nodes.values()).reduce(
+          (sum, node) => sum + node.connections.length,
+          0
+        ) / this.knowledgeGraph.stats.totalNodes;
+    }
+
+    // Find top central nodes
+    this.knowledgeGraph.stats.topCentralNodes = Array.from(this.knowledgeGraph.nodes.values())
+      .sort((a, b) => b.centrality - a.centrality)
+      .slice(0, 5)
+      .map(node => node.memoryId);
+  }
+
+  private async detectContentConflict(
+    memory1: MemoryItem,
+    memory2: MemoryItem
+  ): Promise<ConflictResolution | null> {
+    // Simple conflict detection based on contradictory content
+    const similarity = this.calculateContentSimilarity(memory1.content, memory2.content);
+    const hasContradiction = await this.detectContradictionRelationship(memory1, memory2);
+
+    if (similarity > 0.5 && hasContradiction) {
+      return {
+        id: `conflict-${memory1.id}-${memory2.id}`,
+        conflictingMemoryIds: [memory1.id, memory2.id],
+        conflictType: 'contradiction',
+        confidence: 0.8,
+        suggestedResolution: 'contextualize',
+        metadata: {
+          detectedAt: new Date(),
+          algorithm: 'contradiction-detector',
+        },
+      };
+    }
+    return null;
+  }
+
+  private async buildClusterFromSeed(
+    seedMemory: MemoryItem,
+    allMemories: MemoryItem[]
+  ): Promise<MemoryCluster> {
+    const clusterMemories = [seedMemory];
+    const seedRelationships = this.getMemoryRelationships(seedMemory.id);
+
+    // Add related memories to cluster
+    for (const rel of seedRelationships) {
+      const relatedId =
+        rel.sourceMemoryId === seedMemory.id ? rel.targetMemoryId : rel.sourceMemoryId;
+      const relatedMemory = allMemories.find(m => m.id === relatedId);
+
+      if (relatedMemory && !clusterMemories.includes(relatedMemory) && rel.confidence > 0.6) {
+        clusterMemories.push(relatedMemory);
+      }
+    }
+
+    // Calculate cluster metrics
+    const keywords = this.extractKeywords(clusterMemories.map(m => m.content).join(' '));
+    const commonTags = this.findCommonTags(clusterMemories);
+    const cohesion = this.calculateClusterCohesion(clusterMemories);
+
+    return {
+      id: `cluster-${seedMemory.id}`,
+      memoryIds: clusterMemories.map(m => m.id),
+      centroid: seedMemory.id,
+      cohesion,
+      keywords: keywords.slice(0, 10),
+      commonTags: commonTags.slice(0, 5),
+      summary: await this.summarizeCluster(clusterMemories.map(m => m.id)),
+      createdAt: new Date(),
+    };
+  }
+
+  // Utility methods
+
+  private hasUrlReference(content1: string, content2: string): boolean {
+    const urlPattern = /https?:\/\/[^\s]+/g;
+    const urls1 = content1.match(urlPattern) || [];
+    const urls2 = content2.match(urlPattern) || [];
+
+    return urls1.some(url => content2.includes(url)) || urls2.some(url => content1.includes(url));
+  }
+
+  private hasSimilarKeywords(content1: string, content2: string): boolean {
+    const keywords1 = this.extractKeywords(content1);
+    const keywords2 = this.extractKeywords(content2);
+
+    const commonKeywords = keywords1.filter(kw => keywords2.includes(kw));
+    return commonKeywords.length >= Math.min(3, Math.min(keywords1.length, keywords2.length) / 2);
+  }
+
+  private calculateContentSimilarity(content1: string, content2: string): number {
+    // Simple word-based similarity calculation
+    const words1 = new Set(content1.toLowerCase().split(/\s+/));
+    const words2 = new Set(content2.toLowerCase().split(/\s+/));
+
+    const intersection = new Set([...words1].filter(word => words2.has(word)));
+    const union = new Set([...words1, ...words2]);
+
+    return intersection.size / union.size;
+  }
+
+  private calculateRecencyScore(lastAccessedAt: Date): number {
+    const now = new Date();
+    const daysSinceAccess = (now.getTime() - lastAccessedAt.getTime()) / (1000 * 60 * 60 * 24);
+    return Math.max(0, 1 - daysSinceAccess / 30); // Decay over 30 days
+  }
+
+  private extractKeywords(content: string): string[] {
+    // Simple keyword extraction (in production, use more sophisticated NLP)
+    const words = content
+      .toLowerCase()
+      .replace(/[^\w\s]/g, ' ')
+      .split(/\s+/)
+      .filter(word => word.length > 3)
+      .filter(word => !this.isStopWord(word));
+
+    // Count frequency and return top words
+    const wordCount = new Map<string, number>();
+    words.forEach(word => {
+      wordCount.set(word, (wordCount.get(word) || 0) + 1);
+    });
+
+    return Array.from(wordCount.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 20)
+      .map(([word]) => word);
+  }
+
+  private findCommonTags(memories: MemoryItem[]): string[] {
+    const tagCount = new Map<string, number>();
+
+    memories.forEach(memory => {
+      memory.metadata.tags.forEach(tag => {
+        tagCount.set(tag, (tagCount.get(tag) || 0) + 1);
+      });
+    });
+
+    return Array.from(tagCount.entries())
+      .filter(([, count]) => count > 1)
+      .sort((a, b) => b[1] - a[1])
+      .map(([tag]) => tag);
+  }
+
+  private calculateClusterCohesion(memories: MemoryItem[]): number {
+    if (memories.length < 2) return 1;
+
+    let totalSimilarity = 0;
+    let pairCount = 0;
+
+    for (let i = 0; i < memories.length; i++) {
+      for (let j = i + 1; j < memories.length; j++) {
+        const memory1 = memories[i];
+        const memory2 = memories[j];
+        if (memory1 && memory2) {
+          totalSimilarity += this.calculateContentSimilarity(memory1.content, memory2.content);
+          pairCount++;
+        }
+      }
+    }
+
+    return pairCount > 0 ? totalSimilarity / pairCount : 0;
+  }
+
+  private isStopWord(word: string): boolean {
+    const stopWords = new Set([
+      'the',
+      'and',
+      'or',
+      'but',
+      'in',
+      'on',
+      'at',
+      'to',
+      'for',
+      'of',
+      'with',
+      'by',
+      'this',
+      'that',
+      'these',
+      'those',
+      'is',
+      'are',
+      'was',
+      'were',
+      'be',
+      'been',
+      'have',
+      'has',
+      'had',
+      'do',
+      'does',
+      'did',
+      'will',
+      'would',
+      'could',
+      'should',
+      'may',
+      'might',
+      'must',
+      'can',
+      'shall',
+      'a',
+      'an',
+      'as',
+      'if',
+      'when',
+      'where',
+      'why',
+      'how',
+      'what',
+      'who',
+      'which',
+      'from',
+      'up',
+      'out',
+      'down',
+      'off',
+      'over',
+    ]);
+    return stopWords.has(word);
+  }
+
+  // Public getters for accessing internal state
+  get allRelationships(): Map<string, MemoryRelationship> {
+    return new Map(this.relationships);
+  }
+
+  get currentKnowledgeGraph(): KnowledgeGraph {
+    return this.knowledgeGraph;
+  }
+
+  get allClusters(): Map<string, MemoryCluster> {
+    return new Map(this.clusters);
+  }
+
+  get allConflicts(): Map<string, ConflictResolution> {
+    return new Map(this.conflicts);
+  }
+}
