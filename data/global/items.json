@@ -1,5 +1,171 @@
 {
   "version": "1.0",
-  "savedAt": "2025-11-12T23:59:09.731Z",
-  "items": []
+  "savedAt": "2025-11-13T01:11:19.871Z",
+  "items": [
+    {
+      "content": "User reports login form is not working on mobile devices",
+      "metadata": {
+        "category": "session",
+        "priority": 8,
+        "tags": [
+          "mobile",
+          "login",
+          "bug-report",
+          "authentication"
+        ],
+        "source": "user-report",
+        "expiresAt": "2026-11-13T00:28:04.699Z"
+      },
+      "id": "ad5079d5-2270-4d77-b717-3410a804919b",
+      "createdAt": "2025-11-13T00:28:04.699Z",
+      "updatedAt": "2025-11-13T00:28:04.699Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.699Z"
+    },
+    {
+      "content": "Authentication service uses JWT tokens with 1-hour expiration",
+      "metadata": {
+        "category": "project-specific",
+        "priority": 8,
+        "tags": [
+          "authentication",
+          "jwt",
+          "tokens",
+          "security"
+        ],
+        "source": "documentation",
+        "projectId": "default",
+        "expiresAt": "2026-11-13T00:28:04.701Z"
+      },
+      "id": "b362afe4-621a-4245-b9e2-d8e6a76b485a",
+      "createdAt": "2025-11-13T00:28:04.701Z",
+      "updatedAt": "2025-11-13T00:28:04.701Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.701Z"
+    },
+    {
+      "content": "React components should always validate props to prevent runtime errors",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 9,
+        "tags": [
+          "react",
+          "best-practices",
+          "validation",
+          "important"
+        ],
+        "source": "knowledge-base",
+        "expiresAt": "2026-11-13T00:28:04.703Z"
+      },
+      "id": "fc45f60d-23ea-42c6-9c6a-a57c2bc43c8e",
+      "createdAt": "2025-11-13T00:28:04.703Z",
+      "updatedAt": "2025-11-13T00:28:04.703Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.703Z"
+    },
+    {
+      "content": "JWT tokens should be stored securely and refreshed before expiration",
+      "metadata": {
+        "category": "security",
+        "priority": 10,
+        "tags": [
+          "jwt",
+          "security",
+          "tokens",
+          "best-practices",
+          "reference"
+        ],
+        "source": "security-guide",
+        "expiresAt": "2026-11-13T00:28:04.704Z"
+      },
+      "id": "ba0ad15a-b033-4254-8c85-2b6617070ab5",
+      "createdAt": "2025-11-13T00:28:04.704Z",
+      "updatedAt": "2025-11-13T00:28:04.704Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.704Z"
+    },
+    {
+      "content": "Redux vs Context API: Use Redux for complex state, Context for simple prop drilling solutions",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 9,
+        "tags": [
+          "redux",
+          "context-api",
+          "comparison",
+          "architecture",
+          "important"
+        ],
+        "source": "architectural-guide",
+        "expiresAt": "2026-11-13T00:28:04.706Z"
+      },
+      "id": "2ab3aee1-4005-467e-82d7-cffaa4757c7d",
+      "createdAt": "2025-11-13T00:28:04.706Z",
+      "updatedAt": "2025-11-13T00:28:04.706Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.706Z"
+    },
+    {
+      "content": "Mobile-first design approach improves performance and user experience",
+      "metadata": {
+        "category": "design",
+        "priority": 8,
+        "tags": [
+          "mobile-first",
+          "performance",
+          "ux",
+          "design-patterns"
+        ],
+        "source": "design-guide",
+        "expiresAt": "2026-11-13T00:28:04.709Z"
+      },
+      "id": "d75cd663-f3ff-4ed1-a485-7ad5257b2f8b",
+      "createdAt": "2025-11-13T00:28:04.709Z",
+      "updatedAt": "2025-11-13T00:28:04.709Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.709Z"
+    },
+    {
+      "content": "TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.",
+      "metadata": {
+        "tags": [
+          "typescript",
+          "programming",
+          "javascript"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory-test",
+        "sessionId": "test-session-1",
+        "expiresAt": "2026-11-13T01:05:09.972Z"
+      },
+      "id": "a3193311-8e38-47c8-8e42-b6c1b9c0c26b",
+      "createdAt": "2025-11-13T01:05:09.972Z",
+      "updatedAt": "2025-11-13T01:05:09.972Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T01:05:09.972Z"
+    },
+    {
+      "content": "MCP (Model Context Protocol) allows AI models to interact with external tools and data sources in a standardized way.",
+      "metadata": {
+        "tags": [
+          "mcp",
+          "ai",
+          "protocol"
+        ],
+        "category": "knowledge",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory-test",
+        "sessionId": "test-session-1",
+        "expiresAt": "2026-11-13T01:05:10.210Z"
+      },
+      "id": "dfb66d84-6fac-4b9c-b529-042e21b83e6b",
+      "createdAt": "2025-11-13T01:05:10.210Z",
+      "updatedAt": "2025-11-13T01:05:10.210Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T01:05:10.210Z"
+    }
+  ]
 }

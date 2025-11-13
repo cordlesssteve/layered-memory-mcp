@@ -284,6 +284,10 @@ export abstract class BaseMemoryLayer implements MemoryLayerInterface {
         ...item,
         createdAt: typeof item.createdAt === 'string' ? new Date(item.createdAt) : item.createdAt,
         updatedAt: typeof item.updatedAt === 'string' ? new Date(item.updatedAt) : item.updatedAt,
+        lastAccessedAt:
+          typeof item.lastAccessedAt === 'string'
+            ? new Date(item.lastAccessedAt)
+            : item.lastAccessedAt,
       };
 
       this.items.set(normalizedItem.id, normalizedItem);

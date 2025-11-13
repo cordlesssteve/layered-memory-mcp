@@ -1,43 +1,176 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-11-12T23:59:09.730Z",
+  "savedAt": "2025-11-13T01:06:07.760Z",
   "items": [
     {
-      "content": "Content 3",
+      "content": "Currently debugging React component that fails to render user profile data",
       "metadata": {
-        "tags": [
-          "test"
-        ],
-        "category": "knowledge",
+        "category": "session",
         "priority": 6,
-        "source": "test",
+        "tags": [
+          "react",
+          "debugging",
+          "current-issue",
+          "profile"
+        ],
+        "source": "user-input",
         "projectId": "default",
-        "expiresAt": "2025-12-12T23:59:09.727Z"
+        "expiresAt": "2025-12-13T00:28:04.698Z"
       },
-      "id": "f4c685a2-b6ac-4d9a-bf61-5325fd7d7e56",
-      "createdAt": "2025-11-12T23:59:09.727Z",
-      "updatedAt": "2025-11-12T23:59:09.727Z",
+      "id": "b50e44ed-360d-4163-8242-d8e5fffe6539",
+      "createdAt": "2025-11-13T00:28:04.698Z",
+      "updatedAt": "2025-11-13T00:28:04.698Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T23:59:09.727Z"
+      "lastAccessedAt": "2025-11-13T00:28:04.698Z"
     },
     {
-      "content": "Content 4",
+      "content": "Found that the issue is related to missing authentication token in API calls",
+      "metadata": {
+        "category": "session",
+        "priority": 7,
+        "tags": [
+          "authentication",
+          "api",
+          "token",
+          "debugging"
+        ],
+        "source": "discovery",
+        "projectId": "default",
+        "expiresAt": "2025-12-13T00:28:04.698Z"
+      },
+      "id": "f2799b1e-d25c-40da-919b-167eb7832d0c",
+      "createdAt": "2025-11-13T00:28:04.698Z",
+      "updatedAt": "2025-11-13T00:28:04.698Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.698Z"
+    },
+    {
+      "content": "This React project uses Redux for state management and TypeScript for type safety",
+      "metadata": {
+        "category": "project-specific",
+        "priority": 7,
+        "tags": [
+          "redux",
+          "typescript",
+          "architecture",
+          "configuration"
+        ],
+        "source": "project-info",
+        "projectId": "default",
+        "expiresAt": "2025-12-13T00:28:04.700Z"
+      },
+      "id": "8742bd57-4ccd-492d-a1a1-befacb3cd042",
+      "createdAt": "2025-11-13T00:28:04.700Z",
+      "updatedAt": "2025-11-13T00:28:04.700Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.700Z"
+    },
+    {
+      "content": "Authentication service uses JWT tokens with 1-hour expiration",
+      "metadata": {
+        "category": "project-specific",
+        "priority": 8,
+        "tags": [
+          "authentication",
+          "jwt",
+          "tokens",
+          "security"
+        ],
+        "source": "documentation",
+        "projectId": "default",
+        "expiresAt": "2025-12-13T00:28:04.700Z"
+      },
+      "id": "a76039d5-99c5-4db5-8a2b-147e6caaf63c",
+      "createdAt": "2025-11-13T00:28:04.700Z",
+      "updatedAt": "2025-11-13T00:28:04.700Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.700Z"
+    },
+    {
+      "content": "Mobile responsive design implemented using CSS Grid and Flexbox",
+      "metadata": {
+        "category": "project-specific",
+        "priority": 6,
+        "tags": [
+          "mobile",
+          "responsive",
+          "css",
+          "design"
+        ],
+        "source": "documentation",
+        "projectId": "default",
+        "expiresAt": "2025-12-13T00:28:04.701Z"
+      },
+      "id": "b3d270c5-331d-402b-b8da-5bf0eb94586d",
+      "createdAt": "2025-11-13T00:28:04.701Z",
+      "updatedAt": "2025-11-13T00:28:04.701Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.701Z"
+    },
+    {
+      "content": "Pattern observed: React rendering issues often traced to state mutation or missing keys",
+      "metadata": {
+        "category": "pattern",
+        "priority": 6,
+        "tags": [
+          "react",
+          "patterns",
+          "rendering",
+          "state",
+          "historical-insight"
+        ],
+        "source": "pattern-analysis",
+        "projectId": "default",
+        "expiresAt": "2025-12-13T00:28:04.711Z"
+      },
+      "id": "d4ce5063-491a-4853-8c48-c82dfb49eff7",
+      "createdAt": "2025-11-13T00:28:04.711Z",
+      "updatedAt": "2025-11-13T00:28:04.711Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T00:28:04.711Z"
+    },
+    {
+      "content": "Need to implement semantic search functionality using vector embeddings for similarity matching.",
       "metadata": {
         "tags": [
-          "test"
+          "todo",
+          "search",
+          "embeddings"
         ],
-        "category": "knowledge",
+        "category": "task",
         "priority": 7,
-        "source": "test",
+        "source": "mcp-tool",
         "projectId": "default",
-        "expiresAt": "2025-12-12T23:59:09.727Z"
+        "sessionId": "test-session-1",
+        "expiresAt": "2025-12-13T01:05:10.397Z"
       },
-      "id": "7fb00308-2d6f-447c-a9f2-7848c84baff5",
-      "createdAt": "2025-11-12T23:59:09.727Z",
-      "updatedAt": "2025-11-12T23:59:09.727Z",
+      "id": "eacae30e-6179-4e4c-8fa4-0d1c6a5dac6a",
+      "createdAt": "2025-11-13T01:05:10.397Z",
+      "updatedAt": "2025-11-13T01:05:10.397Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T23:59:09.727Z"
+      "lastAccessedAt": "2025-11-13T01:05:10.397Z"
+    },
+    {
+      "content": "Decided to use SQLite with FTS5 for full-text search instead of a separate search engine.",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "database",
+          "sqlite"
+        ],
+        "category": "decision",
+        "priority": 6,
+        "source": "mcp-tool",
+        "projectId": "default",
+        "sessionId": "test-session-1",
+        "expiresAt": "2025-12-13T01:05:10.613Z"
+      },
+      "id": "06c62205-90b8-48b2-8813-3ab635ca5d28",
+      "createdAt": "2025-11-13T01:05:10.613Z",
+      "updatedAt": "2025-11-13T01:05:10.613Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-13T01:05:10.613Z"
     }
   ]
 }
