@@ -511,6 +511,116 @@ async function main(): Promise<void> {
               additionalProperties: false,
             },
           },
+          {
+            name: 'find_memory_path',
+            description: 'Find the shortest path between two memories in the graph',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                fromId: {
+                  type: 'string',
+                  description: 'Starting memory ID',
+                },
+                toId: {
+                  type: 'string',
+                  description: 'Target memory ID',
+                },
+              },
+              required: ['fromId', 'toId'],
+            },
+          },
+          {
+            name: 'get_related_memories',
+            description: 'Get memories related to a specific memory via graph relationships',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                memoryId: {
+                  type: 'string',
+                  description: 'Memory ID to find relationships for',
+                },
+                relationshipType: {
+                  type: 'string',
+                  description:
+                    'Optional relationship type filter (TEMPORAL, SEMANTIC, REFERENCES, CAUSAL, CONTEXT, SUPERSEDES)',
+                },
+              },
+              required: ['memoryId'],
+            },
+          },
+          {
+            name: 'create_memory_relationship',
+            description: 'Manually create a relationship between two memories in the graph',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                fromId: {
+                  type: 'string',
+                  description: 'Source memory ID',
+                },
+                toId: {
+                  type: 'string',
+                  description: 'Target memory ID',
+                },
+                type: {
+                  type: 'string',
+                  description:
+                    'Relationship type (TEMPORAL, SEMANTIC, REFERENCES, CAUSAL, CONTEXT, SUPERSEDES)',
+                },
+                strength: {
+                  type: 'number',
+                  description: 'Relationship strength (0.0 to 1.0)',
+                  minimum: 0,
+                  maximum: 1,
+                  default: 1.0,
+                },
+              },
+              required: ['fromId', 'toId', 'type'],
+            },
+          },
+          {
+            name: 'get_reachable_memories',
+            description: 'Get all memories reachable from a starting memory via graph traversal',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                memoryId: {
+                  type: 'string',
+                  description: 'Starting memory ID',
+                },
+              },
+              required: ['memoryId'],
+            },
+          },
+          {
+            name: 'graph_search',
+            description:
+              'Perform graph-based search that expands through relationships from seed results',
+            inputSchema: {
+              type: 'object',
+              properties: {
+                query: {
+                  type: 'string',
+                  description: 'Search query text',
+                },
+                maxDepth: {
+                  type: 'number',
+                  description: 'Maximum traversal depth for graph expansion (default: 2)',
+                  minimum: 1,
+                  maximum: 5,
+                  default: 2,
+                },
+                limit: {
+                  type: 'number',
+                  description: 'Maximum number of results to return',
+                  minimum: 1,
+                  maximum: 100,
+                  default: 10,
+                },
+              },
+              required: ['query'],
+            },
+          },
         ],
       };
     });
@@ -621,8 +731,14 @@ async function main(): Promise<void> {
                           category: result.memory.metadata.category,
                           priority: result.memory.metadata.priority,
                           tags: result.memory.metadata.tags,
-                          createdAt: result.memory.createdAt instanceof Date ? result.memory.createdAt.toISOString() : result.memory.createdAt,
-                          lastAccessedAt: result.memory.lastAccessedAt instanceof Date ? result.memory.lastAccessedAt.toISOString() : result.memory.lastAccessedAt,
+                          createdAt:
+                            result.memory.createdAt instanceof Date
+                              ? result.memory.createdAt.toISOString()
+                              : result.memory.createdAt,
+                          lastAccessedAt:
+                            result.memory.lastAccessedAt instanceof Date
+                              ? result.memory.lastAccessedAt.toISOString()
+                              : result.memory.lastAccessedAt,
                           accessCount: result.memory.accessCount,
                         },
                       })),
@@ -789,8 +905,14 @@ async function main(): Promise<void> {
                           category: result.memory.metadata.category,
                           priority: result.memory.metadata.priority,
                           tags: result.memory.metadata.tags,
-                          createdAt: result.memory.createdAt instanceof Date ? result.memory.createdAt.toISOString() : result.memory.createdAt,
-                          lastAccessedAt: result.memory.lastAccessedAt instanceof Date ? result.memory.lastAccessedAt.toISOString() : result.memory.lastAccessedAt,
+                          createdAt:
+                            result.memory.createdAt instanceof Date
+                              ? result.memory.createdAt.toISOString()
+                              : result.memory.createdAt,
+                          lastAccessedAt:
+                            result.memory.lastAccessedAt instanceof Date
+                              ? result.memory.lastAccessedAt.toISOString()
+                              : result.memory.lastAccessedAt,
                           accessCount: result.memory.accessCount,
                         },
                       })),
@@ -838,8 +960,14 @@ async function main(): Promise<void> {
                           category: result.memory.metadata.category,
                           priority: result.memory.metadata.priority,
                           tags: result.memory.metadata.tags,
-                          createdAt: result.memory.createdAt instanceof Date ? result.memory.createdAt.toISOString() : result.memory.createdAt,
-                          lastAccessedAt: result.memory.lastAccessedAt instanceof Date ? result.memory.lastAccessedAt.toISOString() : result.memory.lastAccessedAt,
+                          createdAt:
+                            result.memory.createdAt instanceof Date
+                              ? result.memory.createdAt.toISOString()
+                              : result.memory.createdAt,
+                          lastAccessedAt:
+                            result.memory.lastAccessedAt instanceof Date
+                              ? result.memory.lastAccessedAt.toISOString()
+                              : result.memory.lastAccessedAt,
                           accessCount: result.memory.accessCount,
                         },
                       })),
@@ -1325,6 +1453,179 @@ async function main(): Promise<void> {
                         telemetry: monitoringStats.telemetry,
                         performance: monitoringStats.performance,
                       },
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'find_memory_path': {
+            const { fromId, toId } = args as { fromId: string; toId: string };
+
+            const path = await memoryRouter.findMemoryPath(fromId, toId);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      path: path || null,
+                      pathLength: path ? path.length : 0,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_related_memories': {
+            const { memoryId, relationshipType } = args as {
+              memoryId: string;
+              relationshipType?: string;
+            };
+
+            const related = await memoryRouter.getRelatedMemories(memoryId, relationshipType);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      memoryId,
+                      relationshipType: relationshipType || 'all',
+                      related: related.map(r => ({
+                        memory: {
+                          id: r.memory.id,
+                          content: r.memory.content,
+                          metadata: r.memory.metadata,
+                        },
+                        relationshipType: r.relationshipType,
+                        strength: r.strength,
+                      })),
+                      count: related.length,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'create_memory_relationship': {
+            const {
+              fromId,
+              toId,
+              type,
+              strength = 1.0,
+            } = args as {
+              fromId: string;
+              toId: string;
+              type: string;
+              strength?: number;
+            };
+
+            const success = await memoryRouter.createMemoryRelationship(
+              fromId,
+              toId,
+              type,
+              strength
+            );
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success,
+                      relationship: success
+                        ? {
+                            from: fromId,
+                            to: toId,
+                            type,
+                            strength,
+                          }
+                        : null,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'get_reachable_memories': {
+            const { memoryId } = args as { memoryId: string };
+
+            const reachable = await memoryRouter.getReachableMemories(memoryId);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      memoryId,
+                      reachable: reachable.map(m => ({
+                        id: m.id,
+                        content: m.content,
+                        metadata: m.metadata,
+                      })),
+                      count: reachable.length,
+                    },
+                    null,
+                    2
+                  ),
+                },
+              ],
+            };
+          }
+
+          case 'graph_search': {
+            const {
+              query,
+              maxDepth = 2,
+              limit = 10,
+            } = args as {
+              query: string;
+              maxDepth?: number;
+              limit?: number;
+            };
+
+            const results = await memoryRouter.graphSearch({ query, limit }, maxDepth);
+
+            return {
+              content: [
+                {
+                  type: 'text',
+                  text: JSON.stringify(
+                    {
+                      success: true,
+                      query,
+                      maxDepth,
+                      results: results.map(r => ({
+                        memory: {
+                          id: r.memory.id,
+                          content: r.memory.content,
+                          metadata: r.memory.metadata,
+                        },
+                        score: r.score,
+                        source: r.source,
+                        explanation: r.explanation,
+                      })),
+                      count: results.length,
                     },
                     null,
                     2

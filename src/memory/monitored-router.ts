@@ -542,4 +542,33 @@ export class MonitoredMemoryRouter implements MemoryRouterInterface {
   async analyze(): Promise<any> {
     return (this.router as any).analyze?.();
   }
+
+  // Graph operations - delegate to router
+  async findMemoryPath(fromId: string, toId: string): Promise<MemoryItem[] | null> {
+    return this.router.findMemoryPath(fromId, toId);
+  }
+
+  async getRelatedMemories(
+    memoryId: string,
+    relationshipType?: string
+  ): Promise<Array<{ memory: MemoryItem; relationshipType: string; strength: number }>> {
+    return this.router.getRelatedMemories(memoryId, relationshipType);
+  }
+
+  async createMemoryRelationship(
+    fromId: string,
+    toId: string,
+    type: string,
+    strength?: number
+  ): Promise<boolean> {
+    return this.router.createMemoryRelationship(fromId, toId, type, strength);
+  }
+
+  async getReachableMemories(memoryId: string): Promise<MemoryItem[]> {
+    return this.router.getReachableMemories(memoryId);
+  }
+
+  async graphSearch(query: MemoryQuery, maxDepth?: number): Promise<MemorySearchResult[]> {
+    return this.router.graphSearch(query, maxDepth);
+  }
 }

@@ -11,6 +11,7 @@ import { SessionLayer } from './layers/session-layer.js';
 import { ProjectLayer } from './layers/project-layer.js';
 import { GlobalLayer } from './layers/global-layer.js';
 import { TemporalLayer } from './layers/temporal-layer.js';
+import { GraphLayer } from './layers/graph-layer.js';
 import {
   AdvancedSearchEngine,
   type AdvancedQuery,
@@ -53,6 +54,7 @@ export class MemoryRouter implements MemoryRouterInterface {
   private readonly advancedSearchEngine: AdvancedSearchEngine;
   private readonly relationshipEngine: MemoryRelationshipEngine;
   private readonly validationInterface: RelationshipValidationInterface;
+  private readonly graphLayer: GraphLayer;
 
   constructor(config: Partial<MemoryRouterConfig> = {}) {
     this.config = {
@@ -82,12 +84,17 @@ export class MemoryRouter implements MemoryRouterInterface {
     };
 
     this.initializeLayers();
+
+    // Initialize graph layer for relationship storage
+    this.graphLayer = new GraphLayer('global', this.config.globalLayer);
+
     this.advancedSearchEngine = new AdvancedSearchEngine(this.layers);
     this.relationshipEngine = new MemoryRelationshipEngine();
     this.validationInterface = new RelationshipValidationInterface();
 
     this.logger.info('Memory router initialized', {
       layerCount: this.layers.size,
+      graphLayerEnabled: true,
       config: this.config.routing,
     });
   }
@@ -109,6 +116,24 @@ export class MemoryRouter implements MemoryRouterInterface {
         source: metadata.source || 'user-input',
       },
     });
+
+    // Also store in graph layer for relationship tracking
+    try {
+      await this.graphLayer.store({
+        content,
+        metadata: {
+          ...metadata,
+          source: metadata.source || 'user-input',
+        },
+      });
+      // Auto-link the memory in the graph
+      await this.graphLayer.autoLinkMemory(item.id);
+    } catch (error) {
+      this.logger.warn('Graph storage failed', {
+        memoryId: item.id,
+        error: error instanceof Error ? error.message : error,
+      });
+    }
 
     // Emit event
     await this.emitEvent({
@@ -575,6 +600,94 @@ export class MemoryRouter implements MemoryRouterInterface {
     return migratedCount;
   }
 
+  /**
+   * Graph operations - expose GraphLayer methods
+   */
+
+  async findMemoryPath(fromId: string, toId: string): Promise<MemoryItem[] | null> {
+    try {
+      return await this.graphLayer.findShortestPath(fromId, toId);
+    } catch (error) {
+      this.logger.error('Failed to find memory path', {
+        fromId,
+        toId,
+        error: error instanceof Error ? error.message : error,
+      });
+      return null;
+    }
+  }
+
+  async getRelatedMemories(
+    memoryId: string,
+    relationshipType?: string
+  ): Promise<Array<{ memory: MemoryItem; relationshipType: string; strength: number }>> {
+    try {
+      // Import MemoryRelationshipType to pass as type parameter
+      const { MemoryRelationshipType } = await import('./layers/graph-layer.js');
+      const relType = relationshipType as keyof typeof MemoryRelationshipType | undefined;
+      return await this.graphLayer.getRelatedMemories(
+        memoryId,
+        relType ? MemoryRelationshipType[relType] : undefined
+      );
+    } catch (error) {
+      this.logger.error('Failed to get related memories', {
+        memoryId,
+        error: error instanceof Error ? error.message : error,
+      });
+      return [];
+    }
+  }
+
+  async createMemoryRelationship(
+    fromId: string,
+    toId: string,
+    type: string,
+    strength: number = 1.0
+  ): Promise<boolean> {
+    try {
+      const { MemoryRelationshipType } = await import('./layers/graph-layer.js');
+      const relType = MemoryRelationshipType[type as keyof typeof MemoryRelationshipType];
+      return await this.graphLayer.createRelationship({
+        from: fromId,
+        to: toId,
+        type: relType,
+        strength,
+      });
+    } catch (error) {
+      this.logger.error('Failed to create memory relationship', {
+        fromId,
+        toId,
+        type,
+        error: error instanceof Error ? error.message : error,
+      });
+      return false;
+    }
+  }
+
+  async getReachableMemories(memoryId: string): Promise<MemoryItem[]> {
+    try {
+      return await this.graphLayer.getReachableMemories(memoryId);
+    } catch (error) {
+      this.logger.error('Failed to get reachable memories', {
+        memoryId,
+        error: error instanceof Error ? error.message : error,
+      });
+      return [];
+    }
+  }
+
+  async graphSearch(query: MemoryQuery, maxDepth: number = 2): Promise<MemorySearchResult[]> {
+    try {
+      return await this.graphLayer.graphSearch(query, maxDepth);
+    } catch (error) {
+      this.logger.error('Graph search failed', {
+        query: query.query,
+        error: error instanceof Error ? error.message : error,
+      });
+      return [];
+    }
+  }
+
   async analyze(query: string): Promise<MemoryAnalysis> {
     const tokens = this.tokenize(query);
     const complexity = this.assessQueryComplexity(query, tokens);
@@ -613,6 +726,15 @@ export class MemoryRouter implements MemoryRouterInterface {
 
   async close(): Promise<void> {
     this.logger.info('Closing memory router');
+
+    // Close graph layer
+    try {
+      await this.graphLayer.disconnect();
+    } catch (error) {
+      this.logger.error('Failed to disconnect graph layer', {
+        error: error instanceof Error ? error.message : error,
+      });
+    }
 
     // Close all layers
     const closePromises = Array.from(this.layers.values()).map(async layer => {
