@@ -300,12 +300,12 @@ export class MonitoringService {
   constructor(env: Environment, config?: Partial<MonitoringConfig>) {
     this.config = {
       telemetry: {
-        enabled: env.nodeEnv !== 'test',
+        enabled: env.telemetryEnabled ?? env.nodeEnv !== 'test',
         metricsRetentionMs: 24 * 60 * 60 * 1000,
         exportMetrics: env.nodeEnv === 'production',
       },
       performance: {
-        enabled: env.nodeEnv !== 'test',
+        enabled: env.performanceMonitoringEnabled ?? env.nodeEnv !== 'test',
         slowOperationMs: 5000,
         alerting: env.nodeEnv === 'production',
       },

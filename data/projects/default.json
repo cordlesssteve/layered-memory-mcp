@@ -1,134 +1,43 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-11-12T20:48:01.078Z",
+  "savedAt": "2025-11-12T23:59:09.730Z",
   "items": [
     {
-      "content": "Currently debugging React component that fails to render user profile data",
+      "content": "Content 3",
       "metadata": {
-        "category": "session",
-        "priority": 6,
         "tags": [
-          "react",
-          "debugging",
-          "current-issue",
-          "profile"
+          "test"
         ],
-        "source": "user-input",
+        "category": "knowledge",
+        "priority": 6,
+        "source": "test",
         "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.043Z"
+        "expiresAt": "2025-12-12T23:59:09.727Z"
       },
-      "id": "dd8cd110-5628-46d5-91f7-0102dcd48521",
-      "createdAt": "2025-11-12T20:48:01.043Z",
-      "updatedAt": "2025-11-12T20:48:01.043Z",
+      "id": "f4c685a2-b6ac-4d9a-bf61-5325fd7d7e56",
+      "createdAt": "2025-11-12T23:59:09.727Z",
+      "updatedAt": "2025-11-12T23:59:09.727Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.043Z"
+      "lastAccessedAt": "2025-11-12T23:59:09.727Z"
     },
     {
-      "content": "Found that the issue is related to missing authentication token in API calls",
+      "content": "Content 4",
       "metadata": {
-        "category": "session",
+        "tags": [
+          "test"
+        ],
+        "category": "knowledge",
         "priority": 7,
-        "tags": [
-          "authentication",
-          "api",
-          "token",
-          "debugging"
-        ],
-        "source": "discovery",
+        "source": "test",
         "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.043Z"
+        "expiresAt": "2025-12-12T23:59:09.727Z"
       },
-      "id": "48c6b8f1-d466-43c5-8d13-7de6b69b8c64",
-      "createdAt": "2025-11-12T20:48:01.043Z",
-      "updatedAt": "2025-11-12T20:48:01.043Z",
+      "id": "7fb00308-2d6f-447c-a9f2-7848c84baff5",
+      "createdAt": "2025-11-12T23:59:09.727Z",
+      "updatedAt": "2025-11-12T23:59:09.727Z",
       "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.043Z"
-    },
-    {
-      "content": "This React project uses Redux for state management and TypeScript for type safety",
-      "metadata": {
-        "category": "project-specific",
-        "priority": 7,
-        "tags": [
-          "redux",
-          "typescript",
-          "architecture",
-          "configuration"
-        ],
-        "source": "project-info",
-        "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.044Z"
-      },
-      "id": "9217a81a-3a55-48f8-851f-681f1f831fd2",
-      "createdAt": "2025-11-12T20:48:01.044Z",
-      "updatedAt": "2025-11-12T20:48:01.044Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.044Z"
-    },
-    {
-      "content": "Authentication service uses JWT tokens with 1-hour expiration",
-      "metadata": {
-        "category": "project-specific",
-        "priority": 8,
-        "tags": [
-          "authentication",
-          "jwt",
-          "tokens",
-          "security"
-        ],
-        "source": "documentation",
-        "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.045Z"
-      },
-      "id": "d38e10d1-04c0-4cd0-b8d3-230926f313af",
-      "createdAt": "2025-11-12T20:48:01.045Z",
-      "updatedAt": "2025-11-12T20:48:01.045Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.045Z"
-    },
-    {
-      "content": "Mobile responsive design implemented using CSS Grid and Flexbox",
-      "metadata": {
-        "category": "project-specific",
-        "priority": 6,
-        "tags": [
-          "mobile",
-          "responsive",
-          "css",
-          "design"
-        ],
-        "source": "documentation",
-        "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.046Z"
-      },
-      "id": "077b1593-33c4-475c-b019-74ea01d4e8b8",
-      "createdAt": "2025-11-12T20:48:01.046Z",
-      "updatedAt": "2025-11-12T20:48:01.046Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.046Z"
-    },
-    {
-      "content": "Pattern observed: React rendering issues often traced to state mutation or missing keys",
-      "metadata": {
-        "category": "pattern",
-        "priority": 6,
-        "tags": [
-          "react",
-          "patterns",
-          "rendering",
-          "state",
-          "historical-insight"
-        ],
-        "source": "pattern-analysis",
-        "projectId": "default",
-        "expiresAt": "2025-12-12T20:48:01.059Z"
-      },
-      "id": "c1a6cc37-8b4d-41a6-9089-f191fa45b915",
-      "createdAt": "2025-11-12T20:48:01.059Z",
-      "updatedAt": "2025-11-12T20:48:01.059Z",
-      "accessCount": 0,
-      "lastAccessedAt": "2025-11-12T20:48:01.059Z"
+      "lastAccessedAt": "2025-11-12T23:59:09.727Z"
     }
   ]
 }

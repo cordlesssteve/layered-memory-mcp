@@ -307,8 +307,8 @@ export class RequestValidator {
   static sanitizeString(input: string): string {
     return (
       input
-        // Remove script tags and dangerous protocols
-        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+        // Remove script tags (both opening and closing, even if malformed/nested)
+        .replace(/<\/?script\b[^>]*>/gi, '')
         .replace(/javascript:/gi, '')
         .replace(/data:/gi, '')
         .replace(/vbscript:/gi, '')
@@ -324,22 +324,40 @@ export class RequestValidator {
    */
   static sanitizeMemoryContent(content: string): ValidationResult<string> {
     try {
-      // First validate structure
-      const validation = this.validate(CommonSchemas.memoryContent, content);
-      if (!validation.success) {
-        return validation;
+      // First sanitize
+      const sanitized = this.sanitizeString(content);
+
+      // Check if sanitization resulted in empty content
+      if (sanitized.length === 0) {
+        return {
+          success: false,
+          errors: [
+            {
+              field: 'content',
+              message: 'Content is empty after sanitization',
+              code: 'empty_after_sanitization',
+            },
+          ],
+        };
       }
 
-      // Then sanitize
-      const sanitized = this.sanitizeString(validation.data!);
-
-      // Ensure sanitization didn't remove too much content
+      // Warn if sanitization removed significant content
       if (sanitized.length < content.length * 0.5) {
         logger.warn('Sanitization removed significant content', {
           originalLength: content.length,
           sanitizedLength: sanitized.length,
           removalRatio: (content.length - sanitized.length) / content.length,
         });
+      }
+
+      // Validate the sanitized content
+      const validation = this.validate(
+        z.string().min(1, 'Memory content cannot be empty').max(100000, 'Memory content too long'),
+        sanitized
+      );
+
+      if (!validation.success) {
+        return validation;
       }
 
       return {

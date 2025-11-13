@@ -253,8 +253,18 @@ export class SemanticEnrichmentPipeline {
       /class\s+\w+/,
       /import\s+.+from/,
       /const\s+\w+\s*=/,
+      /let\s+\w+\s*=/,
+      /var\s+\w+\s*=/,
       /def\s+\w+\(/,
       /public\s+class/,
+      /\bif\s*\(/,
+      /\bwhile\s*\(/,
+      /\bfor\s*\(/,
+      /\bswitch\s*\(/,
+      /\btry\s*\{/,
+      /\.\w+\(/, // method calls like obj.method()
+      /=>\s*[{\w]/, // arrow functions
+      /\{.*\}/, // code blocks with braces
     ];
 
     return codeIndicators.some(pattern => pattern.test(content));

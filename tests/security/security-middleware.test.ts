@@ -11,6 +11,8 @@ const testEnv: Environment = {
   logLevel: 'silent',
   telemetryEnabled: false,
   performanceMonitoringEnabled: false,
+  rateLimitWindowMs: 15 * 60 * 1000,
+  rateLimitMaxRequests: 1000,
 } as Environment;
 
 describe('SecurityMiddleware', () => {

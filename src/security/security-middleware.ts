@@ -313,9 +313,11 @@ export class SecurityMiddleware {
   /**
    * Get security headers
    */
-  private getSecurityHeaders(additionalHeaders?: Record<string, string>): Record<string, string> {
+  private getSecurityHeaders(
+    additionalHeaders?: Record<string, string>
+  ): Record<string, string> | undefined {
     if (!this.config.headers.enabled) {
-      return additionalHeaders || {};
+      return additionalHeaders;
     }
 
     const headers: Record<string, string> = {

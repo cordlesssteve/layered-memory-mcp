@@ -271,6 +271,78 @@ export class SoftwareEngineeringOntology {
       confidence: 1.0,
     });
 
+    // Software Principles
+    this.addConcept({
+      id: 'inheritance',
+      name: 'Inheritance',
+      type: 'software_principle',
+      description: 'OOP principle where classes inherit properties and methods from parent classes',
+      aliases: ['extends', 'subclass', 'derived class'],
+      relationships: [
+        { type: 'part_of', target: 'oop', weight: 1.0 },
+        { type: 'enables', target: 'code_reuse', weight: 0.9 },
+        { type: 'similar_to', target: 'composition', weight: 0.6 },
+      ],
+      properties: {
+        paradigm: 'object-oriented',
+        reusability: 'high',
+        coupling: 'medium',
+      },
+      confidence: 1.0,
+    });
+
+    this.addConcept({
+      id: 'polymorphism',
+      name: 'Polymorphism',
+      type: 'software_principle',
+      description: 'Ability of objects to take multiple forms',
+      aliases: ['polymorphic', 'method overriding'],
+      relationships: [
+        { type: 'part_of', target: 'oop', weight: 1.0 },
+        { type: 'requires', target: 'inheritance', weight: 0.8 },
+      ],
+      properties: {
+        paradigm: 'object-oriented',
+        flexibility: 'high',
+      },
+      confidence: 1.0,
+    });
+
+    this.addConcept({
+      id: 'encapsulation',
+      name: 'Encapsulation',
+      type: 'software_principle',
+      description: 'Bundling data and methods that operate on that data within a single unit',
+      aliases: ['data hiding', 'information hiding'],
+      relationships: [
+        { type: 'part_of', target: 'oop', weight: 1.0 },
+        { type: 'implements', target: 'abstraction', weight: 0.7 },
+      ],
+      properties: {
+        paradigm: 'object-oriented',
+        security: 'high',
+        maintainability: 'high',
+      },
+      confidence: 1.0,
+    });
+
+    this.addConcept({
+      id: 'interface_segregation',
+      name: 'Interface Segregation Principle',
+      type: 'software_principle',
+      description: 'No client should depend on methods it does not use',
+      aliases: ['isp', 'interface segregation'],
+      relationships: [
+        { type: 'part_of', target: 'solid', weight: 1.0 },
+        { type: 'enables', target: 'loose_coupling', weight: 0.9 },
+      ],
+      properties: {
+        category: 'SOLID',
+        cohesion: 'high',
+      },
+      confidence: 1.0,
+    });
+
     // Testing Concepts
     this.addConcept({
       id: 'unit_testing',

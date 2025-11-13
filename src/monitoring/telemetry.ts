@@ -68,7 +68,7 @@ export class TelemetrySystem {
 
   constructor(env: Environment, config?: Partial<TelemetryConfig>) {
     this.config = {
-      enabled: env.nodeEnv !== 'test',
+      enabled: config?.enabled ?? env.telemetryEnabled ?? env.nodeEnv !== 'test',
       metricsRetentionMs: 24 * 60 * 60 * 1000, // 24 hours
       healthCheckIntervalMs: 30 * 1000, // 30 seconds
       performanceMetricsEnabled: true,
