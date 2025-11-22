@@ -99,7 +99,8 @@ export function setupEnvironment(): Environment {
 
     if (validatedConfig.nodeEnv !== 'test') {
       // eslint-disable-next-line no-console
-      console.log('Environment configuration:', JSON.stringify(safeConfig, null, 2));
+      // Use stderr to avoid corrupting MCP protocol on stdout
+      console.error('Environment configuration:', JSON.stringify(safeConfig, null, 2));
     }
 
     return validatedConfig;

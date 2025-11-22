@@ -1,5 +1,5 @@
 {
-  "name": "layered-memory-mcp",
+  "name": "@stacktown/layered-memory-mcp",
   "version": "0.1.0",
   "description": "Hierarchical memory management MCP server with Session → Project → Global → Temporal layers",
   "main": "dist/index.js",

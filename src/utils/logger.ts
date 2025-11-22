@@ -69,16 +69,9 @@ class ConsoleLogger implements Logger {
 
     const output = JSON.stringify(logEntry);
 
-    if (level === 'ERROR') {
-      // eslint-disable-next-line no-console
-      console.error(output);
-    } else if (level === 'WARN') {
-      // eslint-disable-next-line no-console
-      console.warn(output);
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(output);
-    }
+    // IMPORTANT: All logs must go to stderr to avoid corrupting MCP protocol on stdout
+    // eslint-disable-next-line no-console
+    console.error(output);
   }
 }
 
