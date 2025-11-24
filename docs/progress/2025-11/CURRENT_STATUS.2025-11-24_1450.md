@@ -1,95 +1,14 @@
 # Layered Memory MCP Server - Current Status
 
-**Last Updated**: 2025-11-24 **Project Status**: DEVELOPMENT - Proactive
-Integration **Phase**: Phase 1 Complete (Manual Workflow + /closing Integration)
+**Last Updated**: 2025-11-22 **Project Status**: DEVELOPMENT - Graph Layer
+Integration **Phase**: Neo4j Graph Database Foundation Added
 
 > **Previous Archive:**
-> [CURRENT_STATUS.2025-11-24_1450.md](./docs/progress/2025-11/CURRENT_STATUS.2025-11-24_1450.md)
+> [CURRENT_STATUS.2025-11-22_1707.md](./docs/progress/2025-11/CURRENT_STATUS.2025-11-22_1707.md)
 
 ---
 
-## Current Session (2025-11-24)
-
-### Achievements
-
-- **✅ Phase 1 Complete: Proactive Integration Foundation**
-  - Implemented 3-phase hybrid incremental plan for enabling proactive memory
-    usage
-  - Created comprehensive documentation for user onboarding (5-minute setup)
-  - Integrated automatic memory extraction into `/closing` workflow
-  - Validated manual storage and retrieval workflows
-
-- **Documentation Created** (3 files, ~1,100 lines total):
-  - `~/.claude/skills/knowledge-curator/WORKFLOW_EXAMPLES.md` (~600 lines)
-    - 5-minute onboarding guide with 3 core workflows
-    - Bug fix storage/retrieval examples
-    - Architectural decision documentation patterns
-    - Priority/category/tag guidelines with examples
-  - `~/.claude/skills/knowledge-curator/QUICK_REFERENCE.md` (~500 lines)
-    - Command cheat sheet for quick reference
-    - Priority (1-10) and category (knowledge/decision/pattern) guides
-    - Common tags library (technology, problem types, domains)
-    - MCP tool syntax reference
-  - Modified `~/.claude/skills/closing-workflow/SKILL.md` (+30 lines)
-    - Added Step 3: "Extract and store session memories" (automatic)
-    - Keyword detection: bug fixes, decisions, patterns
-    - Auto-categorization and priority assignment (9/8/7)
-    - Memory count tracking for session summary
-
-- **Testing & Validation**:
-  - Manual storage: Successfully stored Phase 1 progress memory (priority 8, 5
-    tags)
-  - Keyword search: Retrieved by "workflow documentation onboarding" (score:
-    1.0)
-  - Semantic search: Found by "automatic memory capture" (similarity: 0.33)
-  - System now has 2 memories (up from 1 test memory)
-
-### Use Cases Validated
-
-1. **Bug Prevention**: Capture bug fixes with root cause + solution
-2. **Decision Documentation**: Store architectural choices with rationale
-3. **Pattern Learning**: Record reusable approaches across projects
-
-### Key Learnings
-
-- Automatic memory extraction at `/closing` provides zero-friction workflow
-- Keyword-based detection effectively identifies bug fixes, decisions, patterns
-- Semantic search with 0.75 threshold balances coverage vs precision
-- Memory storage layer (project/global) is auto-determined by router
-
-### Files Created/Modified
-
-Created:
-
-- `~/.claude/skills/knowledge-curator/WORKFLOW_EXAMPLES.md`
-- `~/.claude/skills/knowledge-curator/QUICK_REFERENCE.md`
-
-Modified:
-
-- `~/.claude/skills/closing-workflow/SKILL.md` - Added automatic memory
-  extraction step
-- `~/.claude/plans/splendid-riding-castle.md` - Full 3-phase integration plan
-
-### Next Priorities
-
-1. **Complete Phase 1**: Run `/closing` to test automatic memory extraction in
-   real session ← **CURRENT**
-2. **Phase 2 Planning**: Strategic seeding (100-150 memories from planning
-   archives)
-3. **Phase 3 Planning**: Automation (MCP prompts, error detection, hooks)
-
-### Session Context
-
-- **Plan**:
-  [splendid-riding-castle.md](~/.claude/plans/splendid-riding-castle.md)
-- **Total Effort (Phase 1)**: ~3 hours (estimated 8 hours, completed early)
-- **Timeline**: Week 1 of 3-week plan (on schedule)
-- **Decision Points Resolved**: Automatic extraction (no approval),
-  archives-only seeding, immediate Phase 3, 0.75 error threshold
-
----
-
-## Previous Session (2025-11-22)
+## Current Session (2025-11-22)
 
 ### Achievements
 

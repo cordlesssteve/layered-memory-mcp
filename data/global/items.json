@@ -1,5 +1,29 @@
 {
   "version": "1.0",
-  "savedAt": "2025-11-13T05:04:20.441Z",
-  "items": []
+  "savedAt": "2025-11-24T20:24:19.174Z",
+  "items": [
+    {
+      "content": "Implemented Phase 1 of layered-memory proactive integration. Created WORKFLOW_EXAMPLES.md and QUICK_REFERENCE.md for user onboarding (5-minute setup guide). Modified closing-workflow/SKILL.md to automatically extract and store memories from CURRENT_STATUS.md during session closing. Memory extraction detects bug fixes, architectural decisions, and workflow patterns using keyword matching. Stores with appropriate categories (knowledge/decision/pattern) and priorities (9/8/7).",
+      "metadata": {
+        "tags": [
+          "layered-memory",
+          "phase-1",
+          "integration",
+          "documentation",
+          "workflow-automation"
+        ],
+        "category": "progress",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "sessionId": "3806bec7-7a4d-4529-bfe7-4d623eee4554",
+        "expiresAt": "2026-11-24T20:22:51.962Z"
+      },
+      "id": "fa006f1e-b43d-4a82-92a5-853fef6e9d59",
+      "createdAt": "2025-11-24T20:22:51.962Z",
+      "updatedAt": "2025-11-24T20:22:51.962Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T20:22:51.962Z"
+    }
+  ]
 }
