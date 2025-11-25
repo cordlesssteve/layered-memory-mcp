@@ -1,7 +1,7 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-11-13T05:04:21.655Z",
+  "savedAt": "2025-11-24T23:40:37.313Z",
   "items": [
     {
       "content": "Content for metrics tracking",
@@ -20,6 +20,73 @@
       "updatedAt": "2025-11-13T05:04:21.563Z",
       "accessCount": 0,
       "lastAccessedAt": "2025-11-13T05:04:21.563Z"
+    },
+    {
+      "content": "Pattern discovered: Incremental validation approach works well for complex integrations. Phase 1 validates workflow usefulness before investing in automation (Phase 2 seeding, Phase 3 MCP prompts/hooks). User preference: Automatic extraction (no approval prompts), archives-only seeding initially, 0.75 error detection threshold (balanced). This pattern of \"show value early, build incrementally\" reduces risk and allows course correction.",
+      "metadata": {
+        "tags": [
+          "development-workflow",
+          "incremental-validation",
+          "risk-mitigation",
+          "user-preference"
+        ],
+        "category": "pattern",
+        "priority": 7,
+        "source": "mcp-tool",
+        "projectId": "default",
+        "sessionId": "3806bec7-7a4d-4529-bfe7-4d623eee4554",
+        "expiresAt": "2025-12-24T20:52:11.081Z"
+      },
+      "id": "6ea54de2-0a98-441a-a337-d46246a23590",
+      "createdAt": "2025-11-24T20:52:11.081Z",
+      "updatedAt": "2025-11-24T20:52:11.081Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T20:52:11.081Z"
+    },
+    {
+      "content": "Test Fix: Monitoring Integration Environment Configuration. Problem: Telemetry and performance monitoring disabled in test environment by default (4 tests failing). Solution: Modified TelemetrySystem constructor in src/monitoring/telemetry.ts:71 to respect explicit config with 'enabled: config?.enabled ?? env.telemetryEnabled ?? env.nodeEnv !== 'test''. Updated MonitoringService in src/monitoring/monitoring-integration.ts:303-308 to respect environment flags. Result: All 11 monitoring integration tests passing.",
+      "metadata": {
+        "tags": [
+          "bug-fix",
+          "testing",
+          "monitoring",
+          "telemetry",
+          "environment-config",
+          "test-environment"
+        ],
+        "category": "knowledge",
+        "priority": 7,
+        "source": "mcp-tool",
+        "projectId": "default",
+        "expiresAt": "2025-12-24T23:33:36.049Z"
+      },
+      "id": "a6f4a95a-747f-4852-9997-ddba7c2e9e66",
+      "createdAt": "2025-11-24T23:33:36.049Z",
+      "updatedAt": "2025-11-24T23:33:36.049Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:33:36.049Z"
+    },
+    {
+      "content": "Pattern: Incremental Coverage Improvement Strategy. Pattern: Achieve test coverage goals through incremental improvement with realistic thresholds rather than arbitrary 100% targets. Approach: Set achievable thresholds (50% statements, 39% branches), prioritize high-value modules first (security, core functionality), adjust branch threshold based on codebase complexity. Result: Reached 50.10% coverage (+4.60pp improvement) with 923 tests. Key insight: Realistic thresholds prevent burnout, maintain momentum. Focus on quality over quantity. Branch coverage naturally lags line coverage due to edge cases - adjust thresholds accordingly.",
+      "metadata": {
+        "tags": [
+          "testing",
+          "coverage",
+          "incremental-improvement",
+          "pragmatic-approach",
+          "best-practice"
+        ],
+        "category": "pattern",
+        "priority": 7,
+        "source": "mcp-tool",
+        "projectId": "default",
+        "expiresAt": "2025-12-24T23:36:04.095Z"
+      },
+      "id": "1c612972-1e61-4117-96b3-072878ae280a",
+      "createdAt": "2025-11-24T23:36:04.095Z",
+      "updatedAt": "2025-11-24T23:36:04.095Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:36:04.095Z"
     }
   ]
 }

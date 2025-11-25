@@ -20,18 +20,31 @@ import type {
 /**
  * Relationship types for memory connections
  */
+// eslint-disable-next-line no-unused-vars
 export enum MemoryRelationshipType {
-  TEMPORAL = 'TEMPORAL',     // Time-based proximity (happened around same time)
-  SEMANTIC = 'SEMANTIC',     // Semantic similarity (similar content/meaning)
+  // eslint-disable-next-line no-unused-vars
+  TEMPORAL = 'TEMPORAL', // Time-based proximity (happened around same time)
+  // eslint-disable-next-line no-unused-vars
+  SEMANTIC = 'SEMANTIC', // Semantic similarity (similar content/meaning)
+  // eslint-disable-next-line no-unused-vars
   REFERENCES = 'REFERENCES', // Direct reference (one mentions the other)
-  CAUSAL = 'CAUSAL',         // Causal relationship (one led to the other)
-  CONTEXT = 'CONTEXT',       // Contextual grouping (same session, project, etc.)
+  // eslint-disable-next-line no-unused-vars
+  CAUSAL = 'CAUSAL', // Causal relationship (one led to the other)
+  // eslint-disable-next-line no-unused-vars
+  CONTEXT = 'CONTEXT', // Contextual grouping (same session, project, etc.)
+  // eslint-disable-next-line no-unused-vars
   SUPERSEDES = 'SUPERSEDES', // Replaces older memory
 }
 
 // Re-export relationship types for external use (avoids eslint unused-vars)
-export const { TEMPORAL, SEMANTIC, REFERENCES, CAUSAL, CONTEXT, SUPERSEDES } =
-  MemoryRelationshipType;
+export const {
+  TEMPORAL: _TEMPORAL,
+  SEMANTIC: _SEMANTIC,
+  REFERENCES: _REFERENCES,
+  CAUSAL: _CAUSAL,
+  CONTEXT: _CONTEXT,
+  SUPERSEDES: _SUPERSEDES,
+} = MemoryRelationshipType;
 
 interface GraphConfig {
   uri?: string;
@@ -109,6 +122,20 @@ export class GraphLayer extends BaseMemoryLayer {
       });
       throw error;
     }
+  }
+
+  /**
+   * Wait for graph database connection to be established
+   * Useful for tests that need to ensure connection is ready
+   */
+  async waitForConnection(timeoutMs: number = 5000): Promise<boolean> {
+    const startTime = Date.now();
+
+    while (!this.connected && Date.now() - startTime < timeoutMs) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    return this.connected;
   }
 
   /**
@@ -301,8 +328,7 @@ export class GraphLayer extends BaseMemoryLayer {
         strength: number;
       }>(query, { memoryId });
 
-      const related: Array<{ memory: MemoryItem; relationshipType: string; strength: number }> =
-        [];
+      const related: Array<{ memory: MemoryItem; relationshipType: string; strength: number }> = [];
 
       for (const record of result.records) {
         const relatedNode = record.related;
@@ -330,10 +356,7 @@ export class GraphLayer extends BaseMemoryLayer {
   /**
    * Search using graph traversal and relationships
    */
-  async graphSearch(
-    query: MemoryQuery,
-    maxDepth: number = 2
-  ): Promise<MemorySearchResult[]> {
+  async graphSearch(query: MemoryQuery, maxDepth: number = 2): Promise<MemorySearchResult[]> {
     if (!this.connected) {
       // Fallback to base layer search
       return super.search(query);
@@ -369,7 +392,7 @@ export class GraphLayer extends BaseMemoryLayer {
 
         for (const record of result.records) {
           const relatedNode = record.related;
-          const distance = record.distance;
+          const { distance } = record;
           const relatedId = relatedNode.properties['id'] as string;
 
           if (!expandedResults.has(relatedId)) {
@@ -429,9 +452,7 @@ export class GraphLayer extends BaseMemoryLayer {
     const recentMemories = await super.search(recentQuery);
     for (const result of recentMemories) {
       if (result.memory.id !== memoryId) {
-        const timeDiff = Math.abs(
-          memory.createdAt.getTime() - result.memory.createdAt.getTime()
-        );
+        const timeDiff = Math.abs(memory.createdAt.getTime() - result.memory.createdAt.getTime());
         const strength = Math.max(0, 1 - timeDiff / (60 * 60 * 1000)); // Decay over 1 hour
 
         if (strength > 0.3) {

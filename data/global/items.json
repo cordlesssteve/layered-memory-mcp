@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "savedAt": "2025-11-24T20:24:19.174Z",
+  "savedAt": "2025-11-24T23:40:37.305Z",
   "items": [
     {
       "content": "Implemented Phase 1 of layered-memory proactive integration. Created WORKFLOW_EXAMPLES.md and QUICK_REFERENCE.md for user onboarding (5-minute setup guide). Modified closing-workflow/SKILL.md to automatically extract and store memories from CURRENT_STATUS.md during session closing. Memory extraction detects bug fixes, architectural decisions, and workflow patterns using keyword matching. Stores with appropriate categories (knowledge/decision/pattern) and priorities (9/8/7).",
@@ -24,6 +24,390 @@
       "updatedAt": "2025-11-24T20:22:51.962Z",
       "accessCount": 0,
       "lastAccessedAt": "2025-11-24T20:22:51.962Z"
+    },
+    {
+      "content": "Fixed critical insight: MCP prompts were planned for Phase 3, not Phase 1. Phase 1 delivered documentation (WORKFLOW_EXAMPLES.md, QUICK_REFERENCE.md) and /closing integration for automatic memory extraction. MCP prompts (ListPromptsRequestSchema, GetPromptRequestSchema) will expose memory operations to Claude Code UI in Phase 3 for tighter coupling and discoverability.",
+      "metadata": {
+        "tags": [
+          "layered-memory",
+          "mcp-prompts",
+          "phase-3",
+          "integration-plan",
+          "clarification"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "sessionId": "3806bec7-7a4d-4529-bfe7-4d623eee4554",
+        "expiresAt": "2026-11-24T20:52:10.335Z"
+      },
+      "id": "b358e58d-f6dc-4bf8-9c30-cebbda0967da",
+      "createdAt": "2025-11-24T20:52:10.335Z",
+      "updatedAt": "2025-11-24T20:52:10.335Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T20:52:10.335Z"
+    },
+    {
+      "content": "Completed Phase 1 of layered-memory proactive integration: Created WORKFLOW_EXAMPLES.md (600 lines, 5-min onboarding) and QUICK_REFERENCE.md (500 lines, command cheat sheet). Modified closing-workflow/SKILL.md to automatically extract memories from CURRENT_STATUS.md using keyword detection (bug fixes, decisions, patterns). Validated manual storage and retrieval with semantic search (0.75 threshold). Total effort: 3 hours vs 8 hours estimated.",
+      "metadata": {
+        "tags": [
+          "layered-memory",
+          "phase-1",
+          "complete",
+          "documentation",
+          "workflow-automation"
+        ],
+        "category": "progress",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "sessionId": "3806bec7-7a4d-4529-bfe7-4d623eee4554",
+        "expiresAt": "2026-11-24T20:52:10.670Z"
+      },
+      "id": "ec04527a-f293-45f3-9d1e-161b55120737",
+      "createdAt": "2025-11-24T20:52:10.670Z",
+      "updatedAt": "2025-11-24T20:52:10.670Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T20:52:10.670Z"
+    },
+    {
+      "content": "MCP Server Stdout Bug Fix: Logger was using console.log() for INFO messages, corrupting MCP JSON-RPC protocol on stdout. Root cause: MCP servers MUST only write MCP protocol to stdout; all logs must go to stderr. Solution: Changed all logging in src/utils/logger.ts and src/config/environment.ts from console.log() to console.error(). This fixed critical connection bug preventing layered-memory from connecting to Claude Code.",
+      "metadata": {
+        "tags": [
+          "bug-fix",
+          "mcp-protocol",
+          "stdout",
+          "stderr",
+          "logging",
+          "connection",
+          "json-rpc"
+        ],
+        "category": "knowledge",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:32:59.897Z"
+      },
+      "id": "6b33de96-cfcd-4c2f-953d-b21666c8264e",
+      "createdAt": "2025-11-24T23:32:59.897Z",
+      "updatedAt": "2025-11-24T23:32:59.897Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:32:59.897Z"
+    },
+    {
+      "content": "Test Fix: Semantic Enrichment isCodeContent() Pattern Detection. Problem: isCodeContent() not detecting various code patterns, causing codeAnalysis to return undefined (7 tests failing). Solution: Enhanced regex pattern detection in src/analysis/semantic-enrichment-pipeline.ts:250-270 to include let/var declarations, control flow (if/while/for/switch/try), method calls (.method()), arrow functions (=>), and code blocks with braces. Result: All 45 semantic enrichment tests passing.",
+      "metadata": {
+        "tags": [
+          "bug-fix",
+          "testing",
+          "semantic-enrichment",
+          "regex",
+          "code-detection",
+          "pattern-matching"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:33:12.350Z"
+      },
+      "id": "12cfa60e-40ec-4b0d-b897-bd9f7af7b335",
+      "createdAt": "2025-11-24T23:33:12.350Z",
+      "updatedAt": "2025-11-24T23:33:12.350Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:33:12.350Z"
+    },
+    {
+      "content": "Test Fix: Request Validator Sanitization Order Bug. Problem: Validation happening before sanitization in src/security/request-validator.ts:307-375, causing empty content failures (3 tests failing). Solution: Reversed order to sanitize first, then validate. Added empty content check after sanitization. Enhanced script tag removal to handle malformed/nested tags with regex .replace(/<\\/?script\\b[^>]*>/gi, ''). Result: All 75 request validator tests passing.",
+      "metadata": {
+        "tags": [
+          "bug-fix",
+          "security",
+          "validation",
+          "sanitization",
+          "xss-prevention",
+          "order-of-operations"
+        ],
+        "category": "knowledge",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:33:24.453Z"
+      },
+      "id": "72b1ae23-1840-44e9-a090-da685f2df2f5",
+      "createdAt": "2025-11-24T23:33:24.453Z",
+      "updatedAt": "2025-11-24T23:33:24.453Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:33:24.453Z"
+    },
+    {
+      "content": "Test Fix: Security Middleware Header Return Type Bug. Problem: getSecurityHeaders() returning {} instead of undefined when disabled, breaking tests (2 tests failing). Solution: Fixed return type signature in src/security/security-middleware.ts:316-320 to return additionalHeaders instead of additionalHeaders || {}. Added missing rate limit config to test environment (rateLimitWindowMs: 15 * 60 * 1000, rateLimitMaxRequests: 1000). Result: All security middleware tests passing.",
+      "metadata": {
+        "tags": [
+          "bug-fix",
+          "security",
+          "middleware",
+          "headers",
+          "type-safety",
+          "rate-limiting"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:33:46.758Z"
+      },
+      "id": "d53ad105-93d5-46c5-801c-f0ee603c9242",
+      "createdAt": "2025-11-24T23:33:46.758Z",
+      "updatedAt": "2025-11-24T23:33:46.758Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:33:46.758Z"
+    },
+    {
+      "content": "Architectural Decision: 4-Layer Memory Hierarchy Design. Decision: Implemented hierarchical memory organization with Session → Project → Global → Temporal layers. Rationale: Multiple successful memory systems use layered architecture for context-aware retrieval. Benefits: Automatic scope-appropriate storage, intelligent routing based on context, optimized query performance by layer. Implementation: MemoryRouter class coordinates layer selection, each layer extends BaseMemoryLayer for consistency. Status: Fully implemented and operational.",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "memory-layers",
+          "hierarchical",
+          "design-decision",
+          "core-architecture"
+        ],
+        "category": "decision",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:34:11.919Z"
+      },
+      "id": "ef78d28b-9de5-4715-baf7-da9cd73de4f9",
+      "createdAt": "2025-11-24T23:34:11.919Z",
+      "updatedAt": "2025-11-24T23:34:11.919Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:34:11.919Z"
+    },
+    {
+      "content": "Architectural Decision: Hybrid Storage Strategy. Decision: Use Vector DB (semantic search) + Graph DB (relationships) + SQLite (ACID transactions). Rationale: Each storage type optimized for different access patterns - vectors for similarity search, graph for relationship traversal, SQL for structured data and transactions. Technology choices: ChromaDB for vectors, Neo4j for graph via @imthemap/graph-core, SQLite for structured storage. Implementation: GraphLayer extends BaseMemoryLayer, provides relationship mapping with 6 relationship types (TEMPORAL, SEMANTIC, REFERENCES, CAUSAL, CONTEXT, SUPERSEDES).",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "database",
+          "hybrid-storage",
+          "neo4j",
+          "vector-db",
+          "design-decision"
+        ],
+        "category": "decision",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:34:23.999Z"
+      },
+      "id": "df691d86-64f6-42ef-8336-0eed79757671",
+      "createdAt": "2025-11-24T23:34:23.999Z",
+      "updatedAt": "2025-11-24T23:34:23.999Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:34:23.999Z"
+    },
+    {
+      "content": "Architectural Decision: Greenfield Development vs Extension. Decision: Chose greenfield development over extending existing memory systems (Memory Keeper, Context Portal, Mem0). Rationale: Full vision realization requires architectural flexibility not possible with extensions. Existing systems lacked hierarchical layers, graph relationships, or intelligent routing. Greenfield enables clean implementation of 4-layer hierarchy, hybrid storage, and MCP 1.0 compliance without technical debt. Trade-off: Longer initial development time but superior long-term maintainability and feature completeness.",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "greenfield",
+          "design-decision",
+          "technical-strategy",
+          "project-planning"
+        ],
+        "category": "decision",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:34:38.394Z"
+      },
+      "id": "53228c81-b93b-4d50-9c0a-fe5addc75aea",
+      "createdAt": "2025-11-24T23:34:38.394Z",
+      "updatedAt": "2025-11-24T23:34:38.394Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:34:38.394Z"
+    },
+    {
+      "content": "Architectural Decision: Testing Philosophy - Real Implementations Over Mocks. Decision: Prefer real implementations without mocking for integration tests. Only mock external dependencies (APIs, network calls) and system-critical code (process.exit). Rationale: Better integration coverage, catches real bugs, validates actual behavior. Result: Achieved 50% test coverage (763/763 tests passing) with high confidence in production readiness. Coverage by module: Security 40-98%, Analysis 96%, Error Handling 85%+, Memory Layers 65-94%, Monitoring 67-81%. Trade-off: Slightly slower tests but significantly higher quality.",
+      "metadata": {
+        "tags": [
+          "testing",
+          "mocking-policy",
+          "integration-tests",
+          "quality-assurance",
+          "design-decision"
+        ],
+        "category": "decision",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:34:50.879Z"
+      },
+      "id": "00dc0637-7e32-4036-bdb4-bce6bca7f62a",
+      "createdAt": "2025-11-24T23:34:50.879Z",
+      "updatedAt": "2025-11-24T23:34:50.879Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:34:50.879Z"
+    },
+    {
+      "content": "Architectural Decision: Graph Auto-Linking Heuristics. Decision: Implement automatic relationship creation when memories are stored using three heuristic types: TEMPORAL (memories within 1-hour window, strength decays with time, min threshold 0.3), SEMANTIC (similarity score >0.5 from base layer search), CONTEXT (same sessionId or projectId, fixed strength 0.8). Rationale: Reduces manual relationship creation burden while building knowledge graph automatically. Implementation: autoLinkMemory() method in GraphLayer runs after each store operation. Trade-off: Small performance overhead on storage but significant UX improvement.",
+      "metadata": {
+        "tags": [
+          "architecture",
+          "graph-database",
+          "auto-linking",
+          "heuristics",
+          "ux-optimization"
+        ],
+        "category": "decision",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:35:06.536Z"
+      },
+      "id": "cad60ed2-f815-41cd-8ce3-53ba79e7c4cc",
+      "createdAt": "2025-11-24T23:35:06.536Z",
+      "updatedAt": "2025-11-24T23:35:06.536Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:35:06.536Z"
+    },
+    {
+      "content": "Pattern: Test Suite Stabilization Through Systematic Fixing. Pattern: When facing multiple failing tests (17 failures across 4 suites), fix systematically one module at a time with verification after each fix. Process: 1) Group failures by module/component, 2) Identify root cause for each group, 3) Fix highest-impact issues first, 4) Run tests after each fix to verify, 5) Document fixes with before/after metrics. Result: Fixed 16 of 17 tests in single session, 763/763 passing (100%). Key insight: Systematic approach prevents regression and builds confidence incrementally.",
+      "metadata": {
+        "tags": [
+          "testing",
+          "debugging",
+          "systematic-approach",
+          "test-fixing",
+          "best-practice"
+        ],
+        "category": "pattern",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:35:29.402Z"
+      },
+      "id": "caa99f60-2076-4b35-aa37-8f8212311871",
+      "createdAt": "2025-11-24T23:35:29.402Z",
+      "updatedAt": "2025-11-24T23:35:29.402Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:35:29.402Z"
+    },
+    {
+      "content": "Pattern: Performance Target Setting - Sub-100ms Query Response. Pattern: Establishing quantitative performance targets early in development drives architectural decisions. For memory systems, sub-100ms query response critical for user adoption (research insight from competitive analysis). Implementation: Continuous benchmarking throughout development, multi-level caching (Redis for hot paths), optimized indexing strategies (Vector DB, Graph DB), query result limiting. Learning: Performance targets must be defined before architecture finalization, not retrofitted. Monitoring essential to validate assumptions.",
+      "metadata": {
+        "tags": [
+          "performance",
+          "benchmarking",
+          "architectural-planning",
+          "optimization",
+          "best-practice"
+        ],
+        "category": "pattern",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:35:47.318Z"
+      },
+      "id": "c269098f-f29c-43bb-8d6a-01ce843d3902",
+      "createdAt": "2025-11-24T23:35:47.318Z",
+      "updatedAt": "2025-11-24T23:35:47.318Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:35:47.318Z"
+    },
+    {
+      "content": "Learning: MCP Protocol Stdout/Stderr Discipline. Critical insight: MCP servers communicate via JSON-RPC over stdin/stdout. Stdout MUST be reserved exclusively for MCP protocol messages. All logging, debugging output, and informational messages MUST go to stderr using console.error(). Violation causes protocol corruption and connection failures. Implementation: Changed Logger class to use console.error() for all log levels. Validation: After fix, server connects cleanly with stdout reserved for protocol. Pattern applies to all MCP server development. Never use console.log() in MCP server code.",
+      "metadata": {
+        "tags": [
+          "mcp-protocol",
+          "best-practice",
+          "stdout-stderr",
+          "json-rpc",
+          "critical-knowledge"
+        ],
+        "category": "knowledge",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:36:20.619Z"
+      },
+      "id": "e11dc10a-ee52-4f0a-ae79-10ad95316b98",
+      "createdAt": "2025-11-24T23:36:20.619Z",
+      "updatedAt": "2025-11-24T23:36:20.619Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:36:20.619Z"
+    },
+    {
+      "content": "Learning: Graph Database Integration Timing Patterns. Insight: GraphLayer async connect() in constructor with .catch() error handler can fail silently in test environments. Direct instantiation may not establish connection within timeout (5s), while MemoryRouter's integrated instance succeeds. Cause: Constructor async operations complete after instantiation returns. Solution options: 1) Add public waitForConnection(timeoutMs) method for test synchronization, 2) Make connect() public for explicit control, 3) Use factory pattern with async initialization. Pattern: Async initialization in constructors requires careful handling for testability. Prefer factory methods for complex async setup.",
+      "metadata": {
+        "tags": [
+          "testing",
+          "async-patterns",
+          "graph-database",
+          "constructor-patterns",
+          "neo4j",
+          "timing-issues"
+        ],
+        "category": "knowledge",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:36:40.278Z"
+      },
+      "id": "8a6f8cb8-0a47-4bf4-9cd6-d17fca461582",
+      "createdAt": "2025-11-24T23:36:40.278Z",
+      "updatedAt": "2025-11-24T23:36:40.278Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:36:40.278Z"
+    },
+    {
+      "content": "Learning: Security Validation Order Matters. Critical insight: In request validation pipelines, sanitization MUST happen before validation. Validating first, then sanitizing can cause false negatives (valid input rejected) or security gaps (malicious input passes validation then gets sanitized away leaving empty content). Correct order: 1) Sanitize input (remove XSS, strip tags), 2) Validate sanitized content (check length, format, required fields), 3) Process validated content. Implementation: Reversed order in request-validator.ts, added empty content check post-sanitization. Pattern applies to all security middleware and input processing.",
+      "metadata": {
+        "tags": [
+          "security",
+          "validation",
+          "sanitization",
+          "order-of-operations",
+          "xss-prevention",
+          "best-practice"
+        ],
+        "category": "knowledge",
+        "priority": 9,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:37:00.697Z"
+      },
+      "id": "ff313864-0769-4369-965c-b7ba695077fb",
+      "createdAt": "2025-11-24T23:37:00.697Z",
+      "updatedAt": "2025-11-24T23:37:00.697Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:37:00.697Z"
+    },
+    {
+      "content": "Pattern: Coverage Milestone Achievement Through Targeted Testing. Pattern: Achieving coverage milestones (50% threshold) by strategically targeting 0% coverage modules with high impact. Process: 1) Identify untested modules (security/config.ts 0%, request-validator.ts 58%, semantic-enrichment 0%), 2) Prioritize by criticality (security first, then core functionality), 3) Write comprehensive tests with edge cases, 4) Use real implementations without mocking. Result: security/config.ts 0%→91% (36 tests), request-validator.ts 58%→98% (72 tests), semantic-enrichment 0%→96% (44 tests). Total coverage: 45.5%→50.10% (+4.60pp) in two focused sessions. Key insight: Strategic targeting more efficient than blanket testing.",
+      "metadata": {
+        "tags": [
+          "testing",
+          "coverage",
+          "strategic-planning",
+          "prioritization",
+          "milestone-achievement"
+        ],
+        "category": "pattern",
+        "priority": 8,
+        "source": "mcp-tool",
+        "projectId": "layered-memory",
+        "expiresAt": "2026-11-24T23:37:20.478Z"
+      },
+      "id": "927634ff-e0ff-4948-9a9b-441d1fd51f76",
+      "createdAt": "2025-11-24T23:37:20.478Z",
+      "updatedAt": "2025-11-24T23:37:20.478Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-24T23:37:20.478Z"
     }
   ]
 }

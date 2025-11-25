@@ -81,18 +81,10 @@ SUPERSEDES   - Memory replacement
 
 **Next Steps:**
 
-- [x] Integrate GraphLayer with MemoryRouter
-- [x] Add MCP tools for graph operations
-- [x] Write integration tests
-- [x] Test with Neo4j instance
-
-**Status Update (2025-11-24):**
-
-- ✅ Graph integration complete (from previous session 2025-11-12)
-- ✅ Created comprehensive integration test suite (28 tests, 81.5% pass rate)
-- ✅ Phase 2: Strategic memory seeding complete (22 memories total)
-- ✅ Phase 3: Automation layer complete (proactive suggestions ready)
-- ✅ All 3 proactive integration phases delivered
+- [ ] Integrate GraphLayer with MemoryRouter
+- [ ] Add MCP tools for graph operations
+- [ ] Write integration tests
+- [ ] Test with Neo4j instance
 
 ### Previous Session (2025-11-12 18:06) - TEST SUITE STABILIZATION
 
