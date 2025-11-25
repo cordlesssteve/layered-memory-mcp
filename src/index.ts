@@ -10,6 +10,8 @@ import {
   CallToolRequestSchema,
   ErrorCode,
   ListToolsRequestSchema,
+  ListPromptsRequestSchema,
+  GetPromptRequestSchema,
   McpError,
 } from '@modelcontextprotocol/sdk/types.js';
 import { fileURLToPath } from 'url';
@@ -88,6 +90,7 @@ async function main(): Promise<void> {
       {
         capabilities: {
           tools: {},
+          prompts: {},
         },
       }
     );
@@ -623,6 +626,354 @@ async function main(): Promise<void> {
           },
         ],
       };
+    });
+
+    // Prompt definitions - these appear as high-level workflows in Claude Code
+    const PROMPTS = [
+      {
+        name: 'remember-this',
+        description:
+          'Store an important piece of information, decision, or learning for future recall',
+        arguments: [
+          {
+            name: 'content',
+            description: 'The information to remember (decision, learning, pattern, etc.)',
+            required: true,
+          },
+          {
+            name: 'category',
+            description: 'Memory category: decision, knowledge, pattern, progress, or task',
+            required: false,
+          },
+          {
+            name: 'priority',
+            description: 'Importance level (1-10, default: 5)',
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'recall-decision',
+        description: 'Find architectural decisions, design choices, or technical decisions',
+        arguments: [
+          {
+            name: 'topic',
+            description: 'The topic, feature, or component to find decisions about',
+            required: true,
+          },
+          {
+            name: 'project',
+            description: 'Optional: limit to specific project',
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'find-pattern',
+        description: 'Search for similar problems, solutions, or patterns from past work',
+        arguments: [
+          {
+            name: 'description',
+            description: "Describe the problem or pattern you're looking for",
+            required: true,
+          },
+          {
+            name: 'threshold',
+            description: 'Similarity threshold (0-1, default: 0.7)',
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'review-learnings',
+        description: 'Review accumulated knowledge and patterns about a topic',
+        arguments: [
+          {
+            name: 'topic',
+            description: 'The topic to review learnings about',
+            required: true,
+          },
+        ],
+      },
+      {
+        name: 'connect-memories',
+        description: 'Explore how concepts or memories are related through the knowledge graph',
+        arguments: [
+          {
+            name: 'topic',
+            description: 'The topic or memory ID to explore connections for',
+            required: true,
+          },
+          {
+            name: 'depth',
+            description: 'How many relationship hops to traverse (1-5, default: 2)',
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'review-recent-work',
+        description: 'Summarize recent progress, decisions, and learnings from a time period',
+        arguments: [
+          {
+            name: 'days',
+            description: 'Number of days to look back (default: 7)',
+            required: false,
+          },
+          {
+            name: 'project',
+            description: 'Optional: limit to specific project',
+            required: false,
+          },
+        ],
+      },
+      {
+        name: 'consolidate-knowledge',
+        description: 'Summarize and consolidate everything known about a topic',
+        arguments: [
+          {
+            name: 'topic',
+            description: 'The topic to consolidate knowledge about',
+            required: true,
+          },
+        ],
+      },
+    ];
+
+    // Register prompt handlers
+    server.setRequestHandler(ListPromptsRequestSchema, async () => {
+      return { prompts: PROMPTS };
+    });
+
+    server.setRequestHandler(GetPromptRequestSchema, async request => {
+      const { name, arguments: promptArgs } = request.params;
+
+      switch (name) {
+        case 'remember-this': {
+          const content = promptArgs?.['content'] || '[information to remember]';
+          const category = promptArgs?.['category'] || 'knowledge';
+          const priority = promptArgs?.['priority'] || '5';
+
+          return {
+            description: `Store important information: ${content.substring(0, 50)}...`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Store this information in memory for future recall:
+
+"${content}"
+
+Use the store_memory tool with:
+- content: "${content}"
+- category: "${category}"
+- priority: ${priority}
+
+After storing, confirm:
+- The memory ID assigned
+- Which layer it was stored in (session/project/global)
+- Any automatic relationships detected`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'recall-decision': {
+          const topic = promptArgs?.['topic'] || '[topic]';
+          const project = promptArgs?.['project'];
+
+          return {
+            description: `Recall decisions about: ${topic}`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Find architectural decisions, design choices, and technical decisions related to "${topic}".
+
+Use search_memory with:
+- query: "decided ${topic}" OR "architecture ${topic}" OR "design ${topic}"
+- category: "decision"
+${project ? `- projectId: "${project}"` : ''}
+
+Then compile a summary of:
+- Key decisions made about ${topic}
+- The reasoning and rationale behind those decisions
+- Any trade-offs or alternatives considered
+- When these decisions were made (timestamps)
+- Related decisions via the knowledge graph`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'find-pattern': {
+          const description = promptArgs?.['description'] || '[problem description]';
+          const threshold = promptArgs?.['threshold'] || '0.7';
+
+          return {
+            description: `Find similar patterns: ${description}`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Search for similar problems, solutions, or patterns related to:
+
+"${description}"
+
+Use semantic_search with:
+- query: "${description}"
+- threshold: ${threshold}
+- category filter for: "pattern" and "knowledge"
+
+Provide a summary of:
+- Similar problems encountered before
+- Solutions that worked (and didn't work)
+- Patterns and best practices learned
+- Related memories via graph connections
+- Confidence scores for each match`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'review-learnings': {
+          const topic = promptArgs?.['topic'] || '[topic]';
+
+          return {
+            description: `Review learnings about: ${topic}`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Review accumulated knowledge and patterns about "${topic}".
+
+Use search_memory with:
+- query: "${topic}"
+- categories: "knowledge" and "pattern"
+
+Then build a comprehensive review:
+- Key concepts and principles learned
+- Recurring patterns and best practices
+- Common pitfalls and how to avoid them
+- Evolution of understanding over time (use temporal context)
+- Related learnings via the knowledge graph
+- Gaps in knowledge that need attention`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'connect-memories': {
+          const topic = promptArgs?.['topic'] || '[topic]';
+          const depth = promptArgs?.['depth'] || '2';
+
+          return {
+            description: `Explore connections for: ${topic}`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Explore how "${topic}" connects to other concepts and memories.
+
+First, use search_memory to find the memory:
+- query: "${topic}"
+
+Then use graph operations:
+- get_related_memories for direct connections
+- graph_search with maxDepth: ${depth} for broader context
+- find_memory_path to connect related concepts
+
+Visualize the connections by showing:
+- Direct relationships (TEMPORAL, SEMANTIC, REFERENCES, etc.)
+- Relationship strengths
+- Clusters of related memories
+- Key connecting nodes in the knowledge graph
+- Paths between seemingly unrelated concepts`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'review-recent-work': {
+          const days = promptArgs?.['days'] || '7';
+          const project = promptArgs?.['project'];
+
+          return {
+            description: `Review work from last ${days} days`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Summarize progress, decisions, and learnings from the last ${days} days.
+
+Use temporal_search with:
+- query: "*" (all memories)
+- timeRange: last ${days} days
+${project ? `- projectId: "${project}"` : ''}
+
+Provide a structured summary:
+- Major decisions made
+- Key learnings and patterns discovered
+- Progress on ongoing tasks
+- Problems solved and solutions found
+- Emerging themes or trends
+- Suggested next steps based on trajectory`,
+                },
+              },
+            ],
+          };
+        }
+
+        case 'consolidate-knowledge': {
+          const topic = promptArgs?.['topic'] || '[topic]';
+
+          return {
+            description: `Consolidate knowledge about: ${topic}`,
+            messages: [
+              {
+                role: 'user',
+                content: {
+                  type: 'text',
+                  text: `Consolidate and summarize everything known about "${topic}".
+
+Use advanced_search with all features enabled:
+- query: "${topic}"
+- semanticSearch: enabled (threshold 0.7)
+- relationships: enabled (maxDepth 2)
+- temporalPatterns: enabled (to show evolution)
+
+Then use cluster operations:
+1. Identify all related memories via graph_search
+2. Use summarize_cluster to create consolidated summary
+3. Show evolution over time (earliest to latest)
+
+Create a comprehensive knowledge summary:
+- Core concepts and principles
+- Historical context and evolution
+- Related topics and dependencies
+- Decisions and rationale
+- Patterns and best practices
+- Current state and open questions`,
+                },
+              },
+            ],
+          };
+        }
+
+        default:
+          throw new Error(`Unknown prompt: ${name}`);
+      }
     });
 
     server.setRequestHandler(CallToolRequestSchema, async request => {

@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "savedAt": "2025-11-24T23:40:37.305Z",
+  "savedAt": "2025-11-25T02:14:29.056Z",
   "items": [
     {
       "content": "Implemented Phase 1 of layered-memory proactive integration. Created WORKFLOW_EXAMPLES.md and QUICK_REFERENCE.md for user onboarding (5-minute setup guide). Modified closing-workflow/SKILL.md to automatically extract and store memories from CURRENT_STATUS.md during session closing. Memory extraction detects bug fixes, architectural decisions, and workflow patterns using keyword matching. Stores with appropriate categories (knowledge/decision/pattern) and priorities (9/8/7).",
@@ -408,6 +408,1069 @@
       "updatedAt": "2025-11-24T23:37:20.478Z",
       "accessCount": 0,
       "lastAccessedAt": "2025-11-24T23:37:20.478Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:25.125Z"
+      },
+      "id": "0d33e540-32db-456b-becd-82ef5584e9bc",
+      "createdAt": "2025-11-25T02:13:25.125Z",
+      "updatedAt": "2025-11-25T02:13:25.125Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:25.125Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:25.180Z"
+      },
+      "id": "d76ff785-25b3-44d5-a35c-39df8a645285",
+      "createdAt": "2025-11-25T02:13:25.180Z",
+      "updatedAt": "2025-11-25T02:13:25.180Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:25.180Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:26.415Z"
+      },
+      "id": "ba898991-d134-4ed1-9ce5-321bf2899c69",
+      "createdAt": "2025-11-25T02:13:26.415Z",
+      "updatedAt": "2025-11-25T02:13:26.415Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:26.415Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:26.435Z"
+      },
+      "id": "531613e7-70b4-4026-bfb4-2e744b5958a6",
+      "createdAt": "2025-11-25T02:13:26.435Z",
+      "updatedAt": "2025-11-25T02:13:26.435Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:26.435Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:28.158Z"
+      },
+      "id": "4133e5a3-8c0f-4d7f-9fd4-28779518e90a",
+      "createdAt": "2025-11-25T02:13:28.158Z",
+      "updatedAt": "2025-11-25T02:13:28.158Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:28.158Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:28.168Z"
+      },
+      "id": "6fde02b5-d834-4821-91ed-66bc02fcd862",
+      "createdAt": "2025-11-25T02:13:28.168Z",
+      "updatedAt": "2025-11-25T02:13:28.168Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:28.168Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:34.448Z"
+      },
+      "id": "45ae7dd1-74e8-4253-bf34-99e8b79e5079",
+      "createdAt": "2025-11-25T02:13:34.448Z",
+      "updatedAt": "2025-11-25T02:13:34.448Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:34.448Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:34.458Z"
+      },
+      "id": "8230194a-ec69-4409-9fa7-d0af98d77cd6",
+      "createdAt": "2025-11-25T02:13:34.458Z",
+      "updatedAt": "2025-11-25T02:13:34.458Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:34.458Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:40.681Z"
+      },
+      "id": "34ef76c5-380c-41a7-83b2-c7bddfb2e349",
+      "createdAt": "2025-11-25T02:13:40.681Z",
+      "updatedAt": "2025-11-25T02:13:40.681Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:40.681Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:40.687Z"
+      },
+      "id": "caae89e9-0108-4cb7-88c2-739d1eda1e83",
+      "createdAt": "2025-11-25T02:13:40.687Z",
+      "updatedAt": "2025-11-25T02:13:40.687Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:40.687Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:50.068Z"
+      },
+      "id": "475e1aad-c430-4e75-8b81-70418aae1608",
+      "createdAt": "2025-11-25T02:13:50.068Z",
+      "updatedAt": "2025-11-25T02:13:50.068Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:50.068Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:50.077Z"
+      },
+      "id": "f852346d-644e-4b2f-b826-1fcd2f3a70f4",
+      "createdAt": "2025-11-25T02:13:50.077Z",
+      "updatedAt": "2025-11-25T02:13:50.077Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:50.077Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:56.306Z"
+      },
+      "id": "69cc90f5-5b70-48f8-b459-a77a2328ca53",
+      "createdAt": "2025-11-25T02:13:56.306Z",
+      "updatedAt": "2025-11-25T02:13:56.306Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:56.306Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:56.319Z"
+      },
+      "id": "7175b374-2407-4367-88ed-14da5d714466",
+      "createdAt": "2025-11-25T02:13:56.319Z",
+      "updatedAt": "2025-11-25T02:13:56.319Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:56.319Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:57.530Z"
+      },
+      "id": "c33e1bf5-35cb-4145-8792-a340f095af7a",
+      "createdAt": "2025-11-25T02:13:57.530Z",
+      "updatedAt": "2025-11-25T02:13:57.530Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:57.530Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:57.541Z"
+      },
+      "id": "ad00a7d8-0b69-4fbe-9e4c-6f6dc0cfaca8",
+      "createdAt": "2025-11-25T02:13:57.541Z",
+      "updatedAt": "2025-11-25T02:13:57.541Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:57.541Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:58.752Z"
+      },
+      "id": "73e3ec99-79b6-4dbf-a2ea-f35d2e3f6496",
+      "createdAt": "2025-11-25T02:13:58.752Z",
+      "updatedAt": "2025-11-25T02:13:58.752Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:58.752Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:58.760Z"
+      },
+      "id": "3f935e12-ce2f-4e1e-ac16-b902d59c2f89",
+      "createdAt": "2025-11-25T02:13:58.760Z",
+      "updatedAt": "2025-11-25T02:13:58.760Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:58.760Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:59.969Z"
+      },
+      "id": "d995a31a-a910-4632-9626-cdd2e67669c2",
+      "createdAt": "2025-11-25T02:13:59.969Z",
+      "updatedAt": "2025-11-25T02:13:59.969Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:59.969Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:13:59.978Z"
+      },
+      "id": "b83beb0c-e502-44a5-b967-3483ac9d4974",
+      "createdAt": "2025-11-25T02:13:59.978Z",
+      "updatedAt": "2025-11-25T02:13:59.978Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:13:59.978Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:01.191Z"
+      },
+      "id": "9c5a02f9-a091-49c2-b9eb-e489bcfabd60",
+      "createdAt": "2025-11-25T02:14:01.191Z",
+      "updatedAt": "2025-11-25T02:14:01.191Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:01.191Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:01.198Z"
+      },
+      "id": "9b9e8fc0-02ad-463a-a69c-ad02649e406f",
+      "createdAt": "2025-11-25T02:14:01.198Z",
+      "updatedAt": "2025-11-25T02:14:01.198Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:01.198Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:02.406Z"
+      },
+      "id": "37d37afa-a0d3-4cd8-bc4c-f5330a731eeb",
+      "createdAt": "2025-11-25T02:14:02.406Z",
+      "updatedAt": "2025-11-25T02:14:02.406Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:02.406Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:02.411Z"
+      },
+      "id": "2c3eb01a-aea8-47f7-9709-d5021278a86a",
+      "createdAt": "2025-11-25T02:14:02.411Z",
+      "updatedAt": "2025-11-25T02:14:02.411Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:02.411Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:03.619Z"
+      },
+      "id": "1ff819a0-6209-43be-9a17-da14ff72bf41",
+      "createdAt": "2025-11-25T02:14:03.619Z",
+      "updatedAt": "2025-11-25T02:14:03.619Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:03.619Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:03.625Z"
+      },
+      "id": "995a15ab-0a3c-418e-b4ef-d82aa0b942a1",
+      "createdAt": "2025-11-25T02:14:03.625Z",
+      "updatedAt": "2025-11-25T02:14:03.625Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:03.625Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:04.834Z"
+      },
+      "id": "404137df-42b9-419c-a624-ebf1f9bef88f",
+      "createdAt": "2025-11-25T02:14:04.834Z",
+      "updatedAt": "2025-11-25T02:14:04.834Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:04.834Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:04.837Z"
+      },
+      "id": "d558ec7b-1134-4a65-a17c-34af6b707f0b",
+      "createdAt": "2025-11-25T02:14:04.837Z",
+      "updatedAt": "2025-11-25T02:14:04.837Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:04.837Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:06.045Z"
+      },
+      "id": "de7a6359-40a3-447f-9fd8-dc7d9256b05d",
+      "createdAt": "2025-11-25T02:14:06.045Z",
+      "updatedAt": "2025-11-25T02:14:06.045Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:06.045Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:06.049Z"
+      },
+      "id": "cae2249e-c1a5-4037-af91-5345d3b27fb4",
+      "createdAt": "2025-11-25T02:14:06.049Z",
+      "updatedAt": "2025-11-25T02:14:06.049Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:06.049Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:07.258Z"
+      },
+      "id": "9ca7c710-3f2f-4198-ae58-ca8ec86af392",
+      "createdAt": "2025-11-25T02:14:07.258Z",
+      "updatedAt": "2025-11-25T02:14:07.258Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:07.258Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:07.264Z"
+      },
+      "id": "028506b9-7d52-4dae-b56e-077a0d7a591f",
+      "createdAt": "2025-11-25T02:14:07.264Z",
+      "updatedAt": "2025-11-25T02:14:07.264Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:07.264Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:08.474Z"
+      },
+      "id": "6bd58847-a4e3-4c2f-b8d3-00ad1b18ed5e",
+      "createdAt": "2025-11-25T02:14:08.474Z",
+      "updatedAt": "2025-11-25T02:14:08.474Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:08.474Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:08.479Z"
+      },
+      "id": "500652d4-4b4e-4d8b-872e-14f0f51bd548",
+      "createdAt": "2025-11-25T02:14:08.479Z",
+      "updatedAt": "2025-11-25T02:14:08.479Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:08.479Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:09.688Z"
+      },
+      "id": "c3e1750a-161e-44c8-b2fa-86ef95625d23",
+      "createdAt": "2025-11-25T02:14:09.688Z",
+      "updatedAt": "2025-11-25T02:14:09.688Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:09.688Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:09.692Z"
+      },
+      "id": "eeb164e4-9bf7-443b-bdf9-763048517412",
+      "createdAt": "2025-11-25T02:14:09.692Z",
+      "updatedAt": "2025-11-25T02:14:09.692Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:09.692Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:10.899Z"
+      },
+      "id": "9a71a511-c624-4e5b-8e7f-98ac4842d0a9",
+      "createdAt": "2025-11-25T02:14:10.899Z",
+      "updatedAt": "2025-11-25T02:14:10.899Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:10.899Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:10.904Z"
+      },
+      "id": "42a7fffc-fff3-417d-b204-b0adb9d73ddf",
+      "createdAt": "2025-11-25T02:14:10.904Z",
+      "updatedAt": "2025-11-25T02:14:10.904Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:10.904Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:12.112Z"
+      },
+      "id": "b8c07bff-fa05-4126-87d6-6d0392d32ebf",
+      "createdAt": "2025-11-25T02:14:12.112Z",
+      "updatedAt": "2025-11-25T02:14:12.112Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:12.112Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:12.116Z"
+      },
+      "id": "be29364c-b110-4363-bf92-46d4aba0207c",
+      "createdAt": "2025-11-25T02:14:12.116Z",
+      "updatedAt": "2025-11-25T02:14:12.116Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:12.116Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:13.425Z"
+      },
+      "id": "ee241208-d1ff-4da8-8d0a-38df5fb5da2b",
+      "createdAt": "2025-11-25T02:14:13.425Z",
+      "updatedAt": "2025-11-25T02:14:13.425Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:13.425Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:13.429Z"
+      },
+      "id": "38118d1f-2059-434c-80d4-ba41c359de93",
+      "createdAt": "2025-11-25T02:14:13.429Z",
+      "updatedAt": "2025-11-25T02:14:13.429Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:13.429Z"
+    },
+    {
+      "content": "TypeScript is a superset of JavaScript",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "typescript",
+          "javascript"
+        ],
+        "source": "test",
+        "expiresAt": "2026-11-25T02:14:13.632Z"
+      },
+      "id": "7dcff54b-9d69-4d50-9a1a-48b8d69bcdc7",
+      "createdAt": "2025-11-25T02:14:13.632Z",
+      "updatedAt": "2025-11-25T02:14:13.632Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:13.632Z"
+    },
+    {
+      "content": "TypeScript adds static types to JavaScript",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "typescript",
+          "javascript",
+          "types"
+        ],
+        "source": "test",
+        "expiresAt": "2026-11-25T02:14:13.634Z"
+      },
+      "id": "ec7ae5ea-0733-49ae-b0bf-14e3d3ce2daa",
+      "createdAt": "2025-11-25T02:14:13.634Z",
+      "updatedAt": "2025-11-25T02:14:13.634Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:13.634Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:14.642Z"
+      },
+      "id": "aff7e6af-147a-444c-9cb6-6c8eb52aa96b",
+      "createdAt": "2025-11-25T02:14:14.642Z",
+      "updatedAt": "2025-11-25T02:14:14.642Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:14.642Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:14.645Z"
+      },
+      "id": "39a87041-6bf0-49f9-b328-e449cdbf66d3",
+      "createdAt": "2025-11-25T02:14:14.645Z",
+      "updatedAt": "2025-11-25T02:14:14.645Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:14.645Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:15.859Z"
+      },
+      "id": "5c8b4ed8-5d85-4e83-8971-95997257011b",
+      "createdAt": "2025-11-25T02:14:15.859Z",
+      "updatedAt": "2025-11-25T02:14:15.859Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:15.859Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:15.864Z"
+      },
+      "id": "a3688af2-73e3-4462-ad5c-089ad3836d88",
+      "createdAt": "2025-11-25T02:14:15.864Z",
+      "updatedAt": "2025-11-25T02:14:15.864Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:15.864Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:17.074Z"
+      },
+      "id": "bdf72198-a45d-4a30-b9e8-831ec6b28268",
+      "createdAt": "2025-11-25T02:14:17.074Z",
+      "updatedAt": "2025-11-25T02:14:17.074Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:17.074Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:17.077Z"
+      },
+      "id": "1794f2de-fc9f-49a6-8e02-162046d06d1d",
+      "createdAt": "2025-11-25T02:14:17.077Z",
+      "updatedAt": "2025-11-25T02:14:17.077Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:17.077Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:26.423Z"
+      },
+      "id": "3ff3ca21-6117-4557-bbc7-9376b1381137",
+      "createdAt": "2025-11-25T02:14:26.423Z",
+      "updatedAt": "2025-11-25T02:14:26.423Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:26.423Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:26.428Z"
+      },
+      "id": "3a0efa14-1237-4887-80d3-f92972b44f88",
+      "createdAt": "2025-11-25T02:14:26.428Z",
+      "updatedAt": "2025-11-25T02:14:26.428Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:26.428Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:27.635Z"
+      },
+      "id": "1d501303-0192-4e8d-a814-0338f0bc2f50",
+      "createdAt": "2025-11-25T02:14:27.635Z",
+      "updatedAt": "2025-11-25T02:14:27.635Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:27.635Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:27.639Z"
+      },
+      "id": "f5326033-78c8-4279-932a-4003a255719d",
+      "createdAt": "2025-11-25T02:14:27.639Z",
+      "updatedAt": "2025-11-25T02:14:27.639Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:27.639Z"
+    },
+    {
+      "content": "GraphQL is a query language for APIs developed by Facebook",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "graphql",
+          "api",
+          "query-language"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:28.849Z"
+      },
+      "id": "f3acd01d-c323-4593-947f-1587beaebfdc",
+      "createdAt": "2025-11-25T02:14:28.849Z",
+      "updatedAt": "2025-11-25T02:14:28.849Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:28.849Z"
+    },
+    {
+      "content": "Neo4j is a native graph database that stores data as nodes and relationships",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 8,
+        "tags": [
+          "neo4j",
+          "database",
+          "graph"
+        ],
+        "source": "test-data",
+        "expiresAt": "2026-11-25T02:14:28.853Z"
+      },
+      "id": "103061cf-cbef-4f1c-8738-009d2ac9fc2e",
+      "createdAt": "2025-11-25T02:14:28.853Z",
+      "updatedAt": "2025-11-25T02:14:28.853Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T02:14:28.853Z"
     }
   ]
 }
