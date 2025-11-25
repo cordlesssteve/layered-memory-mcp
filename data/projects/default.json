@@ -1,7 +1,7 @@
 {
   "projectId": "default",
   "version": "1.0",
-  "savedAt": "2025-11-25T02:14:29.055Z",
+  "savedAt": "2025-11-25T05:15:13.324Z",
   "items": [
     {
       "content": "Content for metrics tracking",
@@ -1243,6 +1243,2318 @@
       "updatedAt": "2025-11-25T02:14:28.852Z",
       "accessCount": 0,
       "lastAccessedAt": "2025-11-25T02:14:28.852Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:31.609Z"
+      },
+      "id": "04cc41a4-549a-4184-bb78-511472c7c69e",
+      "createdAt": "2025-11-25T04:35:31.609Z",
+      "updatedAt": "2025-11-25T04:35:31.609Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:31.609Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:31.614Z"
+      },
+      "id": "667944d1-fed0-4ff4-a1b1-c190ed6a5725",
+      "createdAt": "2025-11-25T04:35:31.614Z",
+      "updatedAt": "2025-11-25T04:35:31.614Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:31.614Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:32.845Z"
+      },
+      "id": "f57c87ab-2547-4dfe-9e93-e5d10bfe7201",
+      "createdAt": "2025-11-25T04:35:32.845Z",
+      "updatedAt": "2025-11-25T04:35:32.845Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:32.845Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:32.847Z"
+      },
+      "id": "4112e117-d406-4e17-8da1-0a2a66ab9c79",
+      "createdAt": "2025-11-25T04:35:32.847Z",
+      "updatedAt": "2025-11-25T04:35:32.847Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:32.847Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:34.574Z"
+      },
+      "id": "26f563fa-f5c8-4366-94bb-ef15ac2ff861",
+      "createdAt": "2025-11-25T04:35:34.574Z",
+      "updatedAt": "2025-11-25T04:35:34.574Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:34.574Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:34.576Z"
+      },
+      "id": "3b4030ff-72db-4121-aa59-79f5812ced38",
+      "createdAt": "2025-11-25T04:35:34.576Z",
+      "updatedAt": "2025-11-25T04:35:34.576Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:34.576Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:40.843Z"
+      },
+      "id": "a4abdaac-623d-4c73-9b27-ef8a98c5aa1a",
+      "createdAt": "2025-11-25T04:35:40.843Z",
+      "updatedAt": "2025-11-25T04:35:40.843Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:40.843Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:40.845Z"
+      },
+      "id": "673e3124-6202-4c01-9284-96eb2dcb9099",
+      "createdAt": "2025-11-25T04:35:40.845Z",
+      "updatedAt": "2025-11-25T04:35:40.845Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:40.845Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:47.080Z"
+      },
+      "id": "87be4139-fc23-4883-978a-5a272c784424",
+      "createdAt": "2025-11-25T04:35:47.080Z",
+      "updatedAt": "2025-11-25T04:35:47.080Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:47.080Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:47.082Z"
+      },
+      "id": "70ad37c4-50c0-4956-84cc-fe4c369173ba",
+      "createdAt": "2025-11-25T04:35:47.082Z",
+      "updatedAt": "2025-11-25T04:35:47.082Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:47.082Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:53.318Z"
+      },
+      "id": "274eabf3-7c62-4324-bc96-9204696487d1",
+      "createdAt": "2025-11-25T04:35:53.318Z",
+      "updatedAt": "2025-11-25T04:35:53.318Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:53.318Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:53.320Z"
+      },
+      "id": "0c655776-4b55-45ed-848d-c44f99ef2bca",
+      "createdAt": "2025-11-25T04:35:53.320Z",
+      "updatedAt": "2025-11-25T04:35:53.320Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:53.320Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:59.556Z"
+      },
+      "id": "2f1d2090-b0cf-4dd7-959e-6def54e91c1a",
+      "createdAt": "2025-11-25T04:35:59.556Z",
+      "updatedAt": "2025-11-25T04:35:59.556Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:59.556Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:35:59.558Z"
+      },
+      "id": "4436a0c0-dd40-4d97-a9cd-96380951ea5f",
+      "createdAt": "2025-11-25T04:35:59.558Z",
+      "updatedAt": "2025-11-25T04:35:59.558Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:35:59.558Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:00.778Z"
+      },
+      "id": "cc89cee1-dd8b-4f02-bc99-996f82c02011",
+      "createdAt": "2025-11-25T04:36:00.778Z",
+      "updatedAt": "2025-11-25T04:36:00.778Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:00.778Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:00.781Z"
+      },
+      "id": "dccebf72-6964-4f1a-bfb7-c09ee897b693",
+      "createdAt": "2025-11-25T04:36:00.781Z",
+      "updatedAt": "2025-11-25T04:36:00.781Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:00.781Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:02.002Z"
+      },
+      "id": "55f93530-fa0b-42c1-8baf-b697ea2c711c",
+      "createdAt": "2025-11-25T04:36:02.002Z",
+      "updatedAt": "2025-11-25T04:36:02.002Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:02.002Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:02.003Z"
+      },
+      "id": "063515c1-bb77-4bc9-bdd8-8b4043caee1c",
+      "createdAt": "2025-11-25T04:36:02.003Z",
+      "updatedAt": "2025-11-25T04:36:02.003Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:02.003Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:06.744Z"
+      },
+      "id": "221ef811-1363-411b-98b6-4eac35aaba2e",
+      "createdAt": "2025-11-25T04:36:06.744Z",
+      "updatedAt": "2025-11-25T04:36:06.744Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:06.744Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:06.745Z"
+      },
+      "id": "2189bc94-4b6a-4b21-a4ae-703d882ed3d5",
+      "createdAt": "2025-11-25T04:36:06.745Z",
+      "updatedAt": "2025-11-25T04:36:06.745Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:06.745Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:07.964Z"
+      },
+      "id": "b44e4c5a-8c1d-49a6-964d-71aa87ae37a8",
+      "createdAt": "2025-11-25T04:36:07.964Z",
+      "updatedAt": "2025-11-25T04:36:07.964Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:07.964Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:07.966Z"
+      },
+      "id": "db24a435-bae2-4cff-a219-2cb5c58d6f9c",
+      "createdAt": "2025-11-25T04:36:07.966Z",
+      "updatedAt": "2025-11-25T04:36:07.966Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:07.966Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:09.182Z"
+      },
+      "id": "f6e4c50d-3ec0-4a83-9a81-5f66a773749e",
+      "createdAt": "2025-11-25T04:36:09.182Z",
+      "updatedAt": "2025-11-25T04:36:09.182Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:09.182Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:09.184Z"
+      },
+      "id": "a4780724-30e9-4362-9a25-e1ad57ea7b2d",
+      "createdAt": "2025-11-25T04:36:09.184Z",
+      "updatedAt": "2025-11-25T04:36:09.184Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:09.184Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:10.402Z"
+      },
+      "id": "0737defb-184f-49ed-a7e6-ab51bac43142",
+      "createdAt": "2025-11-25T04:36:10.402Z",
+      "updatedAt": "2025-11-25T04:36:10.402Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:10.402Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:10.404Z"
+      },
+      "id": "ccb75fe6-c44f-49ce-b600-b5801fad14d4",
+      "createdAt": "2025-11-25T04:36:10.404Z",
+      "updatedAt": "2025-11-25T04:36:10.404Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:10.404Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:11.626Z"
+      },
+      "id": "8cc47472-6686-443a-9539-1427239c486d",
+      "createdAt": "2025-11-25T04:36:11.626Z",
+      "updatedAt": "2025-11-25T04:36:11.626Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:11.626Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:11.627Z"
+      },
+      "id": "6b33ce2f-dea4-4ffb-b2c1-9426dd03f7d6",
+      "createdAt": "2025-11-25T04:36:11.627Z",
+      "updatedAt": "2025-11-25T04:36:11.627Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:11.627Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:12.844Z"
+      },
+      "id": "9d9d17cf-c721-432d-9c29-dc2b5d669ac7",
+      "createdAt": "2025-11-25T04:36:12.844Z",
+      "updatedAt": "2025-11-25T04:36:12.844Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:12.844Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:12.845Z"
+      },
+      "id": "78e14d6e-0a11-4976-a54f-dd3720bc8831",
+      "createdAt": "2025-11-25T04:36:12.845Z",
+      "updatedAt": "2025-11-25T04:36:12.845Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:12.845Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:14.066Z"
+      },
+      "id": "3f5e9283-8346-4268-af27-a3a8178f1db8",
+      "createdAt": "2025-11-25T04:36:14.066Z",
+      "updatedAt": "2025-11-25T04:36:14.066Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:14.066Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:14.067Z"
+      },
+      "id": "856bd6f5-4aac-4971-8ca1-0c0ba2fde79c",
+      "createdAt": "2025-11-25T04:36:14.067Z",
+      "updatedAt": "2025-11-25T04:36:14.067Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:14.067Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:15.284Z"
+      },
+      "id": "bfa1c9f5-ebb8-4b38-8285-1498f2d4cd1b",
+      "createdAt": "2025-11-25T04:36:15.284Z",
+      "updatedAt": "2025-11-25T04:36:15.284Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:15.284Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:15.286Z"
+      },
+      "id": "dccfb2f7-0d04-4929-9e8f-45bdf25f4ee6",
+      "createdAt": "2025-11-25T04:36:15.286Z",
+      "updatedAt": "2025-11-25T04:36:15.286Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:15.286Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:16.506Z"
+      },
+      "id": "6ec734c0-38aa-41df-a227-e12c245a0088",
+      "createdAt": "2025-11-25T04:36:16.506Z",
+      "updatedAt": "2025-11-25T04:36:16.506Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:16.506Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:16.514Z"
+      },
+      "id": "e747d950-3792-4de0-a228-25ee3aaa5cea",
+      "createdAt": "2025-11-25T04:36:16.514Z",
+      "updatedAt": "2025-11-25T04:36:16.514Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:16.514Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:17.733Z"
+      },
+      "id": "3869f0d7-a4a0-4e5e-a2a5-a0496664efd4",
+      "createdAt": "2025-11-25T04:36:17.733Z",
+      "updatedAt": "2025-11-25T04:36:17.733Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:17.733Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:17.735Z"
+      },
+      "id": "bbcfb590-46b9-42a8-b57d-d2eaccb72d1b",
+      "createdAt": "2025-11-25T04:36:17.735Z",
+      "updatedAt": "2025-11-25T04:36:17.735Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:17.735Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:18.954Z"
+      },
+      "id": "e97ea473-a6d1-4ec5-ac73-743a80d4c3d3",
+      "createdAt": "2025-11-25T04:36:18.954Z",
+      "updatedAt": "2025-11-25T04:36:18.954Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:18.954Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:18.955Z"
+      },
+      "id": "e3fddf89-a6f4-458a-abf9-3b2b83f9e426",
+      "createdAt": "2025-11-25T04:36:18.955Z",
+      "updatedAt": "2025-11-25T04:36:18.955Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:18.955Z"
+    },
+    {
+      "content": "First memory in auto-link test",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "test",
+          "temporal"
+        ],
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:19.162Z"
+      },
+      "id": "102ea6d8-5a14-4387-8276-3519fb4e767c",
+      "createdAt": "2025-11-25T04:36:19.162Z",
+      "updatedAt": "2025-11-25T04:36:19.162Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:19.162Z"
+    },
+    {
+      "content": "Second memory in auto-link test",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "test",
+          "temporal"
+        ],
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:19.266Z"
+      },
+      "id": "985461ce-d4ba-4c55-bd52-8bf9d38b96ba",
+      "createdAt": "2025-11-25T04:36:19.266Z",
+      "updatedAt": "2025-11-25T04:36:19.266Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:19.266Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:20.280Z"
+      },
+      "id": "db927d94-bcce-4594-91a9-ab11e9d7ecb2",
+      "createdAt": "2025-11-25T04:36:20.280Z",
+      "updatedAt": "2025-11-25T04:36:20.280Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:20.280Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:20.281Z"
+      },
+      "id": "16fe11de-73c3-4a79-ba4e-0306eeb84f10",
+      "createdAt": "2025-11-25T04:36:20.281Z",
+      "updatedAt": "2025-11-25T04:36:20.281Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:20.281Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:21.505Z"
+      },
+      "id": "4a9db120-2174-40ba-a0ea-ce2e18cc309d",
+      "createdAt": "2025-11-25T04:36:21.505Z",
+      "updatedAt": "2025-11-25T04:36:21.505Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:21.505Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:21.507Z"
+      },
+      "id": "60201c48-09b8-4936-85fd-9880769e88c3",
+      "createdAt": "2025-11-25T04:36:21.507Z",
+      "updatedAt": "2025-11-25T04:36:21.507Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:21.507Z"
+    },
+    {
+      "content": "Memory in shared session",
+      "metadata": {
+        "category": "task",
+        "priority": 7,
+        "tags": [
+          "session-test"
+        ],
+        "sessionId": "test-session-123",
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:21.714Z"
+      },
+      "id": "52886286-8f19-4a56-85b7-27ec16748cd9",
+      "createdAt": "2025-11-25T04:36:21.714Z",
+      "updatedAt": "2025-11-25T04:36:21.714Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:21.714Z"
+    },
+    {
+      "content": "Another memory in shared session",
+      "metadata": {
+        "category": "task",
+        "priority": 7,
+        "tags": [
+          "session-test"
+        ],
+        "sessionId": "test-session-123",
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:21.718Z"
+      },
+      "id": "ab79823e-7139-459e-b39a-708b5b0caec8",
+      "createdAt": "2025-11-25T04:36:21.718Z",
+      "updatedAt": "2025-11-25T04:36:21.718Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:21.718Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:22.731Z"
+      },
+      "id": "ff2c7a18-1e7c-48f2-9e7f-9855cf9901a6",
+      "createdAt": "2025-11-25T04:36:22.731Z",
+      "updatedAt": "2025-11-25T04:36:22.731Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:22.731Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:22.732Z"
+      },
+      "id": "0ef39d88-f34e-464d-8403-fe97df280a31",
+      "createdAt": "2025-11-25T04:36:22.732Z",
+      "updatedAt": "2025-11-25T04:36:22.732Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:22.732Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:23.950Z"
+      },
+      "id": "b365ffd7-c38e-4554-8ea5-f4de6af372d8",
+      "createdAt": "2025-11-25T04:36:23.950Z",
+      "updatedAt": "2025-11-25T04:36:23.950Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:23.950Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:23.951Z"
+      },
+      "id": "9be91fc3-1d0b-4f34-a0ed-73f7e1215fa4",
+      "createdAt": "2025-11-25T04:36:23.951Z",
+      "updatedAt": "2025-11-25T04:36:23.951Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:23.951Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:30.178Z"
+      },
+      "id": "58160bfd-0d5f-4a1f-b28e-2ee696bc657d",
+      "createdAt": "2025-11-25T04:36:30.178Z",
+      "updatedAt": "2025-11-25T04:36:30.178Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:30.178Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:30.180Z"
+      },
+      "id": "e0bbbe27-9238-46ba-931f-3bee5f9ebfe6",
+      "createdAt": "2025-11-25T04:36:30.180Z",
+      "updatedAt": "2025-11-25T04:36:30.180Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:30.180Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:31.397Z"
+      },
+      "id": "9c8ce5ca-3738-431f-a956-4a33da3112f8",
+      "createdAt": "2025-11-25T04:36:31.397Z",
+      "updatedAt": "2025-11-25T04:36:31.397Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:31.397Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:31.399Z"
+      },
+      "id": "dacd7f24-75fd-49d7-b49d-8715f27d8ed5",
+      "createdAt": "2025-11-25T04:36:31.399Z",
+      "updatedAt": "2025-11-25T04:36:31.399Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:31.399Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:32.617Z"
+      },
+      "id": "412bc290-91e7-4df3-bf4b-f98917947816",
+      "createdAt": "2025-11-25T04:36:32.617Z",
+      "updatedAt": "2025-11-25T04:36:32.617Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:32.617Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T04:36:32.619Z"
+      },
+      "id": "969aeaa4-a39f-4d43-9ccf-37a4ad82e3d5",
+      "createdAt": "2025-11-25T04:36:32.619Z",
+      "updatedAt": "2025-11-25T04:36:32.619Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T04:36:32.619Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:11.952Z"
+      },
+      "id": "866f2614-8f81-41e9-bbd9-9c69e60e31f4",
+      "createdAt": "2025-11-25T05:14:11.952Z",
+      "updatedAt": "2025-11-25T05:14:11.952Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:11.952Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:11.957Z"
+      },
+      "id": "6b9af4d4-6c25-4201-bb35-9877bffc9a78",
+      "createdAt": "2025-11-25T05:14:11.957Z",
+      "updatedAt": "2025-11-25T05:14:11.957Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:11.957Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:13.196Z"
+      },
+      "id": "f7750808-12b1-4753-8a23-0ebe4c2c9f1f",
+      "createdAt": "2025-11-25T05:14:13.196Z",
+      "updatedAt": "2025-11-25T05:14:13.196Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:13.196Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:13.201Z"
+      },
+      "id": "98577ac1-a9f3-427c-b9cf-3f8eb4453c8d",
+      "createdAt": "2025-11-25T05:14:13.201Z",
+      "updatedAt": "2025-11-25T05:14:13.201Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:13.201Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:14.938Z"
+      },
+      "id": "e5eb0b5b-9ed6-42fd-9f70-946787e9c7fd",
+      "createdAt": "2025-11-25T05:14:14.938Z",
+      "updatedAt": "2025-11-25T05:14:14.938Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:14.938Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:14.942Z"
+      },
+      "id": "23564638-94b4-4b0a-8e9f-aba3b42a5392",
+      "createdAt": "2025-11-25T05:14:14.942Z",
+      "updatedAt": "2025-11-25T05:14:14.942Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:14.942Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:21.265Z"
+      },
+      "id": "a24715c4-cec5-4233-8fd9-40283c7645cb",
+      "createdAt": "2025-11-25T05:14:21.265Z",
+      "updatedAt": "2025-11-25T05:14:21.265Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:21.265Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:21.268Z"
+      },
+      "id": "d2d297d2-20b7-4fea-a0a8-dda8315565d3",
+      "createdAt": "2025-11-25T05:14:21.268Z",
+      "updatedAt": "2025-11-25T05:14:21.268Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:21.268Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:27.506Z"
+      },
+      "id": "d0643fc4-4958-4938-82fb-34b35169f7ef",
+      "createdAt": "2025-11-25T05:14:27.506Z",
+      "updatedAt": "2025-11-25T05:14:27.506Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:27.506Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:27.512Z"
+      },
+      "id": "31c8fd7f-1c59-4f6f-bea2-56b404158dfa",
+      "createdAt": "2025-11-25T05:14:27.512Z",
+      "updatedAt": "2025-11-25T05:14:27.512Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:27.512Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:33.749Z"
+      },
+      "id": "9754ffbb-4ca2-40c8-ba12-265572e09c88",
+      "createdAt": "2025-11-25T05:14:33.749Z",
+      "updatedAt": "2025-11-25T05:14:33.749Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:33.749Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:33.751Z"
+      },
+      "id": "b49bdfae-0d0b-4819-8008-2bd3067973b8",
+      "createdAt": "2025-11-25T05:14:33.751Z",
+      "updatedAt": "2025-11-25T05:14:33.751Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:33.751Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:39.988Z"
+      },
+      "id": "a24e60ae-9a47-43c8-876b-3851ef17d459",
+      "createdAt": "2025-11-25T05:14:39.988Z",
+      "updatedAt": "2025-11-25T05:14:39.988Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:39.988Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:39.992Z"
+      },
+      "id": "18a54c66-6e99-4dd3-9fed-8a58096ab01b",
+      "createdAt": "2025-11-25T05:14:39.992Z",
+      "updatedAt": "2025-11-25T05:14:39.992Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:39.992Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:41.217Z"
+      },
+      "id": "a05878e2-9347-4526-807d-dac28c6364f3",
+      "createdAt": "2025-11-25T05:14:41.217Z",
+      "updatedAt": "2025-11-25T05:14:41.217Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:41.217Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:41.220Z"
+      },
+      "id": "6ec262fd-6df6-42cd-bb93-cdbb81114918",
+      "createdAt": "2025-11-25T05:14:41.220Z",
+      "updatedAt": "2025-11-25T05:14:41.220Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:41.220Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:42.442Z"
+      },
+      "id": "a26f7a8f-ab0b-4d19-9825-0851c6d73266",
+      "createdAt": "2025-11-25T05:14:42.442Z",
+      "updatedAt": "2025-11-25T05:14:42.442Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:42.442Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:42.444Z"
+      },
+      "id": "1c52f364-d6e4-4efd-b8ac-32cf1aa11012",
+      "createdAt": "2025-11-25T05:14:42.444Z",
+      "updatedAt": "2025-11-25T05:14:42.444Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:42.444Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:43.665Z"
+      },
+      "id": "7700b7c2-4e0b-4836-a645-122835fd5bf4",
+      "createdAt": "2025-11-25T05:14:43.665Z",
+      "updatedAt": "2025-11-25T05:14:43.665Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:43.665Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:43.667Z"
+      },
+      "id": "91564e7f-6c65-4331-aeee-9d7222785667",
+      "createdAt": "2025-11-25T05:14:43.667Z",
+      "updatedAt": "2025-11-25T05:14:43.667Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:43.667Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:44.887Z"
+      },
+      "id": "784922e2-f161-46b1-8380-0784c2cb88bb",
+      "createdAt": "2025-11-25T05:14:44.887Z",
+      "updatedAt": "2025-11-25T05:14:44.887Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:44.887Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:44.890Z"
+      },
+      "id": "40c0deb1-07d6-4645-864f-1cdac3a4608d",
+      "createdAt": "2025-11-25T05:14:44.890Z",
+      "updatedAt": "2025-11-25T05:14:44.890Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:44.890Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:46.108Z"
+      },
+      "id": "369a57b8-0d17-4c94-ade7-6228db5a2685",
+      "createdAt": "2025-11-25T05:14:46.108Z",
+      "updatedAt": "2025-11-25T05:14:46.108Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:46.108Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:46.110Z"
+      },
+      "id": "00f3fec9-f476-432c-84be-0f1c9e71fc1a",
+      "createdAt": "2025-11-25T05:14:46.110Z",
+      "updatedAt": "2025-11-25T05:14:46.110Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:46.110Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:47.332Z"
+      },
+      "id": "b30852a5-45d5-4260-9f98-8bf81f18add7",
+      "createdAt": "2025-11-25T05:14:47.332Z",
+      "updatedAt": "2025-11-25T05:14:47.332Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:47.332Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:47.334Z"
+      },
+      "id": "8fccac4d-30a9-4451-b1a2-b4d36c87df04",
+      "createdAt": "2025-11-25T05:14:47.334Z",
+      "updatedAt": "2025-11-25T05:14:47.334Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:47.334Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:48.568Z"
+      },
+      "id": "be4ec3da-667b-401a-8203-3ea9ecd89c08",
+      "createdAt": "2025-11-25T05:14:48.568Z",
+      "updatedAt": "2025-11-25T05:14:48.568Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:48.568Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:48.571Z"
+      },
+      "id": "930934c0-104f-4709-aede-a1b309973443",
+      "createdAt": "2025-11-25T05:14:48.571Z",
+      "updatedAt": "2025-11-25T05:14:48.571Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:48.571Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:49.796Z"
+      },
+      "id": "f69dac3e-a9da-488f-be4f-29ae8a0099b2",
+      "createdAt": "2025-11-25T05:14:49.796Z",
+      "updatedAt": "2025-11-25T05:14:49.796Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:49.796Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:49.799Z"
+      },
+      "id": "5577863b-db5e-49cd-bf2a-f5f06495061d",
+      "createdAt": "2025-11-25T05:14:49.799Z",
+      "updatedAt": "2025-11-25T05:14:49.799Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:49.799Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:51.023Z"
+      },
+      "id": "ed35a634-e36e-40ed-8a3e-ad9078f27271",
+      "createdAt": "2025-11-25T05:14:51.023Z",
+      "updatedAt": "2025-11-25T05:14:51.023Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:51.023Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:51.026Z"
+      },
+      "id": "b73ba7df-6e19-4b93-9a9d-1659599688c8",
+      "createdAt": "2025-11-25T05:14:51.026Z",
+      "updatedAt": "2025-11-25T05:14:51.026Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:51.026Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:55.720Z"
+      },
+      "id": "49af101c-c874-4561-84a0-571410e1f6c7",
+      "createdAt": "2025-11-25T05:14:55.720Z",
+      "updatedAt": "2025-11-25T05:14:55.720Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:55.720Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:55.722Z"
+      },
+      "id": "b96879cd-4f0d-48cf-b3c1-9a2079e5cae8",
+      "createdAt": "2025-11-25T05:14:55.722Z",
+      "updatedAt": "2025-11-25T05:14:55.722Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:55.722Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:56.943Z"
+      },
+      "id": "e6019ffb-6de0-40cc-bf07-be04b658ddaf",
+      "createdAt": "2025-11-25T05:14:56.943Z",
+      "updatedAt": "2025-11-25T05:14:56.943Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:56.943Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:56.945Z"
+      },
+      "id": "ce3f391b-1619-4202-b3b1-936221aee479",
+      "createdAt": "2025-11-25T05:14:56.945Z",
+      "updatedAt": "2025-11-25T05:14:56.945Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:56.945Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:58.170Z"
+      },
+      "id": "db3d98e7-eb01-4998-bb43-41acd3b6f256",
+      "createdAt": "2025-11-25T05:14:58.170Z",
+      "updatedAt": "2025-11-25T05:14:58.170Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:58.170Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:58.173Z"
+      },
+      "id": "ede1b5a9-c1f6-4d97-9e43-926c4a7d2613",
+      "createdAt": "2025-11-25T05:14:58.173Z",
+      "updatedAt": "2025-11-25T05:14:58.173Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:58.173Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:59.394Z"
+      },
+      "id": "2b5b54ef-38fb-4686-9f8e-00f08510a686",
+      "createdAt": "2025-11-25T05:14:59.394Z",
+      "updatedAt": "2025-11-25T05:14:59.394Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:59.394Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:59.396Z"
+      },
+      "id": "14aba341-8a8a-4742-9b26-a690eec7570d",
+      "createdAt": "2025-11-25T05:14:59.396Z",
+      "updatedAt": "2025-11-25T05:14:59.396Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:59.396Z"
+    },
+    {
+      "content": "First memory in auto-link test",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "test",
+          "temporal"
+        ],
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:59.605Z"
+      },
+      "id": "b8e23b5e-67ec-4aeb-9129-b40e65f3642c",
+      "createdAt": "2025-11-25T05:14:59.605Z",
+      "updatedAt": "2025-11-25T05:14:59.605Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:59.605Z"
+    },
+    {
+      "content": "Second memory in auto-link test",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "test",
+          "temporal"
+        ],
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:14:59.711Z"
+      },
+      "id": "4851c6ff-a1a2-4843-9a84-8dd7c5bf7fc5",
+      "createdAt": "2025-11-25T05:14:59.711Z",
+      "updatedAt": "2025-11-25T05:14:59.711Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:14:59.711Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:00.725Z"
+      },
+      "id": "cb5bae1e-2e35-4392-a54b-84598456cb66",
+      "createdAt": "2025-11-25T05:15:00.725Z",
+      "updatedAt": "2025-11-25T05:15:00.725Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:00.725Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:00.729Z"
+      },
+      "id": "2cee5068-d5f3-46c1-8829-4c6e51c3042e",
+      "createdAt": "2025-11-25T05:15:00.729Z",
+      "updatedAt": "2025-11-25T05:15:00.729Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:00.729Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:01.958Z"
+      },
+      "id": "c7187d5a-deda-4af3-b7c3-207fc45d3064",
+      "createdAt": "2025-11-25T05:15:01.958Z",
+      "updatedAt": "2025-11-25T05:15:01.958Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:01.958Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:01.960Z"
+      },
+      "id": "b1655d84-31d6-477b-a691-a36c197ce9e0",
+      "createdAt": "2025-11-25T05:15:01.960Z",
+      "updatedAt": "2025-11-25T05:15:01.960Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:01.960Z"
+    },
+    {
+      "content": "Memory in shared session",
+      "metadata": {
+        "category": "task",
+        "priority": 7,
+        "tags": [
+          "session-test"
+        ],
+        "sessionId": "test-session-123",
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:02.167Z"
+      },
+      "id": "1161c18c-5469-4574-86ae-09618ba63367",
+      "createdAt": "2025-11-25T05:15:02.167Z",
+      "updatedAt": "2025-11-25T05:15:02.167Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:02.167Z"
+    },
+    {
+      "content": "Another memory in shared session",
+      "metadata": {
+        "category": "task",
+        "priority": 7,
+        "tags": [
+          "session-test"
+        ],
+        "sessionId": "test-session-123",
+        "source": "test",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:02.170Z"
+      },
+      "id": "069c1c2b-4760-4ad7-9e0c-17da9800c57d",
+      "createdAt": "2025-11-25T05:15:02.170Z",
+      "updatedAt": "2025-11-25T05:15:02.170Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:02.170Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:03.194Z"
+      },
+      "id": "5afcfae3-384c-4684-b5b5-05ec75b66e67",
+      "createdAt": "2025-11-25T05:15:03.194Z",
+      "updatedAt": "2025-11-25T05:15:03.194Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:03.194Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:03.198Z"
+      },
+      "id": "0f68a87e-3528-45d6-9cbb-256759726d6a",
+      "createdAt": "2025-11-25T05:15:03.198Z",
+      "updatedAt": "2025-11-25T05:15:03.198Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:03.198Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:04.427Z"
+      },
+      "id": "bf006bb2-604e-4a25-9585-63a7dc062854",
+      "createdAt": "2025-11-25T05:15:04.427Z",
+      "updatedAt": "2025-11-25T05:15:04.427Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:04.427Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:04.429Z"
+      },
+      "id": "b33b9c11-201f-4678-83b9-c23ed4e367f3",
+      "createdAt": "2025-11-25T05:15:04.429Z",
+      "updatedAt": "2025-11-25T05:15:04.429Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:04.429Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:10.661Z"
+      },
+      "id": "14423264-0f14-43ba-8b56-5b71c81bd03c",
+      "createdAt": "2025-11-25T05:15:10.661Z",
+      "updatedAt": "2025-11-25T05:15:10.661Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:10.661Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:10.663Z"
+      },
+      "id": "eb3cebde-2a66-46b2-b0e6-155aa02e40f7",
+      "createdAt": "2025-11-25T05:15:10.663Z",
+      "updatedAt": "2025-11-25T05:15:10.663Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:10.663Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:11.885Z"
+      },
+      "id": "722634cd-8859-440e-864a-8d2f295db4d9",
+      "createdAt": "2025-11-25T05:15:11.885Z",
+      "updatedAt": "2025-11-25T05:15:11.885Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:11.885Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:11.888Z"
+      },
+      "id": "66c1c177-3214-423c-9af8-0ee4f1d6cd9d",
+      "createdAt": "2025-11-25T05:15:11.888Z",
+      "updatedAt": "2025-11-25T05:15:11.888Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:11.888Z"
+    },
+    {
+      "content": "REST APIs use HTTP methods like GET, POST, PUT, DELETE",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "rest",
+          "api",
+          "http"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:13.111Z"
+      },
+      "id": "251a7b5c-6838-4c82-aaff-c7d48a0d6a4c",
+      "createdAt": "2025-11-25T05:15:13.111Z",
+      "updatedAt": "2025-11-25T05:15:13.111Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:13.111Z"
+    },
+    {
+      "content": "Apollo Server is a GraphQL server implementation for Node.js",
+      "metadata": {
+        "category": "knowledge",
+        "priority": 7,
+        "tags": [
+          "apollo",
+          "graphql",
+          "server"
+        ],
+        "source": "test-data",
+        "projectId": "default",
+        "expiresAt": "2025-12-25T05:15:13.114Z"
+      },
+      "id": "27e40a0a-be1c-47e4-baf0-1430d2fc2b85",
+      "createdAt": "2025-11-25T05:15:13.114Z",
+      "updatedAt": "2025-11-25T05:15:13.114Z",
+      "accessCount": 0,
+      "lastAccessedAt": "2025-11-25T05:15:13.114Z"
     }
   ]
 }
