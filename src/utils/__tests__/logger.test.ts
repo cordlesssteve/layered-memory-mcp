@@ -5,8 +5,6 @@
 import { createLogger } from '../logger';
 
 describe('Logger', () => {
-  let consoleSpy: jest.SpyInstance;
-  let consoleWarnSpy: jest.SpyInstance;
   let consoleErrorSpy: jest.SpyInstance;
   let originalLogLevel: string | undefined;
 
@@ -16,8 +14,7 @@ describe('Logger', () => {
     // Set log level to allow logging
     process.env['LOG_LEVEL'] = 'debug';
 
-    consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-    consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    // All logs go to stderr (console.error) to avoid corrupting MCP protocol on stdout
     consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation();
   });
 
@@ -29,8 +26,6 @@ describe('Logger', () => {
       delete process.env['LOG_LEVEL'];
     }
 
-    consoleSpy.mockRestore();
-    consoleWarnSpy.mockRestore();
     consoleErrorSpy.mockRestore();
   });
 
@@ -48,8 +43,8 @@ describe('Logger', () => {
       const logger = createLogger('test-component');
       logger.info('Test message', { key: 'value' });
 
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-      const logCall = consoleSpy.mock.calls[0][0];
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      const [[logCall]] = consoleErrorSpy.mock.calls;
       const logEntry = JSON.parse(logCall);
 
       expect(logEntry).toMatchObject({
@@ -65,8 +60,8 @@ describe('Logger', () => {
       const logger = createLogger('test-component');
       logger.info('Test message');
 
-      expect(consoleSpy).toHaveBeenCalledTimes(1);
-      const logCall = consoleSpy.mock.calls[0][0];
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      const [[logCall]] = consoleErrorSpy.mock.calls;
       const logEntry = JSON.parse(logCall);
 
       expect(logEntry).toMatchObject({
@@ -87,9 +82,16 @@ describe('Logger', () => {
       logger.warn('Warn message');
       logger.error('Error message');
 
-      // Should only log warn and error
-      expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
-      expect(consoleErrorSpy).toHaveBeenCalledTimes(1);
+      // Should only log warn and error (both go to stderr)
+      // Since all logs use console.error, we expect 2 calls total
+      expect(consoleErrorSpy).toHaveBeenCalledTimes(2);
+
+      // Verify the logged levels
+      const firstCall = JSON.parse(consoleErrorSpy.mock.calls[0][0]);
+      const secondCall = JSON.parse(consoleErrorSpy.mock.calls[1][0]);
+
+      expect(firstCall.level).toBe('WARN');
+      expect(secondCall.level).toBe('ERROR');
     });
   });
 });
