@@ -1,123 +1,14 @@
 # Layered Memory MCP Server - Current Status
 
-**Last Updated**: 2025-11-26 **Project Status**: DEVELOPMENT - Strategic
-Planning **Phase**: SmartBridge Context Optimization Planning ✅
+**Last Updated**: 2025-11-25 **Project Status**: DEVELOPMENT - Configuration Fix
+**Phase**: Neo4j Authentication Fix ✅
 
 > **Previous Archive:**
-> [CURRENT_STATUS.2025-11-26_1610.md](./docs/progress/2025-11/CURRENT_STATUS.2025-11-26_1610.md)
+> [CURRENT_STATUS.2025-11-25_1519.md](./docs/progress/2025-11/CURRENT_STATUS.2025-11-25_1519.md)
 
 ---
 
-## Current Session (2025-11-26) - SmartBridge Context Optimization Analysis
-
-### Session Summary
-
-**Duration:** 2025-11-26 afternoon session
-
-**Focus:** Context bloat analysis and SmartBridge integration planning
-
-**What Was Accomplished:**
-
-- ✅ Analyzed MCP initialization context bloat (26 tools = ~6,500 tokens)
-- ✅ Researched SmartBridge architecture and discovery pattern
-- ✅ Designed dual-server architecture for context optimization
-- ✅ Documented SmartBridge integration proposal in FEATURE_BACKLOG.md
-- ✅ Created comprehensive tool categorization (Core vs Advanced)
-
-**Context Bloat Analysis:**
-
-**Current State:**
-
-- 26 MCP tools exposed at initialization
-- Tool schemas: ~530 lines (18,453 characters)
-- Prompt definitions: ~110 lines (3,304 characters)
-- **Total initialization cost: ~6,500 tokens**
-- Impact: 1/3 of context window consumed by tool definitions
-
-**Proposed Architecture:**
-
-1. **layered-memory-core** (Direct MCP - 3 tools, ~1.5K tokens)
-   - `store_memory` - Primary write operation
-   - `search_memory` - Primary read with intelligent routing
-   - `get_memory_stats` - System health overview
-   - **Use case:** 80%+ of memory operations
-
-2. **layered-memory** (SmartBridge Proxy - 23 tools, ~5K tokens)
-   - Advanced search (3 tools): `advanced_search`, `semantic_search`,
-     `temporal_search`
-   - Knowledge graph (7 tools): `build_knowledge_graph`, `find_memory_path`,
-     etc.
-   - Dynamic evolution (5 tools): `detect_conflicts`, `get_memory_versions`,
-     etc.
-   - Decay & monitoring (8 tools): `predict_memory_decay`,
-     `get_monitoring_stats`, etc.
-   - **Discovery:** Via `runtime.search_tool_docs("knowledge graph")`
-   - **Access:** On-demand loading via `run_python` tool
-
-**Expected Benefits:**
-
-- **77% context reduction** (6,500 → 1,500 tokens)
-- Fast access to high-frequency operations
-- Power features available on-demand
-- Better LLM performance with smaller context
-
-**SmartBridge Research:**
-
-Studied SmartBridge architecture:
-
-- Discovery-first pattern (Anthropic's "Code Execution with MCP")
-- Constant 200-token overhead regardless of server count
-- Python-based tool discovery and execution
-- Semantic search across tools: `search_tool_docs("query")`
-- Phase 10 complete with enhanced SessionStart hooks
-
-**Feature Backlog Entry:**
-
-Created Epic SB: SmartBridge Context Optimization
-
-- Priority: P2 - Medium
-- Complexity: Medium
-- Phase: Future - Context Optimization
-- Complete proposal with acceptance criteria and technical requirements
-- Documented in `docs/plans/FEATURE_BACKLOG.md`
-
-**Key Design Decisions:**
-
-1. **Split Strategy:** Core (3 tools) vs Advanced (23 tools)
-2. **Access Patterns:** Direct MCP for core, SmartBridge discovery for advanced
-3. **Tool Categorization:** By frequency and complexity
-4. **Migration Path:** Both servers work standalone, SmartBridge optional
-
-**Documentation Updates:**
-
-- Added comprehensive SmartBridge integration proposal to FEATURE_BACKLOG.md
-- Detailed tool-by-tool categorization
-- References to SmartBridge documentation
-- Notes on trade-offs and migration
-
-**Verification Status:**
-
-✓ VERIFIED: Current context cost measured (~6,500 tokens) ✓ VERIFIED:
-SmartBridge discovery pattern understood ✓ VERIFIED: Tool categorization aligns
-with usage patterns ❓ SPECULATION: 77% reduction estimate (based on character
-count analysis) ❌ NOT VERIFIED: Actual token measurements with BPE tokenization
-
-**Next Steps:**
-
-1. Optional: Implement layered-memory-core split
-2. Optional: Register full server in SmartBridge catalog
-3. Optional: Test discovery pattern reliability
-4. Continue with existing priorities (production integration)
-
-**Notes:**
-
-This is an optimization opportunity, not a critical requirement. The current
-26-tool implementation works fine. SmartBridge integration would primarily
-benefit users with many MCP servers competing for context space.
-
----
-
-## Previous Session (2025-11-25) - Neo4j Authentication Fix
+## Current Session (2025-11-25) - Neo4j Authentication Fix
 
 ### Session Summary
 
